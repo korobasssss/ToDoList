@@ -1,0 +1,47 @@
+$FONT_XS: 18px;
+$FONT_S: 20px;
+$FONT_M: 24px;
+$FONT_L: 36px;
+$FONT_XL: 40px;
+
+$ROBOTO: 'ROBOTO';
+
+@mixin font-roboto-xs($font-weight: 400, $font-style: normal) {
+    font-family: $ROBOTO;
+    font-size: $FONT_XS;
+    line-height: $LINE_HEIGHT;
+    font-weight: $font-weight;
+    font-style: $font-style;
+}
+
+@mixin font-roboto-s($font-weight: 400, $font-style: normal) {
+    font-family: $ROBOTO;
+    font-size: $FONT_S;
+    line-height: $LINE_HEIGHT;
+    font-weight: $font-weight;
+    font-style: $font-style;
+}
+
+@mixin font-roboto-m($font-weight: 400, $font-style: normal) {
+    font-family: $ROBOTO;
+    font-size: $FONT_M;
+    line-height: $LINE_HEIGHT;
+    font-weight: $font-weight;
+    font-style: $font-style;
+}
+
+@mixin font-roboto-l($font-weight: 400, $font-style: normal) {
+    font-family: $ROBOTO;
+    font-size: $FONT_L;
+    line-height: $LINE_HEIGHT;
+    font-weight: $font-weight;
+    font-style: $font-style;
+}
+
+@mixin font-roboto-xl($font-weight: 400, $font-style: normal) {
+    font-family: $ROBOTO;
+    font-size: $FONT_XL;
+    line-height: $LINE_HEIGHT;
+    font-weight: $font-weight;
+    font-style: $font-style;
+}
