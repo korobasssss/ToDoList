@@ -4,7 +4,9 @@ $FONT_M: 24px;
 $FONT_L: 36px;
 $FONT_XL: 40px;
 
-$ROBOTO: 'ROBOTO';
+$ROBOTO: 'Roboto', sans-serif;
+
+$LINE_HEIGHT: 1.5;
 
 @mixin font-roboto-xs($font-weight: 400, $font-style: normal) {
     font-family: $ROBOTO;
