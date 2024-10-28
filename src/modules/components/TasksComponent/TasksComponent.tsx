@@ -1,4 +1,4 @@
-import { UlSection } from "../UlSection"
+import { UlSection } from "../"
 
 export const TasksComponent = () => {
     return (

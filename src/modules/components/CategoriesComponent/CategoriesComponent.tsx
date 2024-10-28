@@ -1,7 +1,7 @@
+import { UlSection } from "../"
+
 export const CategoriesComponent = () => {
     return (
-        <main>
-            
-        </main>
+        <UlSection/>
     )
 }
