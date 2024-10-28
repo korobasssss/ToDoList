@@ -1,5 +1,9 @@
-import { CategoriesContainer } from "../../modules/containers"
+import { CategoriesContainer, MainContainer } from "../../modules/containers"
 
 export const CategoriesPage = () => {
-    return <CategoriesContainer/>
+    return (
+        <MainContainer>
+            <CategoriesContainer/>
+        </MainContainer>
+    )
 }

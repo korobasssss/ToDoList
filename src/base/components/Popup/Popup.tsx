@@ -77,6 +77,7 @@ export const Popup: FC<IPopup> = (
                         {handlerSubmit && (
                             <Button
                                 theme='primary'
+                                onClick={handlerSubmit}
                             >
                                 {buttonSubmitName}
                             </Button>

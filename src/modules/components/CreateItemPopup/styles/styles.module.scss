@@ -1,0 +1,14 @@
+@use '../../../../styles/mixins';
+@use '../../../../styles/variables';
+
+.SCreatePopup {
+    display: grid;
+    row-gap: 30px;
+
+    .SCreateSection {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        align-items: center;
+    }
+}
