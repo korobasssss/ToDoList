@@ -27,7 +27,7 @@ const options: ISelectOptions[] = [
     }
 ]
 
-export const CreateItemPopup: FC<ICreateItemPopup> = (
+export const CreateItemPopupComponent: FC<ICreateItemPopup> = (
     {
         input_name,
         input_category,

@@ -1,4 +1,5 @@
 export * from './TasksComponent'
 export * from './CategoriesComponent'
 export * from './UlSection'
-export * from './CreateItemPopup'
+export * from './CreateItemPopupComponent'
+export * from './CreateCategoryPopupComponent'

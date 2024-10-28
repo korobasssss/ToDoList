@@ -1,7 +1,7 @@
 import { useCallback, useState } from "react"
 import { MainLayout } from "../../../base/components"
 import { CategoriesComponent } from "../../components"
-import { CreateItemPopupContainer } from "../CreateItemPopupContainer"
+import { CreateCategoryPopupContainer } from "../CreateCategoryPopupContainer"
 
 export const CategoriesContainer = () => {
     const [isPopupOpen, setIsPopupOpen] = useState(false)
@@ -18,7 +18,7 @@ export const CategoriesContainer = () => {
         > 
             <CategoriesComponent/>
             {isPopupOpen && (
-                <CreateItemPopupContainer
+                <CreateCategoryPopupContainer
                     isPopupOpen={isPopupOpen}
                     handleIsPopupOpen={setIsPopupOpen}
                 />

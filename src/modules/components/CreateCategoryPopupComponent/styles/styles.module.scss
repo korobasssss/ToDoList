@@ -1,0 +1,7 @@
+@use '../../../../styles/mixins';
+@use '../../../../styles/variables';
+
+.SCreatePopup {
+    display: grid;
+    row-gap: 30px;
+}
