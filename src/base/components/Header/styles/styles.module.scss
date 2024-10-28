@@ -4,7 +4,7 @@
 .SHeader {
     box-sizing: border-box;
     position: fixed;
-    height: 88px;
+    min-height: 88px;
     width: 100%;
     display: grid;
     grid-template-columns: max-content auto max-content;
@@ -18,5 +18,13 @@
     .SHeaderTitle {
         color: variables.$TEXT_MAIN_HEADER;
         @include mixins.font-roboto-l;
+    }
+}
+
+@media screen and (max-width: variables.$medium) {
+    .SHeader {
+        padding: 15px 25px;
+        grid-template-columns: 1fr;
+        gap: 10px;
     }
 }

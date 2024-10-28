@@ -24,11 +24,23 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        gap: 20px;
 
         .SPTitle {
             color: variables.$TEXT_TITLE_POPUP;
 
             @include mixins.font-roboto-xl;
+        }
+
+        @media screen and (max-width: variables.$small) {
+            .SPTitle {
+                @include mixins.font-roboto-l-bold;
+            }
+        }
+        @media screen and (max-width: variables.$smallest) {
+            .SPTitle {
+                @include mixins.font-roboto-m-bold;
+            }
         }
     }
 
@@ -36,5 +48,17 @@
         display: flex;
         gap: 25px;
         justify-content: end;
+    }
+
+    @media screen and (max-width: variables.$small) {
+        .SPFooter {
+            flex-direction: column;
+        }
+    }
+}
+
+@media screen and (max-width: variables.$xx-medium) {
+    .SPopup {
+        width: 85%;
     }
 }

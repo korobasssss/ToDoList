@@ -13,5 +13,13 @@
         margin-top: 88px;
         height: 100%;
     }
+
+    @media screen and (max-width: variables.$medium) {
+        .SMainLayoutChildren {
+            margin-top: 170px;
+        }
+    }
 }
+
+
 

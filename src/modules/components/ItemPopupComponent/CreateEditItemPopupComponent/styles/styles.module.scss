@@ -1,3 +1,6 @@
+@use '../../../../../styles/mixins';
+@use '../../../../../styles/variables';
+
 .SCreatePopup {
     display: grid;
     row-gap: 30px;
@@ -7,5 +10,11 @@
         grid-template-columns: repeat(2, 1fr);
         gap: 20px;
         align-items: start;
+    }
+
+    @media screen and (max-width: variables.$small) {
+        .SCreateSection {
+            grid-template-columns: 1fr;
+        }
     }
 }
