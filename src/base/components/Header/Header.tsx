@@ -5,13 +5,15 @@ import { PATHS } from '../../routing'
 
 interface IHeader {
     title: string,
+    buttonName: string
     handleButtonClick: () => void
 }
 
 export const Header: FC<IHeader> = (
     {
         title,
-        handleButtonClick
+        handleButtonClick,
+        buttonName
     }
 ) => {
     return (
@@ -30,7 +32,7 @@ export const Header: FC<IHeader> = (
                 theme='none'
                 onClick={handleButtonClick}
             >
-                Добавить задачу
+                {buttonName}
             </Button>
         </header>
     )

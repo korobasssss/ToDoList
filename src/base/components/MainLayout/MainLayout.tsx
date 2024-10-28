@@ -5,6 +5,7 @@ import styles from './styles/styles.module.scss'
 interface IMainLayout {
     title: string
     children: ReactNode
+    buttonName: string
     handleButtonClick: () => void
 }
 
@@ -12,6 +13,7 @@ export const MainLayout: FC<IMainLayout> = (
     {
         title,
         children,
+        buttonName,
         handleButtonClick
     }
 ) => {
@@ -23,6 +25,7 @@ export const MainLayout: FC<IMainLayout> = (
             >
                 <Header
                     title={title}
+                    buttonName={buttonName}
                     handleButtonClick={handleButtonClick}
                 />
                 <main

@@ -1,9 +1,5 @@
-import { MainContainer, TasksContainer } from "../../modules/containers"
+import { TasksContainer } from "../../modules/containers"
 
 export const TasksPage = () => {
-    return (
-        <MainContainer>
-            <TasksContainer/>
-        </MainContainer>
-    )
+    return <TasksContainer/>
 }
