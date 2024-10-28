@@ -9,8 +9,8 @@ interface IUlItem {
     title: string
     categoryTitle?: string
     description: string
-    handlerEdit: () => void
-    handlerDelete: () => void
+    handleEdit: () => void
+    handleDelete: () => void
 }
 
 export const UlItem: FC<IUlItem> = (
@@ -18,8 +18,8 @@ export const UlItem: FC<IUlItem> = (
         title,
         categoryTitle,
         description,
-        handlerEdit,
-        handlerDelete
+        handleEdit,
+        handleDelete
     }
 ) => {
     return (
@@ -68,12 +68,12 @@ export const UlItem: FC<IUlItem> = (
                     <ButtonIcon
                         icon={edit}
                         alt='edit'
-                        onClick={handlerEdit}
+                        onClick={handleEdit}
                     />
                     <ButtonIcon
                         icon={delete_icon}
                         alt='delete'
-                        onClick={handlerDelete}
+                        onClick={handleDelete}
                     />
                 </div>
             </div>

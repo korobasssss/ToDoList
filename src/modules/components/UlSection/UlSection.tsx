@@ -1,29 +1,31 @@
-import { useCallback } from "react"
+import { FC } from "react"
 import { UlItem } from "./UlItem"
 
-export const UlSection = () => {
-    const handlerEdit = useCallback(() => {
+interface IUlSection {
+    handleEdit: () => void
+    handleDelete: () => void
+}
 
-    }, [])
-
-    const handlerDelete = useCallback(() => {
-
-    }, [])
-
+export const UlSection: FC<IUlSection> = (
+    {
+        handleEdit,
+        handleDelete
+    }
+) => {
     return (
         <ul>
             <UlItem
                 title="Задача 1"
                 categoryTitle="Категория 1"
                 description="Описание задачи, может быть длинным"
-                handlerEdit={handlerEdit}
-                handlerDelete={handlerDelete}
+                handleEdit={handleEdit}
+                handleDelete={handleDelete}
             />
             <UlItem
                 title="Задача 1"
                 description="Описание задачи, может быть длинным"
-                handlerEdit={handlerEdit}
-                handlerDelete={handlerDelete}
+                handleEdit={handleEdit}
+                handleDelete={handleDelete}
             />
         </ul>
     )

@@ -1,17 +1,19 @@
 import { ChangeEvent, FC, useCallback } from "react"
 import styles from './styles/styles.module.scss'
-import { Input, Textarea } from "../../../base/components"
+import { Input, Textarea } from "../../../../base/components"
 
-interface ICreateCategoryPopup {
+interface ICreateEditCategoryPopup {
     input_name: string
+    errorName: string
     input_description: string
     handleSetInputName: (input_name: string) => void
     handleSetInputDescription: (input_description: string) => void
 }
 
-export const CreateCategoryPopupComponent: FC<ICreateCategoryPopup> = (
+export const CreateEditCategoryPopupComponent: FC<ICreateEditCategoryPopup> = (
     {
         input_name,
+        errorName,
         input_description,
         handleSetInputName,
         handleSetInputDescription
@@ -36,6 +38,7 @@ export const CreateCategoryPopupComponent: FC<ICreateCategoryPopup> = (
                     placeholder="Введите имя категории"
                     label="Имя"
                     isRequired
+                    error={errorName}
                 />
             <Textarea
                 value={input_description}

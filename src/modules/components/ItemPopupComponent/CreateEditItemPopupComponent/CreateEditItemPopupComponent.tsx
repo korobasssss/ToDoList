@@ -1,10 +1,11 @@
-import { Input, MySelect, Textarea } from "../../../base/components"
-import { ISelectOptions } from "../../../base/interfaces"
+import { Input, MySelect, Textarea } from "../../../../base/components"
+import { ISelectOptions } from "../../../../base/interfaces"
 import { ChangeEvent, FC, useCallback } from "react"
 import styles from './styles/styles.module.scss'
 
-interface ICreateItemPopup {
+interface ICreateEditItemPopup {
     input_name: string
+    errorNameMessage: string
     input_category: ISelectOptions | null
     input_description: string
     handleSetInputName: (input_name: string) => void
@@ -27,9 +28,10 @@ const options: ISelectOptions[] = [
     }
 ]
 
-export const CreateItemPopupComponent: FC<ICreateItemPopup> = (
+export const CreateEditItemPopupComponent: FC<ICreateEditItemPopup> = (
     {
         input_name,
+        errorNameMessage,
         input_category,
         input_description,
         handleSetInputName,
@@ -63,6 +65,7 @@ export const CreateItemPopupComponent: FC<ICreateItemPopup> = (
                     placeholder="Введите имя задачи"
                     label="Имя"
                     isRequired
+                    error={errorNameMessage}
                 />
                 <MySelect
                     value={input_category}

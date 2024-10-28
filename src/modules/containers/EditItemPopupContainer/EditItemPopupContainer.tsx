@@ -1,18 +1,20 @@
 import { FC, useCallback, useState } from "react"
-import { CategoryPopupComponent } from "../../components"
+import { ISelectOptions } from "../../../base/interfaces"
+import { ItemPopupComponent } from "../../components"
 
-interface ICreateCategoryPopupContainer {
+interface IEditItemPopupContainer {
     handleIsPopupOpen: (isPopupOpen: boolean) => void
     isPopupOpen: boolean
 }
 
-export const CreateCategoryPopupContainer: FC<ICreateCategoryPopupContainer> = (
+export const EditItemPopupContainer: FC<IEditItemPopupContainer> = (
     {
         handleIsPopupOpen,
         isPopupOpen
     }
 ) => {
     const [input_name, setInput_name] = useState('')
+    const [input_category, setInput_category] = useState<ISelectOptions | null>(null)
     const [input_description, setInput_description] = useState('')
 
     const handleSubmit = useCallback(() => {
@@ -20,16 +22,18 @@ export const CreateCategoryPopupContainer: FC<ICreateCategoryPopupContainer> = (
     }, [input_name, input_description])
 
     return (
-        <CategoryPopupComponent
-            popupTitle='Создание категории'
-            buttonSubmitTitle='Создать'
+        <ItemPopupComponent
+            popupTitle='Редактирование задачи'
+            buttonSubmitTitle='Сохранить'
             buttonCancelTitle='Закрыть'
             input_name={input_name}
+            input_category={input_category}
             input_description={input_description}
             handleSetInputName={setInput_name}
+            handleSetInputCategory={setInput_category}
             handleSetInputDescription={setInput_description}
-            isPopupOpen={isPopupOpen}
             handleIsPopupOpen={handleIsPopupOpen}
+            isPopupOpen={isPopupOpen}
             handleSubmitForm={handleSubmit}
         />
     )

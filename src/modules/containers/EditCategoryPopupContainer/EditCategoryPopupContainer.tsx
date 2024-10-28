@@ -1,12 +1,12 @@
 import { FC, useCallback, useState } from "react"
 import { CategoryPopupComponent } from "../../components"
 
-interface ICreateCategoryPopupContainer {
+interface IEditCategoryPopupContainer {
     handleIsPopupOpen: (isPopupOpen: boolean) => void
     isPopupOpen: boolean
 }
 
-export const CreateCategoryPopupContainer: FC<ICreateCategoryPopupContainer> = (
+export const EditCategoryPopupContainer: FC<IEditCategoryPopupContainer> = (
     {
         handleIsPopupOpen,
         isPopupOpen
@@ -21,8 +21,8 @@ export const CreateCategoryPopupContainer: FC<ICreateCategoryPopupContainer> = (
 
     return (
         <CategoryPopupComponent
-            popupTitle='Создание категории'
-            buttonSubmitTitle='Создать'
+            popupTitle='Редактирование категории'
+            buttonSubmitTitle='Сохранить'
             buttonCancelTitle='Закрыть'
             input_name={input_name}
             input_description={input_description}

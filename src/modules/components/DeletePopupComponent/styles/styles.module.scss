@@ -1,7 +1,6 @@
 @use '../../../../styles/mixins';
 @use '../../../../styles/variables';
 
-.SCreatePopup {
-    display: grid;
-    row-gap: 30px;
+.SDeleteMessage {
+    @include mixins.font-roboto-s;
 }

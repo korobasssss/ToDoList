@@ -1,7 +1,6 @@
 import { FC, useCallback, useState } from "react"
 import { ISelectOptions } from "../../../base/interfaces"
-import { Popup } from "../../../base/components"
-import { CreateItemPopupComponent } from "../../components"
+import { ItemPopupComponent } from "../../components"
 
 interface ICreateItemPopupContainer {
     handleIsPopupOpen: (isPopupOpen: boolean) => void
@@ -19,32 +18,23 @@ export const CreateItemPopupContainer: FC<ICreateItemPopupContainer> = (
     const [input_description, setInput_description] = useState('')
 
     const handleSubmit = useCallback(() => {
-        console.log(input_name, input_category, input_description)
-        handleClosePopup()
-    }, [input_name, input_category, input_description])
-
-    const handleClosePopup = useCallback(() => {
-        handleIsPopupOpen(false)
-    }, [])
+        console.log(input_name, input_description)
+    }, [input_name, input_description])
 
     return (
-        <Popup
-            title="Создание задачи"
-            isOpen={isPopupOpen}
-            handlerCancel={handleClosePopup}
-            buttonCancelName='Закрыть'
-            handlerSubmit={handleSubmit}
-            buttonSubmitName="Создать"
-            size='m'
-        >
-            <CreateItemPopupComponent
-                input_name={input_name}
-                input_category={input_category}
-                input_description={input_description}
-                handleSetInputName={setInput_name}
-                handleSetInputCategory={setInput_category}
-                handleSetInputDescription={setInput_description}
-            />
-        </Popup>
+        <ItemPopupComponent
+            popupTitle='Создание задачи'
+            buttonSubmitTitle='Создать'
+            buttonCancelTitle='Закрыть'
+            input_name={input_name}
+            input_category={input_category}
+            input_description={input_description}
+            handleSetInputName={setInput_name}
+            handleSetInputCategory={setInput_category}
+            handleSetInputDescription={setInput_description}
+            handleIsPopupOpen={handleIsPopupOpen}
+            isPopupOpen={isPopupOpen}
+            handleSubmitForm={handleSubmit}
+        />
     )
 }
