@@ -36,7 +36,6 @@
         box-sizing: border-box;
         height: 46px;
         padding: 0 5px;
-        border: none;
         color: variables.$TEXT_INPUT;
 
         border: 2px solid variables.$BORDER_INPUT;
@@ -57,12 +56,20 @@
     }
 
     &_error {
-        border-color: variables.$ERROR_INPUT;
+        .SInput {
+            border-color: variables.$ERROR_INPUT;
 
-        .SInputLabel {
-            color: variables.$ERROR_INPUT;
+            &:hover {
+                border-color: variables.$ERROR_INPUT;
+            }
         }
 
+        .IInputLabelWrapper {
+            .SInputLabel {
+                color: variables.$ERROR_INPUT;
+            }
+        }
+        
         &:hover {
             border-color: variables.$ERROR_INPUT;
     

@@ -27,7 +27,7 @@ export const Input: FC<IInput> = ({
                 className={cx(
                     styles.SInputWrapper,
                     {
-                        [styles['SInputWrapper_error']] : error
+                        [styles['SInputWrapper_error']]: error
                     }
                 )}
             >
