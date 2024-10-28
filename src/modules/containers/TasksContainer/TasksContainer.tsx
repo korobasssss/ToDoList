@@ -1,5 +1,10 @@
+import { MainLayout } from "../../../base/components"
 import { TasksComponent } from "../../components"
 
 export const TasksContainer = () => {
-    return <TasksComponent/>
+    return (
+        <MainLayout> 
+            <TasksComponent/>
+        </MainLayout>
+    )
 }

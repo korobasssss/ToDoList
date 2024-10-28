@@ -1,0 +1,14 @@
+@use '../../../../styles/mixins';
+@use '../../../../styles/variables';
+
+.main {
+    display: grid;
+    row-gap: 20px;
+}
+
+.section {
+    padding: 50px 20px;
+    background-color: variables.$BGC_HEADER;
+    display: grid;
+    row-gap: 20px;
+}

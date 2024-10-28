@@ -56,3 +56,11 @@ $LINE_HEIGHT: 1.5;
     font-weight: $font-weight;
     font-style: $font-style;
 }
+
+@mixin font-roboto-xs-bold($font-weight: 600, $font-style: normal) {
+    font-family: $ROBOTO;
+    font-size: $FONT_XS;
+    line-height: $LINE_HEIGHT;
+    font-weight: $font-weight;
+    font-style: $font-style;
+}
