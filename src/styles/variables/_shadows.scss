@@ -1,4 +1,4 @@
-@import './colors.scss';
+@use './colors.scss' as *;
 
 $SHADOW_HEADER: 0px 4px 8px 0px $LIGHT_BLACK;
 $SHADOW_SELECT_POPUP: 4px 4px 4px 0px $LIGHT_BLACK;
