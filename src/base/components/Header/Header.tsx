@@ -5,11 +5,13 @@ import { PATHS } from '../../routing'
 
 interface IHeader {
     title: string,
+    handleButtonClick: () => void
 }
 
 export const Header: FC<IHeader> = (
     {
-        title
+        title,
+        handleButtonClick
     }
 ) => {
     return (
@@ -26,6 +28,7 @@ export const Header: FC<IHeader> = (
             />
             <Button
                 theme='none'
+                onClick={handleButtonClick}
             >
                 Добавить задачу
             </Button>

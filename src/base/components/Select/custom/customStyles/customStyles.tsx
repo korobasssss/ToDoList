@@ -9,6 +9,7 @@ interface Option {
 export const customStyles: StylesConfig<Option> = {
     control: (provided) => ({
       ...provided,
+      height: '46px',
       backgroundColor: 'transparent',
       border: '2px solid #3F72AF',
       boxShadow: 'none',
@@ -23,13 +24,9 @@ export const customStyles: StylesConfig<Option> = {
         borderColor: '#257FEA',
       },
     }),
-    // input: (provided) => ({
-    //   ...provided,
-    //   padding: '0 5px',
-    // }),
     menu: (provided) => ({
       ...provided,
-      backgroundColor: 'transparent',
+      backgroundColor: '#DBE2EF',
       border: '2px solid #3F72AF',
       borderRadius: '4px',
       boxShadow: '4px 4px 4px 0px #00000040',
@@ -61,7 +58,6 @@ export const customStyles: StylesConfig<Option> = {
     }),
     valueContainer: (provided) => ({
       ...provided,
-      height: '46px',
     }),
     menuList: (provided) => ({
       ...provided,

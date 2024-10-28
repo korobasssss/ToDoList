@@ -13,7 +13,7 @@ interface IPopup {
     handlerSubmit?: () => void
     buttonSubmitName?: string
     handlerCancel: () => void
-    buttonCancelName?: string
+    buttonCancelName: string
     children: ReactNode
     size: 's' | 'm'
 }
