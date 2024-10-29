@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react"
-import { MainLayout } from "../../../base/components"
+import { MainLayout, OverlayLoader } from "../../../base/components"
 import { CategoriesComponent } from "../../components"
 import { CreateCategoryPopupContainer } from "../CategoryPopupContainer/CreateCategoryPopupContainer"
 import { fetchCategoriesApi } from "../../api"
@@ -7,7 +7,7 @@ import { fetchCategoriesApi } from "../../api"
 export const CategoriesContainer = () => {
     const [isPopupOpen, setIsPopupOpen] = useState(false)
 
-    const {data: categories} = fetchCategoriesApi.useFetchGetCategoriesQuery()
+    const {data: categories, isLoading} = fetchCategoriesApi.useFetchGetCategoriesQuery()
 
     const handleButtonClick = useCallback(() => {
         setIsPopupOpen(!isPopupOpen)
@@ -16,20 +16,25 @@ export const CategoriesContainer = () => {
     console.log(categories)
 
     return (
-        <MainLayout
-            title='ToDo List'
-            buttonName='Добавить категорию'
-            handleButtonClick={handleButtonClick}
-        > 
-            <CategoriesComponent
-                categories={categories}
-            />
-            {isPopupOpen && (
-                <CreateCategoryPopupContainer
-                    isPopupOpen={isPopupOpen}
-                    handleIsPopupOpen={setIsPopupOpen}
+        <>
+            <MainLayout
+                title='ToDo List'
+                buttonName='Добавить категорию'
+                handleButtonClick={handleButtonClick}
+            > 
+                <CategoriesComponent
+                    categories={categories}
                 />
+                {isPopupOpen && (
+                    <CreateCategoryPopupContainer
+                        isPopupOpen={isPopupOpen}
+                        handleIsPopupOpen={setIsPopupOpen}
+                    />
+                )}
+            </MainLayout>
+            {isLoading && (
+                <OverlayLoader/>
             )}
-        </MainLayout>
+        </>
     )
 }
