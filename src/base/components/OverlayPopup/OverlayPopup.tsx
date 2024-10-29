@@ -1,15 +1,18 @@
 import { FC, ReactNode } from "react"
 import styles from './styles/styles.module.scss'
 import cx from 'classnames'
+import { IClassName } from "../../interfaces"
 
-interface IOverlayPopup {
-    handlerCLose: () => void
+interface IOverlayPopup
+extends IClassName {
+    handlerCLose?: () => void
     children: ReactNode
-    isOpen: boolean
+    isOpen?: boolean
 }
 
 export const OverlayPopup: FC<IOverlayPopup> = (
     {
+        classNames,
         handlerCLose,
         children,
         isOpen
@@ -28,6 +31,7 @@ export const OverlayPopup: FC<IOverlayPopup> = (
         >
             <div
                 className={cx(
+                    classNames,
                     styles.SOverlay
                 )}
                 onClick={handlerCLose}

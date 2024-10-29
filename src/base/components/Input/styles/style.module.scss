@@ -2,6 +2,7 @@
 @use '../../../../styles/variables';
 
 .SInputWrapper {
+    transition: all 0.25s ease-in-out;
     position: relative;
     display: grid;
     align-items: center;
@@ -59,20 +60,13 @@
         .SInput {
             border-color: variables.$ERROR_INPUT;
 
-            &:hover {
+            &:hover,
+            &:focus {
                 border-color: variables.$ERROR_INPUT;
             }
         }
 
         .IInputLabelWrapper {
-            .SInputLabel {
-                color: variables.$ERROR_INPUT;
-            }
-        }
-        
-        &:hover {
-            border-color: variables.$ERROR_INPUT;
-    
             .SInputLabel {
                 color: variables.$ERROR_INPUT;
             }
