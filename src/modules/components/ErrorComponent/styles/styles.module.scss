@@ -1,0 +1,36 @@
+@use '../../../../styles/mixins';
+@use '../../../../styles/variables';
+
+.SErrorWrapper {
+    width: 100vw;
+    height: 100vh;
+    background-color: variables.$BGC_MAIN;
+
+    display: grid;
+    justify-items: center;
+    align-items: center;
+
+    color: variables.$TEXT_SIMPLE;
+
+    .SError {
+        display: grid;
+        justify-items: center;
+        row-gap: 20px;
+
+        .SErrorHeader {
+            @include mixins.font-roboto-l-bold;
+        }
+
+        .SErrorMessage {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            @include mixins.font-roboto-m;
+
+            .SErrorLink {
+                color: variables.$TEXT_CATEGORY;
+            }
+        }
+    }
+}

@@ -1,18 +1,21 @@
 import { createBrowserRouter, Navigate } from "react-router-dom";
-import { CategoriesPage, TasksPage } from "../../../pages";
+import { CategoriesPage, ErrorPage, TasksPage } from "../../../pages";
 import { EPaths } from "../../enums";
 
 export const routes = createBrowserRouter([
     {
         path: EPaths.MAIN,
-        element: <Navigate to={EPaths.TASKS}/>
+        element: <Navigate to={EPaths.TASKS}/>,
+        errorElement: <ErrorPage/>
     },
     {
         path: EPaths.TASKS,
-        element: <TasksPage/>
+        element: <TasksPage/>,
+        errorElement: <ErrorPage/>
     },
     {
         path: EPaths.CATEGORIES,
-        element: <CategoriesPage/>
-    }
+        element: <CategoriesPage/>,
+        errorElement: <ErrorPage/>
+    },
 ])
