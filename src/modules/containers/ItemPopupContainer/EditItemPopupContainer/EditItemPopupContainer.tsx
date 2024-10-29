@@ -1,13 +1,13 @@
-import { FC, useCallback, useEffect, useState } from "react"
+import { FC, useCallback } from "react"
 import { ISelectOptions } from "../../../../base/interfaces"
 import { ItemPopupContainer } from "../"
 import { ITask } from "../../../interfaces"
-import { fetchCategoriesApi, fetchTasksApi } from "../../../api"
-import { findCategory } from "../../../utils"
+import { fetchTasksApi } from "../../../api"
 import { OverlayLoader } from "../../../../base/components"
 
 interface IEditItemPopupContainer {
     task: ITask
+    category: ISelectOptions | null
     handleIsPopupOpen: (isPopupOpen: boolean) => void
     isPopupOpen: boolean
 }
@@ -15,21 +15,12 @@ interface IEditItemPopupContainer {
 export const EditItemPopupContainer: FC<IEditItemPopupContainer> = (
     {
         task,
+        category,
         handleIsPopupOpen,
         isPopupOpen
     }
 ) => {
-    const {data: categories} = fetchCategoriesApi.useFetchGetCategoriesQuery()
     const [fetchUpdateItem, {isLoading}] = fetchTasksApi.useFetchUpdateTaskMutation()
-
-    const [category, setCategory] = useState<ISelectOptions | null>(null)
-
-    useEffect(() => {
-        if (task.categoryId && categories) {
-            console.log(findCategory(task.categoryId, categories))
-            setCategory(findCategory(task.categoryId, categories))
-        }
-    }, [categories])
 
     const handleSubmit = useCallback((input_name: string, input_category: ISelectOptions | null, input_description: string) => {
         fetchUpdateItem({

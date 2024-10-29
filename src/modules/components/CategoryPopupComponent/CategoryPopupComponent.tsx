@@ -1,9 +1,17 @@
-import { FC, useCallback, useContext, useState } from "react"
-import { CreateEditCategoryPopupComponent } from "./CreateEditCategoryPopupComponent"
-import { Popup } from "../../../base/components"
+import { ChangeEvent, FC, useCallback, useContext } from "react"
+import styles from './styles/styles.module.scss'
+import { Input, Textarea } from "../../../base/components"
 import { CategoryPopupContext } from "../../contexts"
 
-export const CategoryPopupComponent: FC = () => {
+interface ICreateEditCategoryPopup {
+    errorName: string | undefined
+}
+
+export const CategoryPopupComponent: FC<ICreateEditCategoryPopup> = (
+    {
+        errorName,
+    }
+) => {
     const context = useContext(CategoryPopupContext)
 
     if (!context) {
@@ -11,46 +19,36 @@ export const CategoryPopupComponent: FC = () => {
     }
 
     const {
-        input_name,
-        input_description,
-        handleSubmitForm,
-    
-        handleIsPopupOpen,
-        isPopupOpen,
-    
-        popupTitle,
-        buttonSubmitTitle,
-        buttonCancelTitle
+        input_name = '',
+        input_description = '',
+        handleSetInputName,
+        handleSetInputDescription
     } = context
+    
+    const handleChangeInputName = useCallback((event: ChangeEvent<HTMLInputElement>) => {
+        handleSetInputName(event.target.value)
+    }, [])
 
-    const [errorName, setErrorName] = useState('')
-
-    const handleSubmit = useCallback(() => {
-        if (!input_name) {
-            setErrorName('Поле должно быть обязательным')
-        } else {
-            handleSubmitForm()
-            handleClosePopup()
-        }
-    }, [input_name, input_description])
-
-    const handleClosePopup = useCallback(() => {
-        handleIsPopupOpen(false)
+    const handleChangeTextareaDescription = useCallback((event: ChangeEvent<HTMLTextAreaElement>) => {
+        handleSetInputDescription(event.target.value)
     }, [])
 
     return (
-        <Popup
-            title={popupTitle}
-            isOpen={isPopupOpen}
-            handlerCancel={handleClosePopup}
-            buttonCancelName={buttonCancelTitle}
-            handlerSubmit={handleSubmit}
-            buttonSubmitName={buttonSubmitTitle}
-            size='m'
-        >
-            <CreateEditCategoryPopupComponent
-                errorName={errorName}
+        <div className={styles.SCreatePopup}>
+            <Input
+                value={input_name}
+                onChange={handleChangeInputName}
+                placeholder="Введите имя категории"
+                label="Имя"
+                isRequired
+                error={errorName}
             />
-        </Popup>
+            <Textarea
+                value={input_description}
+                onChange={handleChangeTextareaDescription}
+                placeholder="Введите описание категории"
+                label="Описание"
+            />
+        </div>
     )
 }

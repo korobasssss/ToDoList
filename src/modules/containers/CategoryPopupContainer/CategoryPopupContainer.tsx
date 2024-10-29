@@ -1,6 +1,7 @@
 import { FC, useCallback, useEffect, useState } from "react"
 import { CategoryPopupComponent } from "../../components"
 import { CategoryPopupContext } from "../../contexts"
+import { Popup } from "../../../base/components"
 
 interface ICreateItemPopupContainer {
     handleIsPopupOpen: (isPopupOpen: boolean) => void
@@ -29,6 +30,7 @@ export const CategoryPopupContainer: FC<ICreateItemPopupContainer> = (
 ) => {
     const [input_name, setInput_name] = useState<string>('')
     const [input_description, setInput_description] = useState<string>('')
+    const [errorName, setErrorName] = useState('')
 
     useEffect(() => {
         setInput_name(name)
@@ -36,29 +38,40 @@ export const CategoryPopupContainer: FC<ICreateItemPopupContainer> = (
     }, [])
 
     const handleSubmit = useCallback(() => {
-        if (input_name) {
+        if (!input_name) {
+            setErrorName('Поле должно быть обязательным')
+        } else {
             handleSubmitForm(input_name, input_description)
+            handleClosePopup()
         }
     }, [input_name, input_description])
 
+    const handleClosePopup = useCallback(() => {
+        handleIsPopupOpen(false)
+    }, [])
+
     return (
-        <CategoryPopupContext.Provider value={{
-            popupTitle,
-            buttonSubmitTitle,
-            buttonCancelTitle,
+        <Popup
+            title={popupTitle}
+            isOpen={isPopupOpen}
+            handlerCancel={handleClosePopup}
+            buttonCancelName={buttonCancelTitle}
+            handlerSubmit={handleSubmit}
+            buttonSubmitName={buttonSubmitTitle}
+            size='m'
+        >
+            <CategoryPopupContext.Provider value={{
+                input_name,
+                input_description,
+                errorName: errorName,
 
-            input_name,
-            input_description,
-
-            handleSetInputName: setInput_name,
-            handleSetInputDescription: setInput_description,
-
-            handleIsPopupOpen,
-            isPopupOpen,
-            
-            handleSubmitForm: handleSubmit
-        }}>
-            <CategoryPopupComponent/>
-        </CategoryPopupContext.Provider>
+                handleSetInputName: setInput_name,
+                handleSetInputDescription: setInput_description,
+            }}>
+                <CategoryPopupComponent
+                    errorName={errorName}
+                />
+            </CategoryPopupContext.Provider>
+        </Popup>
     )
 }

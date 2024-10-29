@@ -16,8 +16,8 @@ export const TasksComponent: FC<ITaskComponent> = (
             {tasks?.map(task => {
                 return (
                     <OneTaskComponent
-                            key={task.id}
-                            task={task}
+                        key={task.id}
+                        task={task}
                     />
                 )
             })}

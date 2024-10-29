@@ -1,9 +1,10 @@
 import { FC, useCallback, useEffect, useState } from "react"
 import { ISelectOptions } from "../../../base/interfaces"
-import { ItemPopupComponent } from "../../components"
 import { ItemPopupContext } from "../../contexts"
 import { fetchCategoriesApi } from "../../api"
 import { changeToSelectOptions } from "../../utils"
+import { Popup } from "../../../base/components"
+import { ItemPopupComponent } from "../../components"
 
 interface ICreateItemPopupContainer {
     handleIsPopupOpen: (isPopupOpen: boolean) => void
@@ -36,6 +37,8 @@ export const ItemPopupContainer: FC<ICreateItemPopupContainer> = (
     const [input_category, setInput_category] = useState<ISelectOptions | null>(null)
     const [input_description, setInput_description] = useState<string>('')
 
+    const [errorName, setErrorName] = useState('')
+
     const [selectOptions, setSelectOptions] = useState<ISelectOptions[]>([])
 
     const {data: options} = fetchCategoriesApi.useFetchGetCategoriesQuery()
@@ -50,34 +53,47 @@ export const ItemPopupContainer: FC<ICreateItemPopupContainer> = (
         if (options) setSelectOptions(changeToSelectOptions(options))
     }, [options])
 
+
     const handleSubmit = useCallback(() => {
-        if (input_name) {
+        if (!input_name) {
+            setErrorName('Поле должно быть обязательным')
+        } else {
             handleSubmitForm(input_name, input_category, input_description)
+            handleClosePopup()
         }
     }, [input_name, input_category, input_description])
 
-    return (
-        <ItemPopupContext.Provider value={{
-            popupTitle,
-            buttonSubmitTitle,
-            buttonCancelTitle,
+    const handleClosePopup = useCallback(() => {
+        handleIsPopupOpen(false)
+    }, [])
 
+
+    return (
+        <Popup
+            title={popupTitle}
+            isOpen={isPopupOpen}
+            handlerCancel={handleClosePopup}
+            buttonCancelName={buttonCancelTitle}
+            handlerSubmit={handleSubmit}
+            buttonSubmitName={buttonSubmitTitle}
+            size='m'
+        >
+            <ItemPopupContext.Provider value={{
             input_name,
             input_category,
             input_description,
+            errorName,
 
             options: selectOptions,
 
             handleSetInputName: setInput_name,
             handleSetInputCategory: setInput_category,
-            handleSetInputDescription: setInput_description,
-
-            handleIsPopupOpen,
-            isPopupOpen,
-            
-            handleSubmitForm: handleSubmit
+            handleSetInputDescription: setInput_description
         }}>
-            <ItemPopupComponent/>
+            <ItemPopupComponent
+                errorNameMessage={errorName}
+            />
         </ItemPopupContext.Provider>
+        </Popup>
     )
 }

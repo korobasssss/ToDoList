@@ -34,6 +34,7 @@ export const OneCategoryComponent: FC<IOneTaskComponent> = (
                 handleSetIsDeleteOpenPopup={handleSetIsDeleteOpenPopup}
                 handleSetIsEditOpenPopup={handleSetIsEditOpenPopup}
             />
+            
             {isEditOpenPopup && (
                 <EditCategoryPopupContainer
                     category={category}

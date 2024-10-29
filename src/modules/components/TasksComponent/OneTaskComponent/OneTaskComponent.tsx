@@ -1,7 +1,10 @@
-import { FC, useCallback, useState } from "react"
+import { FC, useCallback, useEffect, useState } from "react"
 import { ITask } from "../../../interfaces"
 import { DeleteItemPopupContainer, EditItemPopupContainer } from "../../../containers"
 import { UlItemLayout } from "../../"
+import { fetchCategoriesApi } from "../../../api"
+import { ISelectOptions } from "../../../../base/interfaces"
+import { findCategory } from "../../../utils"
 
 interface IOneTaskComponent {
     task: ITask
@@ -12,6 +15,17 @@ export const OneTaskComponent: FC<IOneTaskComponent> = (
         task
     }
 ) => {
+    const {data: categories} = fetchCategoriesApi.useFetchGetCategoriesQuery()
+
+    const [category, setCategory] = useState<ISelectOptions | null>(null)
+
+    useEffect(() => {
+        if (task.categoryId && categories) {
+            console.log(findCategory(task.categoryId, categories))
+            setCategory(findCategory(task.categoryId, categories))
+        }
+    }, [categories])
+
     const [isEditOpenPopup, setIsEditOpenPopup] = useState(false)
     const [isDeleteOpenPopup, setIsDeleteOpenPopup] = useState(false)
 
@@ -28,15 +42,17 @@ export const OneTaskComponent: FC<IOneTaskComponent> = (
         <>
             <UlItemLayout
                 name={task.name}
-                category={task.categoryId.toString()}
+                category={category?.label ?? null}
                 description={task.description}
 
                 handleSetIsDeleteOpenPopup={handleSetIsDeleteOpenPopup}
                 handleSetIsEditOpenPopup={handleSetIsEditOpenPopup}
             />
+            
             {isEditOpenPopup && (
                 <EditItemPopupContainer
                     task={task}
+                    category={category}
                     handleIsPopupOpen={setIsEditOpenPopup}
                     isPopupOpen={isEditOpenPopup}
                 />
