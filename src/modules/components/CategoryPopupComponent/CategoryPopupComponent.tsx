@@ -23,7 +23,6 @@ export const CategoryPopupComponent: FC = () => {
         buttonCancelTitle
     } = context
 
-
     const [errorName, setErrorName] = useState('')
 
     const handleSubmit = useCallback(() => {

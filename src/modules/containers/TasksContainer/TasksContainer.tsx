@@ -1,10 +1,13 @@
 import { useCallback, useState } from "react"
 import { MainLayout } from "../../../base/components"
 import { TasksComponent } from "../../components"
-import { CreateItemPopupContainer } from "../CreateItemPopupContainer"
+import { CreateItemPopupContainer } from "../ItemPopupContainer/CreateItemPopupContainer"
+import { fetchTasksApi } from "../../api"
 
 export const TasksContainer = () => {
     const [isPopupOpen, setIsPopupOpen] = useState(false)
+
+    const {data: tasks} = fetchTasksApi.useFetchGetTasksQuery();
 
     const handleButtonClick = useCallback(() => {
         setIsPopupOpen(!isPopupOpen)
@@ -16,7 +19,9 @@ export const TasksContainer = () => {
             buttonName='Добавить задачу'
             handleButtonClick={handleButtonClick}
         > 
-            <TasksComponent/>
+            <TasksComponent
+                tasks={tasks}
+            />
             {isPopupOpen && (
                 <CreateItemPopupContainer
                     isPopupOpen={isPopupOpen}

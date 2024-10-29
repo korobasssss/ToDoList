@@ -1,5 +1,5 @@
 import { FC, useCallback } from "react"
-import { CategoryPopupContainer } from "../CategoryPopupContainer"
+import { CategoryPopupContainer } from ".."
 
 interface ICreateCategoryPopupContainer {
     handleIsPopupOpen: (isPopupOpen: boolean) => void

@@ -34,9 +34,7 @@ export const CreateEditCategoryPopupComponent: FC<ICreateEditCategoryPopup> = (
     }, [])
 
     return (
-        <div
-            className={styles.SCreatePopup}
-        >
+        <div className={styles.SCreatePopup}>
             <Input
                 value={input_name}
                 onChange={handleChangeInputName}

@@ -1,13 +1,16 @@
 import { FC, useCallback } from "react"
-import { CategoryPopupContainer } from "../CategoryPopupContainer"
+import { CategoryPopupContainer } from ".."
+import { ICategory } from "../../../interfaces"
 
 interface IEditCategoryPopupContainer {
+    category: ICategory
     handleIsPopupOpen: (isPopupOpen: boolean) => void
     isPopupOpen: boolean
 }
 
 export const EditCategoryPopupContainer: FC<IEditCategoryPopupContainer> = (
     {
+        category,
         handleIsPopupOpen,
         isPopupOpen
     }
@@ -22,8 +25,8 @@ export const EditCategoryPopupContainer: FC<IEditCategoryPopupContainer> = (
             popupTitle='Редактирование категории'
             buttonSubmitTitle='Создать'
             buttonCancelTitle='Закрыть'
-            name={'блабла1'}
-            description={'тожебалбла'}
+            name={category.name}
+            description={category.description ?? ''}
             isPopupOpen={isPopupOpen}
             handleIsPopupOpen={handleIsPopupOpen}
             handleSubmitForm={handleSubmit}

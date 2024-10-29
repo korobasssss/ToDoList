@@ -58,12 +58,8 @@ export const CreateEditItemPopupComponent: FC<ICreateEditItemPopup> = (
     }, [])
 
     return (
-        <div
-            className={styles.SCreatePopup}
-        >
-            <div
-                className={styles.SCreateSection}
-            >
+        <div className={styles.SCreatePopup}>
+            <div className={styles.SCreateSection}>
                 <Input
                     value={input_name}
                     onChange={handleChangeInputName}

@@ -1,38 +1,27 @@
-import { useCallback, useState } from "react"
-import { UlSection } from "../"
-import { EditCategoryPopupContainer, DeleteCategoryPopupContainer } from "../../containers"
+import { FC } from "react"
+import { ICategory } from "../../interfaces"
+import { OneCategoryComponent } from "./OneCategoryComponent"
 
-export const CategoriesComponent = () => {
-    const [isEditOpenPopup, setIsEditOpenPopup] = useState(false)
-    const [isDeleteOpenPopup, setIsDeleteOpenPopup] = useState(false)
+interface ICategoriesComponent {
+    categories: ICategory[] | undefined
+}
 
-    const handleSetIsEditOpenPopup = useCallback(() => {
-        setIsEditOpenPopup(!isEditOpenPopup)
-    }, [isEditOpenPopup])
-
-
-    const handleSetIsDeleteOpenPopup = useCallback(() => {
-        setIsDeleteOpenPopup(!isDeleteOpenPopup)
-    }, [isEditOpenPopup])
-
+export const CategoriesComponent: FC<ICategoriesComponent> = (
+    {
+        categories
+    }
+) => {
     return (
-        <>
-            <UlSection
-                handleEdit={handleSetIsEditOpenPopup}
-                handleDelete={handleSetIsDeleteOpenPopup}
-            />
-            {isEditOpenPopup && (
-                <EditCategoryPopupContainer
-                    handleIsPopupOpen={setIsEditOpenPopup}
-                    isPopupOpen={isEditOpenPopup}
-                />
-            )}
-            {isDeleteOpenPopup && (
-                <DeleteCategoryPopupContainer
-                    handleIsPopupOpen={setIsDeleteOpenPopup}
-                    isPopupOpen={isDeleteOpenPopup}
-                />
-            )}
-        </>
+        <ul>
+            {categories?.map(category => {
+                return (
+                    <OneCategoryComponent
+                        key={category.id}
+                        category={category}
+                    />
+                )
+            })}
+
+        </ul>
     )
 }

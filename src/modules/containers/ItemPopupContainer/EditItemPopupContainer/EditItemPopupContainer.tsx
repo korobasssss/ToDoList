@@ -1,14 +1,17 @@
 import { FC, useCallback } from "react"
 import { ISelectOptions } from "../../../base/interfaces"
 import { ItemPopupContainer } from "../"
+import { ITask } from "../../interfaces"
 
 interface IEditItemPopupContainer {
+    task: ITask
     handleIsPopupOpen: (isPopupOpen: boolean) => void
     isPopupOpen: boolean
 }
 
 export const EditItemPopupContainer: FC<IEditItemPopupContainer> = (
     {
+        task,
         handleIsPopupOpen,
         isPopupOpen
     }
@@ -23,9 +26,9 @@ export const EditItemPopupContainer: FC<IEditItemPopupContainer> = (
             buttonSubmitTitle='Сохранить'
             buttonCancelTitle='Закрыть'
 
-            name={'блабла'}
-            category={null}
-            description={'блабла'}
+            name={task.name}
+            category={{value: '1', label: 'task.categoryId'}}
+            description={task.description ?? ''}
 
             handleIsPopupOpen={handleIsPopupOpen}
             isPopupOpen={isPopupOpen}

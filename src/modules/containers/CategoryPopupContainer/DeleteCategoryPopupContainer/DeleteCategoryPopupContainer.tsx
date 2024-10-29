@@ -1,14 +1,17 @@
 import { FC, useCallback } from "react"
-import { Popup } from "../../../base/components"
-import { DeletePopupComponent } from "../../components"
+import { Popup } from "../../../../base/components"
+import { DeletePopupComponent } from "../../../components"
+import { ICategory } from "../../../interfaces"
 
-interface IDeleteItemPopupContainer {
+interface IDeleteCategoryPopupContainer {
+    category: ICategory
     handleIsPopupOpen: (isPopupOpen: boolean) => void
     isPopupOpen: boolean
 }
 
-export const DeleteItemPopupContainer: FC<IDeleteItemPopupContainer> = (
+export const DeleteCategoryPopupContainer: FC<IDeleteCategoryPopupContainer> = (
     {
+        category,
         handleIsPopupOpen,
         isPopupOpen
     }
@@ -24,7 +27,7 @@ export const DeleteItemPopupContainer: FC<IDeleteItemPopupContainer> = (
 
     return (
         <Popup
-            title='Удаление задачи'
+            title='Удаление категории'
             isOpen={isPopupOpen}
             handlerCancel={handleClosePopup}
             buttonCancelName='Нет'
@@ -33,7 +36,7 @@ export const DeleteItemPopupContainer: FC<IDeleteItemPopupContainer> = (
             size='s'
         >
             <DeletePopupComponent
-                message='Вы уверены, что хотите удалить задачу “Задача1”?'
+                message={`Вы уверены, что хотите удалить категорию “${category.name}”?`}
             />
         </Popup>
     )

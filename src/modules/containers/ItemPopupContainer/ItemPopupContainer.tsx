@@ -66,8 +66,6 @@ export const ItemPopupContainer: FC<ICreateItemPopupContainer> = (
             handleSubmitForm: handleSubmit
         }}>
             <ItemPopupComponent/>
-
-
         </ItemPopupContext.Provider>
     )
 }

@@ -1,6 +1,6 @@
 import { FC, useCallback } from "react"
-import { ISelectOptions } from "../../../base/interfaces"
-import { ItemPopupContainer } from "../ItemPopupContainer"
+import { ISelectOptions } from "../../../../base/interfaces"
+import { ItemPopupContainer } from ".."
 
 interface ICreateItemPopupContainer {
     handleIsPopupOpen: (isPopupOpen: boolean) => void
