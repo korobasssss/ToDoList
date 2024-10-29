@@ -88,7 +88,8 @@ export const ItemPopupContainer: FC<ICreateItemPopupContainer> = (
 
             handleSetInputName: setInput_name,
             handleSetInputCategory: setInput_category,
-            handleSetInputDescription: setInput_description
+            handleSetInputDescription: setInput_description,
+            handleSetErrorName: setErrorName
         }}>
             <ItemPopupComponent
                 errorNameMessage={errorName}

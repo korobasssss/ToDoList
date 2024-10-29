@@ -5,4 +5,5 @@ export interface IPopupContext {
 
     handleSetInputName: (input_name: string) => void
     handleSetInputDescription: (input_description: string) => void
+    handleSetErrorName: (errorName: string) => void
 }

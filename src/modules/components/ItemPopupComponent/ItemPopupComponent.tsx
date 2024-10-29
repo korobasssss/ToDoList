@@ -1,9 +1,9 @@
-
 import { ChangeEvent, FC, useCallback, useContext } from "react"
 import styles from './styles/styles.module.scss'
 import { ItemPopupContext } from "../../contexts"
 import { ISelectOptions } from "../../../base/interfaces"
 import { MySelect, Textarea, Input } from "../../../base/components"
+import { IsValidTo } from "../../utils"
 
 interface ICreateEditItemPopup {
     errorNameMessage: string
@@ -28,20 +28,28 @@ export const ItemPopupComponent: FC<ICreateEditItemPopup> = (
     
         handleSetInputName,
         handleSetInputCategory,
-        handleSetInputDescription
+        handleSetInputDescription,
+        handleSetErrorName
     } = context
     
-
     const handleChangeInputName = useCallback((event: ChangeEvent<HTMLInputElement>) => {
-        handleSetInputName(event.target.value)
+        if (IsValidTo(event.target.value, 255)) {
+            handleSetInputName(event.target.value)
+        } else {
+            handleSetErrorName('Превышен лимит символов')
+        }
+    }, [])
+
+    const handleChangeTextareaDescription = useCallback((event: ChangeEvent<HTMLTextAreaElement>) => {
+        if (IsValidTo(event.target.value, 1536)) {
+            handleSetInputDescription(event.target.value)
+        } else {
+            handleSetErrorName('Превышен лимит символов')
+        }
     }, [])
 
     const handleChangeInputCategory = useCallback((newValue: ISelectOptions) => {
         handleSetInputCategory(newValue)
-    }, [])
-
-    const handleChangeTextareaDescription = useCallback((event: ChangeEvent<HTMLTextAreaElement>) => {
-        handleSetInputDescription(event.target.value)
     }, [])
 
     return (

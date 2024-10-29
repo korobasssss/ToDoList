@@ -2,16 +2,9 @@ import { ChangeEvent, FC, useCallback, useContext } from "react"
 import styles from './styles/styles.module.scss'
 import { Input, Textarea } from "../../../base/components"
 import { CategoryPopupContext } from "../../contexts"
+import { IsValidTo } from "../../utils"
 
-interface ICreateEditCategoryPopup {
-    errorName: string | undefined
-}
-
-export const CategoryPopupComponent: FC<ICreateEditCategoryPopup> = (
-    {
-        errorName,
-    }
-) => {
+export const CategoryPopupComponent: FC = () => {
     const context = useContext(CategoryPopupContext)
 
     if (!context) {
@@ -21,16 +14,26 @@ export const CategoryPopupComponent: FC<ICreateEditCategoryPopup> = (
     const {
         input_name = '',
         input_description = '',
+        errorName,
         handleSetInputName,
-        handleSetInputDescription
+        handleSetInputDescription,
+        handleSetErrorName
     } = context
     
     const handleChangeInputName = useCallback((event: ChangeEvent<HTMLInputElement>) => {
-        handleSetInputName(event.target.value)
+        if (IsValidTo(event.target.value, 255)) {
+            handleSetInputName(event.target.value)
+        } else {
+            handleSetErrorName('Превышен лимит символов')
+        }
     }, [])
 
     const handleChangeTextareaDescription = useCallback((event: ChangeEvent<HTMLTextAreaElement>) => {
-        handleSetInputDescription(event.target.value)
+        if (IsValidTo(event.target.value, 512)) {
+            handleSetInputDescription(event.target.value)
+        } else {
+            handleSetErrorName('Превышен лимит символов')
+        }
     }, [])
 
     return (

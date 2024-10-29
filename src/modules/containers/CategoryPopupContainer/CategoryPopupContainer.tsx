@@ -67,10 +67,9 @@ export const CategoryPopupContainer: FC<ICreateItemPopupContainer> = (
 
                 handleSetInputName: setInput_name,
                 handleSetInputDescription: setInput_description,
+                handleSetErrorName: setErrorName
             }}>
-                <CategoryPopupComponent
-                    errorName={errorName}
-                />
+                <CategoryPopupComponent/>
             </CategoryPopupContext.Provider>
         </Popup>
     )
