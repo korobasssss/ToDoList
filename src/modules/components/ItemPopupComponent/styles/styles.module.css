@@ -1,0 +1,15 @@
+.SCreatePopup {
+  display: grid;
+  row-gap: 30px;
+}
+.SCreatePopup .SCreateSection {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+@media screen and (max-width: 570px) {
+  .SCreatePopup .SCreateSection {
+    grid-template-columns: 1fr;
+  }
+}/*# sourceMappingURL=styles.module.css.map */

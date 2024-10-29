@@ -1,0 +1,44 @@
+$ANIMATION_DURATION: 300ms;
+$ANIMATION_EASING: ease;
+
+@mixin animation-opacity-exit($duration: $ANIMATION_DURATION, $easing: $ANIMATION_EASING) {
+    @keyframes opacity-exit {
+      0% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+      }
+    }
+  
+    animation: opacity-exit $duration $easing;
+}
+  
+@mixin animation-opacity-enter($duration: $ANIMATION_DURATION, $easing: $ANIMATION_EASING) {
+    @keyframes opacity-enter {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+  
+    animation: opacity-enter $duration $easing;
+}
+
+
+@mixin animation-loader($duration: 6s, $easing: infinite) {
+    @keyframes slide {
+      0% { transform: translateX(0); }
+      25% { transform: translateX(0); }
+      30% { transform: translateX(-100%); }
+      55% { transform: translateX(-100%); }
+      60% { transform: translateX(-200%); }
+      85% { transform: translateX(-200%); }
+      90% { transform: translateX(-300%); }
+      100% { transform: translateX(-300%); }
+    }
+  
+    animation: slide $duration $easing;
+}

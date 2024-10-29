@@ -1,0 +1,30 @@
+@use '../../../../styles/mixins';
+@use '../../../../styles/variables';
+
+.SHeader {
+    box-sizing: border-box;
+    position: fixed;
+    min-height: 88px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: max-content auto max-content;
+    align-items: center;
+    gap: 50px;
+
+    padding: 0 25px;
+    background-color: variables.$BGC_HEADER;
+    box-shadow: variables.$SHADOW_HEADER;
+
+    .SHeaderTitle {
+        color: variables.$TEXT_MAIN_HEADER;
+        @include mixins.font-roboto-l;
+    }
+}
+
+@media screen and (max-width: variables.$medium) {
+    .SHeader {
+        padding: 15px 25px;
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+}
