@@ -8,21 +8,6 @@ interface ICreateEditItemPopup {
     errorNameMessage: string
 }
 
-const options: ISelectOptions[] = [
-    {
-        label: 'Категория 1',
-        value: 'cat1'
-    },
-    {
-        label: 'Категория 2',
-        value: 'cat2'
-    },
-    {
-        label: 'Категория 3',
-        value: 'cat3'
-    }
-]
-
 export const CreateEditItemPopupComponent: FC<ICreateEditItemPopup> = (
     {
         errorNameMessage,
@@ -38,6 +23,7 @@ export const CreateEditItemPopupComponent: FC<ICreateEditItemPopup> = (
         input_name = '',
         input_category = null,
         input_description = '',
+        options,
     
         handleSetInputName,
         handleSetInputCategory,

@@ -2,15 +2,17 @@ import { FC, useCallback, useEffect, useState } from "react"
 import { ISelectOptions } from "../../../base/interfaces"
 import { ItemPopupComponent } from "../../components"
 import { ItemPopupContext } from "../../contexts"
+import { fetchCategoriesApi } from "../../api"
+import { changeToSelectOptions } from "../../utils"
 
 interface ICreateItemPopupContainer {
     handleIsPopupOpen: (isPopupOpen: boolean) => void
     isPopupOpen: boolean
 
-    name: string | undefined
+    name: string
     category: ISelectOptions | null
-    description: string | undefined
-    handleSubmitForm: (name: string, category: ISelectOptions | null, description: string | undefined) => void
+    description: string
+    handleSubmitForm: (name: string, category: ISelectOptions | null, description: string) => void
 
     popupTitle: string
     buttonSubmitTitle? : string
@@ -30,15 +32,23 @@ export const ItemPopupContainer: FC<ICreateItemPopupContainer> = (
         buttonCancelTitle,
     }
 ) => {
-    const [input_name, setInput_name] = useState<string | undefined>()
+    const [input_name, setInput_name] = useState<string>('')
     const [input_category, setInput_category] = useState<ISelectOptions | null>(null)
-    const [input_description, setInput_description] = useState<string | undefined>()
+    const [input_description, setInput_description] = useState<string>('')
+
+    const [selectOptions, setSelectOptions] = useState<ISelectOptions[]>([])
+
+    const {data: options} = fetchCategoriesApi.useFetchGetCategoriesQuery()
 
     useEffect(() => {
-        setInput_name(name ? name : undefined)
-        setInput_description(description ? description : undefined)
-        setInput_category(category ? category : null)
-    }, [])
+        setInput_name(name)
+        setInput_description(description)
+        setInput_category(category)
+    }, [name, description, category])
+
+    useEffect(() => {
+        if (options) setSelectOptions(changeToSelectOptions(options))
+    }, [options])
 
     const handleSubmit = useCallback(() => {
         if (input_name) {
@@ -55,6 +65,8 @@ export const ItemPopupContainer: FC<ICreateItemPopupContainer> = (
             input_name,
             input_category,
             input_description,
+
+            options: selectOptions,
 
             handleSetInputName: setInput_name,
             handleSetInputCategory: setInput_category,

@@ -1,6 +1,6 @@
 export interface IPopupContext {
-    input_name: string | undefined
-    input_description: string | undefined
+    input_name: string
+    input_description: string
 
     handleSetInputName: (input_name: string) => void
     handleSetInputDescription: (input_description: string) => void

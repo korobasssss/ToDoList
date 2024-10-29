@@ -6,9 +6,9 @@ interface ICreateItemPopupContainer {
     handleIsPopupOpen: (isPopupOpen: boolean) => void
     isPopupOpen: boolean
 
-    name: string | undefined
-    description: string | undefined
-    handleSubmitForm: (name: string, description: string | undefined) => void
+    name: string
+    description: string
+    handleSubmitForm: (name: string, description: string) => void
 
     popupTitle: string
     buttonSubmitTitle? : string
@@ -27,12 +27,12 @@ export const CategoryPopupContainer: FC<ICreateItemPopupContainer> = (
         buttonCancelTitle,
     }
 ) => {
-    const [input_name, setInput_name] = useState<string | undefined>()
-    const [input_description, setInput_description] = useState<string | undefined>()
+    const [input_name, setInput_name] = useState<string>('')
+    const [input_description, setInput_description] = useState<string>('')
 
     useEffect(() => {
-        setInput_name(name ? name : undefined)
-        setInput_description(description ? description : undefined)
+        setInput_name(name)
+        setInput_description(description)
     }, [])
 
     const handleSubmit = useCallback(() => {

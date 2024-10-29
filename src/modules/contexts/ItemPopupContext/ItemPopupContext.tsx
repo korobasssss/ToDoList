@@ -5,6 +5,7 @@ import { ISelectOptions } from "../../../base/interfaces";
 interface IItemPopupContext
 extends IPopupContext {
     input_category: ISelectOptions | null
+    options: ISelectOptions[]
     handleSetInputCategory: (input_category: ISelectOptions) => void
 }
 
