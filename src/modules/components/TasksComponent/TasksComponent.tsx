@@ -1,7 +1,6 @@
 import { useCallback, useState } from "react"
 import { UlSection } from "../"
 import { DeleteItemPopupContainer, EditItemPopupContainer } from "../../containers"
-import { OverlayLoader } from "../../../base/components"
 
 export const TasksComponent = () => {
     const [isEditOpenPopup, setIsEditOpenPopup] = useState(false)

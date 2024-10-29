@@ -1,16 +1,11 @@
 import { Input, MySelect, Textarea } from "../../../../base/components"
 import { ISelectOptions } from "../../../../base/interfaces"
-import { ChangeEvent, FC, useCallback } from "react"
+import { ChangeEvent, FC, useCallback, useContext } from "react"
 import styles from './styles/styles.module.scss'
+import { ItemPopupContext } from "../../../contexts"
 
 interface ICreateEditItemPopup {
-    input_name: string
     errorNameMessage: string
-    input_category: ISelectOptions | null
-    input_description: string
-    handleSetInputName: (input_name: string) => void
-    handleSetInputCategory: (input_category: ISelectOptions) => void
-    handleSetInputDescription: (input_description: string) => void
 }
 
 const options: ISelectOptions[] = [
@@ -30,15 +25,25 @@ const options: ISelectOptions[] = [
 
 export const CreateEditItemPopupComponent: FC<ICreateEditItemPopup> = (
     {
-        input_name,
         errorNameMessage,
-        input_category,
-        input_description,
+    }
+) => {
+    const context = useContext(ItemPopupContext)
+
+    if (!context) {
+        return null;
+    }
+
+    const {
+        input_name = '',
+        input_category = null,
+        input_description = '',
+    
         handleSetInputName,
         handleSetInputCategory,
         handleSetInputDescription
-    }
-) => {
+    } = context
+    
 
     const handleChangeInputName = useCallback((event: ChangeEvent<HTMLInputElement>) => {
         handleSetInputName(event.target.value)

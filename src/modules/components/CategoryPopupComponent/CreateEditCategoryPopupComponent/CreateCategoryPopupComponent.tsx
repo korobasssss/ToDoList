@@ -1,25 +1,30 @@
-import { ChangeEvent, FC, useCallback } from "react"
+import { ChangeEvent, FC, useCallback, useContext } from "react"
 import styles from './styles/styles.module.scss'
 import { Input, Textarea } from "../../../../base/components"
+import { CategoryPopupContext } from "../../../contexts"
 
 interface ICreateEditCategoryPopup {
-    input_name: string
-    errorName: string
-    input_description: string
-    handleSetInputName: (input_name: string) => void
-    handleSetInputDescription: (input_description: string) => void
+    errorName: string | undefined
 }
 
 export const CreateEditCategoryPopupComponent: FC<ICreateEditCategoryPopup> = (
     {
-        input_name,
         errorName,
-        input_description,
-        handleSetInputName,
-        handleSetInputDescription
     }
 ) => {
+    const context = useContext(CategoryPopupContext)
 
+    if (!context) {
+        return null;
+    }
+
+    const {
+        input_name = '',
+        input_description = '',
+        handleSetInputName,
+        handleSetInputDescription
+    } = context
+    
     const handleChangeInputName = useCallback((event: ChangeEvent<HTMLInputElement>) => {
         handleSetInputName(event.target.value)
     }, [])
@@ -33,13 +38,13 @@ export const CreateEditCategoryPopupComponent: FC<ICreateEditCategoryPopup> = (
             className={styles.SCreatePopup}
         >
             <Input
-                    value={input_name}
-                    onChange={handleChangeInputName}
-                    placeholder="Введите имя категории"
-                    label="Имя"
-                    isRequired
-                    error={errorName}
-                />
+                value={input_name}
+                onChange={handleChangeInputName}
+                placeholder="Введите имя категории"
+                label="Имя"
+                isRequired
+                error={errorName}
+            />
             <Textarea
                 value={input_description}
                 onChange={handleChangeTextareaDescription}

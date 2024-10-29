@@ -1,5 +1,5 @@
-import { FC, useCallback, useState } from "react"
-import { CategoryPopupComponent } from "../../components"
+import { FC, useCallback } from "react"
+import { CategoryPopupContainer } from "../CategoryPopupContainer"
 
 interface IEditCategoryPopupContainer {
     handleIsPopupOpen: (isPopupOpen: boolean) => void
@@ -12,22 +12,18 @@ export const EditCategoryPopupContainer: FC<IEditCategoryPopupContainer> = (
         isPopupOpen
     }
 ) => {
-    const [input_name, setInput_name] = useState('')
-    const [input_description, setInput_description] = useState('')
 
-    const handleSubmit = useCallback(() => {
+    const handleSubmit = useCallback((input_name: string, input_description: string | undefined) => {
         console.log(input_name, input_description)
-    }, [input_name, input_description])
+    }, [])
 
     return (
-        <CategoryPopupComponent
+        <CategoryPopupContainer
             popupTitle='Редактирование категории'
-            buttonSubmitTitle='Сохранить'
+            buttonSubmitTitle='Создать'
             buttonCancelTitle='Закрыть'
-            input_name={input_name}
-            input_description={input_description}
-            handleSetInputName={setInput_name}
-            handleSetInputDescription={setInput_description}
+            name={'блабла1'}
+            description={'тожебалбла'}
             isPopupOpen={isPopupOpen}
             handleIsPopupOpen={handleIsPopupOpen}
             handleSubmitForm={handleSubmit}

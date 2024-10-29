@@ -1,36 +1,29 @@
-import { FC, useCallback, useState } from "react"
+import { FC, useCallback, useContext, useState } from "react"
 import { CreateEditCategoryPopupComponent } from "./CreateEditCategoryPopupComponent"
 import { Popup } from "../../../base/components"
+import { CategoryPopupContext } from "../../contexts"
 
-interface ICategoryPopupComponent {
-    popupTitle: string
-    buttonSubmitTitle? : string
-    buttonCancelTitle : string
+export const CategoryPopupComponent: FC = () => {
+    const context = useContext(CategoryPopupContext)
 
-    input_name: string
-    input_description: string
-    handleSetInputName: (input_name: string) => void
-    handleSetInputDescription: (input_description: string) => void
-    handleSubmitForm: () => void
+    if (!context) {
+        return null;
+    }
 
-    handleIsPopupOpen: (isPopupOpen: boolean) => void
-    isPopupOpen: boolean
-}
-
-export const CategoryPopupComponent: FC<ICategoryPopupComponent> = (
-    {
-        popupTitle,
-        buttonSubmitTitle,
-        buttonCancelTitle,
+    const {
         input_name,
         input_description,
-        handleSetInputName,
-        handleSetInputDescription,
-        handleIsPopupOpen,
         handleSubmitForm,
-        isPopupOpen
-    }
-) => {
+    
+        handleIsPopupOpen,
+        isPopupOpen,
+    
+        popupTitle,
+        buttonSubmitTitle,
+        buttonCancelTitle
+    } = context
+
+
     const [errorName, setErrorName] = useState('')
 
     const handleSubmit = useCallback(() => {
@@ -57,11 +50,7 @@ export const CategoryPopupComponent: FC<ICategoryPopupComponent> = (
             size='m'
         >
             <CreateEditCategoryPopupComponent
-                input_name={input_name}
                 errorName={errorName}
-                input_description={input_description}
-                handleSetInputName={handleSetInputName}
-                handleSetInputDescription={handleSetInputDescription}
             />
         </Popup>
     )
