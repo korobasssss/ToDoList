@@ -1,4 +1,4 @@
 export interface ISelectOptions {
-    value: string
+    value: number
     label: string
 }

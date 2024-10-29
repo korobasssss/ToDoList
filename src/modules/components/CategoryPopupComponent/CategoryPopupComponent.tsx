@@ -1,7 +1,8 @@
-import { FC, useCallback, useContext, useState } from "react"
-import { CreateEditCategoryPopupComponent } from "./CreateEditCategoryPopupComponent"
-import { Popup } from "../../../base/components"
+import { ChangeEvent, FC, useCallback, useContext } from "react"
+import styles from './styles/styles.module.scss'
+import { Input, Textarea } from "../../../base/components"
 import { CategoryPopupContext } from "../../contexts"
+import { IsValidTo } from "../../utils"
 
 export const CategoryPopupComponent: FC = () => {
     const context = useContext(CategoryPopupContext)
@@ -11,47 +12,46 @@ export const CategoryPopupComponent: FC = () => {
     }
 
     const {
-        input_name,
-        input_description,
-        handleSubmitForm,
-    
-        handleIsPopupOpen,
-        isPopupOpen,
-    
-        popupTitle,
-        buttonSubmitTitle,
-        buttonCancelTitle
+        input_name = '',
+        input_description = '',
+        errorName,
+        handleSetInputName,
+        handleSetInputDescription,
+        handleSetErrorName
     } = context
-
-
-    const [errorName, setErrorName] = useState('')
-
-    const handleSubmit = useCallback(() => {
-        if (!input_name) {
-            setErrorName('Поле должно быть обязательным')
+    
+    const handleChangeInputName = useCallback((event: ChangeEvent<HTMLInputElement>) => {
+        if (IsValidTo(event.target.value, 255)) {
+            handleSetInputName(event.target.value)
         } else {
-            handleSubmitForm()
-            handleClosePopup()
+            handleSetErrorName('Превышен лимит символов')
         }
-    }, [input_name, input_description])
+    }, [])
 
-    const handleClosePopup = useCallback(() => {
-        handleIsPopupOpen(false)
+    const handleChangeTextareaDescription = useCallback((event: ChangeEvent<HTMLTextAreaElement>) => {
+        if (IsValidTo(event.target.value, 512)) {
+            handleSetInputDescription(event.target.value)
+        } else {
+            handleSetErrorName('Превышен лимит символов')
+        }
     }, [])
 
     return (
-        <Popup
-            title={popupTitle}
-            isOpen={isPopupOpen}
-            handlerCancel={handleClosePopup}
-            buttonCancelName={buttonCancelTitle}
-            handlerSubmit={handleSubmit}
-            buttonSubmitName={buttonSubmitTitle}
-            size='m'
-        >
-            <CreateEditCategoryPopupComponent
-                errorName={errorName}
+        <div className={styles.SCreatePopup}>
+            <Input
+                value={input_name}
+                onChange={handleChangeInputName}
+                placeholder="Введите имя категории"
+                label="Имя"
+                isRequired
+                error={errorName}
             />
-        </Popup>
+            <Textarea
+                value={input_description}
+                onChange={handleChangeTextareaDescription}
+                placeholder="Введите описание категории"
+                label="Описание"
+            />
+        </div>
     )
 }
