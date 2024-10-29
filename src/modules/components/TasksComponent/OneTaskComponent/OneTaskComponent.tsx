@@ -21,7 +21,6 @@ export const OneTaskComponent: FC<IOneTaskComponent> = (
 
     useEffect(() => {
         if (task.categoryId && categories) {
-            console.log(findCategory(task.categoryId, categories))
             setCategory(findCategory(task.categoryId, categories))
         }
     }, [categories])

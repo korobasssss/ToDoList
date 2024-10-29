@@ -13,8 +13,6 @@ export const CategoriesContainer = () => {
         setIsPopupOpen(!isPopupOpen)
     }, [isPopupOpen])
 
-    console.log(categories)
-
     return (
         <>
             <MainLayout
