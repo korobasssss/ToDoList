@@ -1,82 +1,34 @@
 @use '../../../../styles/mixins';
 @use '../../../../styles/variables';
 
-.SInputWrapper {
-    transition: all 0.25s ease-in-out;
-    position: relative;
-    display: grid;
-    align-items: center;
+.SInput {
+    box-sizing: border-box;
+    height: 46px;
+    padding: 0 5px;
+    color: variables.$TEXT_INPUT;
 
-    .IInputLabelWrapper {
-        position: absolute;
-        height: 25px;
-        bottom: 32px;
-        left: 8px;
-        padding: 0 2px;
-        background-color: variables.$BGC_MAIN;
+    border: 2px solid variables.$BORDER_INPUT;
+    border-radius: variables.$RADIUS_S;
+    background-color: variables.$BGC_INPUT;
 
-        display: flex;
-        align-content: start;
+    @include mixins.font-roboto-s;
 
-        .SInputLabel {
-            height: 100%;
-            color: variables.$TEXT_LABEL_INPUT;
-
-            @include mixins.font-roboto-xs;
-        }
-
-        .SInputRequired {
-            height: 100%;
-            color: variables.$REQUIRED_INPUT;
-
-            @include mixins.font-roboto-m;
-        }
+    &:hover,
+    &:focus {
+        outline: none;
+        border-color: variables.$BORDER_HOVER_ACTIVE_INPUT;
     }
 
-    .SInput {
-        box-sizing: border-box;
-        height: 46px;
-        padding: 0 5px;
-        color: variables.$TEXT_INPUT;
-
-        border: 2px solid variables.$BORDER_INPUT;
-        border-radius: variables.$RADIUS_S;
-        background-color: variables.$BGC_INPUT;
-
-        @include mixins.font-roboto-s;
-
-        &:hover,
-        &:focus {
-            outline: none;
-            border-color: variables.$BORDER_HOVER_ACTIVE_INPUT;
-        }
-
-        &::placeholder {
-            color: variables.$TEXT_PLACEHOLDER_INPUT;
-        }
+    &::placeholder {
+        color: variables.$TEXT_PLACEHOLDER_INPUT;
     }
 
     &_error {
-        .SInput {
+        border-color: variables.$ERROR_INPUT;
+    
+        &:hover,
+        &:focus {
             border-color: variables.$ERROR_INPUT;
-
-            &:hover,
-            &:focus {
-                border-color: variables.$ERROR_INPUT;
-            }
-        }
-
-        .IInputLabelWrapper {
-            .SInputLabel {
-                color: variables.$ERROR_INPUT;
-            }
         }
     }
-}
-
-.SInputError {
-    padding: 0 5px;
-    color: variables.$ERROR_INPUT;
-
-    @include mixins.font-roboto-xxs;
 }

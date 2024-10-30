@@ -1,0 +1,51 @@
+@use '../../../../styles/mixins';
+@use '../../../../styles/variables';
+
+.SElementWrapper {
+    transition: all 0.25s ease-in-out;
+    position: relative;
+    display: grid;
+    align-items: center;
+
+    .ILabelWrapper {
+        position: absolute;
+        height: 25px;
+        bottom: 32px;
+        left: 8px;
+        padding: 0 2px;
+        background-color: variables.$BGC_MAIN;
+
+        display: flex;
+        align-content: start;
+
+        .SLabel {
+            height: 100%;
+            color: variables.$TEXT_LABEL_INPUT;
+
+            @include mixins.font-roboto-xs;
+        }
+
+        .SRequired {
+            height: 100%;
+            color: variables.$REQUIRED_INPUT;
+
+            @include mixins.font-roboto-m;
+        }
+    }
+
+    &_error {
+        .ILabelWrapper {
+            .SLabel {
+                color: variables.$ERROR_INPUT;
+            }
+        }
+    }
+}
+
+.SError {
+    position: absolute;
+    padding: 0 5px;
+    color: variables.$ERROR_INPUT;
+
+    @include mixins.font-roboto-xxs;
+}

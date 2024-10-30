@@ -3,6 +3,7 @@ import cx from 'classnames'
 import { IClassName } from "../../interfaces"
 import styles from './styles/styles.module.scss'
 import { ScrollWrapper } from "../ScrollWrapper"
+import { LabelWrapper } from "../LabelWrapper"
 
 interface ITextarea
 extends TextareaHTMLAttributes<HTMLTextAreaElement>, IClassName {
@@ -21,53 +22,26 @@ export const Textarea: FC<ITextarea> = ({
     ...restProps
 }) => {
     return (
-        <div>
-            <div
-                className={cx(
-                    styles.STextareaWrapper,
-                    {
-                        [styles['STextareaWrapper_error']] : error
-                    }
-                )}
-            >
-                {label && (
-                    <span 
-                        className={styles.STextareaLabelWrapper}
-                    >
-                        <label
-                            className={cx(
-                                styles.STextareaLabel
-                            )}
-                        >
-                            {label}
-                        </label>
-                        {isRequired && (
-                            <span
-                                className={styles.STextareaRequired}
-                            >
-                                *
-                            </span>
-                        )}
-                    </span>
-                )}
-                <ScrollWrapper>
+        <LabelWrapper
+            label={label}
+            error={error}
+            isRequired={isRequired}
+            classNames={styles.SLabel}
+        >
+            <ScrollWrapper>
                 <textarea
                     value={value}
-                    className={styles.STextarea}
+                    className={cx(
+                        styles.STextarea,
+                        {
+                            [styles['STextarea_error']]: error
+                        }
+                    )}
                     placeholder={placeholder}
                     onChange={onChange}
                     {...restProps}
                 />
                 </ScrollWrapper>
-                
-            </div>
-            {error && (
-                <p
-                    className={styles.STextareaError}
-                >
-                    {error}
-                </p>
-            )}
-        </div>
+        </LabelWrapper>
     )
 }

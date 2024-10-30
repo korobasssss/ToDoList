@@ -3,6 +3,7 @@ import cx from 'classnames'
 import { IClassName } from "../../interfaces"
 
 import styles from './styles/style.module.scss'
+import { LabelWrapper } from "../LabelWrapper"
 
 interface IInput 
 extends InputHTMLAttributes<HTMLInputElement>, IClassName {
@@ -22,52 +23,23 @@ export const Input: FC<IInput> = ({
     ...restProps
 }) => {
     return (
-        <div>
-            <div
+        <LabelWrapper
+            label={label}
+            error={error}
+            isRequired={isRequired}
+        >
+            <input
+                value={value}
                 className={cx(
-                    styles.SInputWrapper,
+                    styles.SInput,
                     {
-                        [styles['SInputWrapper_error']]: error
+                        [styles['SInput_error']] : error
                     }
                 )}
-            >
-                {label && (
-                    <span 
-                        className={styles.IInputLabelWrapper}
-                    >
-                        <label
-                            className={cx(
-                                styles.SInputLabel
-                            )}
-                        >
-                            {label}
-                        </label>
-                        {isRequired && (
-                            <span
-                                className={styles.SInputRequired}
-                            >
-                                *
-                            </span>
-                        )}
-                    </span>
-                )}
-                <input
-                    value={value}
-                    className={cx(
-                        styles.SInput
-                    )}
-                    placeholder={placeholder}
-                    onChange={onChange}
-                    {...restProps}
+                placeholder={placeholder}
+                onChange={onChange}
+                {...restProps}
                 />
-            </div>
-            {error && (
-                <p
-                    className={styles.SInputError}
-                >
-                    {error}
-                </p>
-            )}
-        </div>
+        </LabelWrapper>
     )
 }
