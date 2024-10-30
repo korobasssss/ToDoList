@@ -23,7 +23,6 @@ export const DeleteItemPopupContainer: FC<IDeleteItemPopupContainer> = (
         fetchDeleteTask({
             id: task.id
         })
-        handleIsPopupOpen(false)
     }
 
     return (

@@ -40,6 +40,13 @@ export const Popup: FC<IPopup> = (
         }
     }, [isOpenCopy]);
 
+    const submit = () => {
+        if (handlerSubmit) {
+            handlerSubmit()
+            setIsOpenCopy(false)
+        }
+    }
+
     return (
         <Portal>
             <OverlayPopup
@@ -73,7 +80,7 @@ export const Popup: FC<IPopup> = (
                         {handlerSubmit && (
                             <Button
                                 theme='primary'
-                                onClick={handlerSubmit}
+                                onClick={submit}
                             >
                                 {buttonSubmitName}
                             </Button>

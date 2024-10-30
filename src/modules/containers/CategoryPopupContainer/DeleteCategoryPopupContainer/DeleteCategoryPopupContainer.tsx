@@ -24,7 +24,6 @@ export const DeleteCategoryPopupContainer: FC<IDeleteCategoryPopupContainer> = (
         fetchDeleteTask({
             id: category.id
         })
-        handleIsPopupOpen(false)
     }
 
     return (
