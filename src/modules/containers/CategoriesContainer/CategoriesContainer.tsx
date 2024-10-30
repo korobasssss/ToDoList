@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react"
+import { useState } from "react"
 import { MainLayout, OverlayLoader } from "../../../base/components"
 import { CategoriesComponent } from "../../components"
 import { CreateCategoryPopupContainer } from "../CategoryPopupContainer/CreateCategoryPopupContainer"
@@ -9,16 +9,12 @@ export const CategoriesContainer = () => {
 
     const {data: categories, isLoading} = fetchCategoriesApi.useFetchGetCategoriesQuery()
 
-    const handleButtonClick = useCallback(() => {
-        setIsPopupOpen(!isPopupOpen)
-    }, [isPopupOpen])
-
     return (
         <>
             <MainLayout
                 title='ToDo List'
                 buttonName='Добавить категорию'
-                handleButtonClick={handleButtonClick}
+                handleButtonClick={setIsPopupOpen}
             > 
                 <CategoriesComponent
                     categories={categories}

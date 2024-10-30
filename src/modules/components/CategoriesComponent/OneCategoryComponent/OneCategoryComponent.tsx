@@ -1,4 +1,4 @@
-import { FC, useCallback, useState } from "react"
+import { FC, useState } from "react"
 import { ICategory } from "../../../interfaces"
 import { DeleteCategoryPopupContainer, EditCategoryPopupContainer } from "../../../containers"
 import { UlItemLayout } from "../../"
@@ -15,15 +15,6 @@ export const OneCategoryComponent: FC<IOneTaskComponent> = (
     const [isEditOpenPopup, setIsEditOpenPopup] = useState(false)
     const [isDeleteOpenPopup, setIsDeleteOpenPopup] = useState(false)
 
-    const handleSetIsEditOpenPopup = useCallback(() => {
-        setIsEditOpenPopup(!isEditOpenPopup)
-    }, [isEditOpenPopup])
-
-
-    const handleSetIsDeleteOpenPopup = useCallback(() => {
-        setIsDeleteOpenPopup(!isDeleteOpenPopup)
-    }, [isEditOpenPopup])
-
     return (
         <>
             <UlItemLayout
@@ -31,8 +22,8 @@ export const OneCategoryComponent: FC<IOneTaskComponent> = (
                 category={null}
                 description={category.description}
                 
-                handleSetIsDeleteOpenPopup={handleSetIsDeleteOpenPopup}
-                handleSetIsEditOpenPopup={handleSetIsEditOpenPopup}
+                handleSetIsDeleteOpenPopup={() => setIsDeleteOpenPopup(!isDeleteOpenPopup)}
+                handleSetIsEditOpenPopup={() => setIsEditOpenPopup(!isEditOpenPopup)}
             />
             
             {isEditOpenPopup && (

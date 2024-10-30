@@ -1,4 +1,4 @@
-import { FC, ReactNode, useCallback, useEffect, useState } from "react"
+import { FC, ReactNode, useEffect, useState } from "react"
 import styles from './styles/style.module.scss'
 import close from '../../../assets/close.svg'
 import { ButtonIcon } from "../ButtonIcon"
@@ -12,7 +12,7 @@ interface IPopup {
     isOpen: boolean
     handlerSubmit?: () => void
     buttonSubmitName?: string
-    handlerCancel: () => void
+    handlerCancel: (isOpen: boolean) => void
     buttonCancelName: string
     children: ReactNode
     size: 's' | 'm'
@@ -32,22 +32,18 @@ export const Popup: FC<IPopup> = (
 ) => {
     const [isOpenCopy, setIsOpenCopy] = useState(isOpen)
 
-    const handleWillBeClosed = useCallback(() => {
-        setIsOpenCopy(false)
-    }, []);
-
     useEffect(() => {
         if (!isOpenCopy) {
             setTimeout(() => {
-                handlerCancel()
+                handlerCancel(false)
             }, 200)
         }
-    }, [handleWillBeClosed, isOpenCopy]);
+    }, [isOpenCopy]);
 
     return (
         <Portal>
             <OverlayPopup
-                handlerCLose={handleWillBeClosed}
+                handlerCLose={() => setIsOpenCopy(false)}
                 isOpen={isOpenCopy}
             >
                 <section
@@ -67,7 +63,7 @@ export const Popup: FC<IPopup> = (
                         <ButtonIcon 
                             icon={close} 
                             alt='close'
-                            onClick={handleWillBeClosed}
+                            onClick={() => setIsOpenCopy(false)}
                         />
                     </header>
                     {children}
@@ -84,7 +80,7 @@ export const Popup: FC<IPopup> = (
                         )}
                         <Button
                                 theme='secondary'
-                                onClick={handleWillBeClosed}
+                                onClick={() => setIsOpenCopy(false)}
                         >
                                 {buttonCancelName}
                         </Button>

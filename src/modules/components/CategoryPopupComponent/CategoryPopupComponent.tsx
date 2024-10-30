@@ -1,7 +1,7 @@
-import { ChangeEvent, FC, useCallback } from "react"
+import { FC } from "react"
 import styles from './styles/styles.module.scss'
 import { Input, Textarea } from "../../../base/components"
-import { IsValidTo } from "../../utils"
+import { checkValidation } from "../../utils"
 
 interface ICategoryPopupComponent {
     input_name?: string
@@ -23,28 +23,12 @@ export const CategoryPopupComponent: FC<ICategoryPopupComponent> = (
         handleSetErrorName
     }
 ) => {
-    
-    const handleChangeInputName = useCallback((event: ChangeEvent<HTMLInputElement>) => {
-        if (IsValidTo(event.target.value, 255)) {
-            handleSetInputName(event.target.value)
-        } else {
-            handleSetErrorName('Превышен лимит символов')
-        }
-    }, [])
-
-    const handleChangeTextareaDescription = useCallback((event: ChangeEvent<HTMLTextAreaElement>) => {
-        if (IsValidTo(event.target.value, 512)) {
-            handleSetInputDescription(event.target.value)
-        } else {
-            handleSetErrorName('Превышен лимит символов')
-        }
-    }, [])
 
     return (
         <div className={styles.SCreatePopup}>
             <Input
                 value={input_name}
-                onChange={handleChangeInputName}
+                onChange={(event) => checkValidation(event.target.value, handleSetInputName, 255, handleSetErrorName)}
                 placeholder="Введите имя категории"
                 label="Имя"
                 isRequired
@@ -52,7 +36,7 @@ export const CategoryPopupComponent: FC<ICategoryPopupComponent> = (
             />
             <Textarea
                 value={input_description}
-                onChange={handleChangeTextareaDescription}
+                onChange={(event) => checkValidation(event.target.value, handleSetInputDescription, 512, handleSetErrorName)}
                 placeholder="Введите описание категории"
                 label="Описание"
             />

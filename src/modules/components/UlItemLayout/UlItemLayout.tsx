@@ -10,8 +10,8 @@ interface IUlItemLayout {
     category: string | null
     description: string | null
     
-    handleSetIsEditOpenPopup: () => void
-    handleSetIsDeleteOpenPopup: () => void
+    handleSetIsEditOpenPopup: (isEditPopup: boolean) => void
+    handleSetIsDeleteOpenPopup: (isDeletePopup: boolean) => void
 }
 
 export const UlItemLayout: FC<IUlItemLayout> = (
@@ -51,12 +51,12 @@ export const UlItemLayout: FC<IUlItemLayout> = (
                         <ButtonIcon
                             icon={edit}
                             alt='edit'
-                            onClick={handleSetIsEditOpenPopup}
+                            onClick={() => handleSetIsEditOpenPopup(true)}
                         />
                         <ButtonIcon
                             icon={delete_icon}
                             alt='delete'
-                            onClick={handleSetIsDeleteOpenPopup}
+                            onClick={() => handleSetIsDeleteOpenPopup(true)}
                         />
                     </div>
                 </div>

@@ -1,4 +1,4 @@
-import { FC, useCallback } from "react"
+import { FC } from "react"
 import { OverlayLoader, Popup } from "../../../../base/components"
 import { DeletePopupComponent } from "../../../components"
 import { ITask } from "../../../interfaces"
@@ -19,23 +19,19 @@ export const DeleteItemPopupContainer: FC<IDeleteItemPopupContainer> = (
 ) => {
     const [fetchDeleteTask, { isLoading }] = fetchTasksApi.useFetchDeleteTaskMutation();
 
-    const handleSubmit = useCallback(() => {
-        handleClosePopup()
-    }, [])
-
-    const handleClosePopup = useCallback(() => {
+    const handleSubmit = () => {
         fetchDeleteTask({
             id: task.id
         })
         handleIsPopupOpen(false)
-    }, [])
+    }
 
     return (
         <>
             <Popup
                 title='Удаление задачи'
                 isOpen={isPopupOpen}
-                handlerCancel={handleClosePopup}
+                handlerCancel={handleIsPopupOpen}
                 buttonCancelName='Нет'
                 handlerSubmit={handleSubmit}
                 buttonSubmitName='Да'

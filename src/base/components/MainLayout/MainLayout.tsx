@@ -6,7 +6,7 @@ interface IMainLayout {
     title: string
     children: ReactNode
     buttonName: string
-    handleButtonClick: () => void
+    handleButtonClick: (isOpen: boolean) => void
 }
 
 export const MainLayout: FC<IMainLayout> = (
@@ -26,7 +26,7 @@ export const MainLayout: FC<IMainLayout> = (
                 <Header
                     title={title}
                     buttonName={buttonName}
-                    handleButtonClick={handleButtonClick}
+                    handleButtonClick={() => handleButtonClick(true)}
                 />
                 <main
                     className={styles.SMainLayoutChildren}

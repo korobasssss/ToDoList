@@ -1,4 +1,4 @@
-import { FC, useCallback } from "react"
+import { FC } from "react"
 import { ISelectOptions } from "../../../../base/interfaces"
 import { ItemPopupContainer } from ".."
 import { fetchTasksApi } from "../../../api"
@@ -17,13 +17,13 @@ export const CreateItemPopupContainer: FC<ICreateItemPopupContainer> = (
 ) => {
     const [fetchPostItem, {isLoading}] = fetchTasksApi.useFetchPostTaskMutation()
 
-    const handleSubmit = useCallback((input_name: string, input_category: ISelectOptions | null, input_description: string) => {
+    const handleSubmit = (input_name: string, input_category: ISelectOptions | null, input_description: string) => {
         fetchPostItem({
             name: input_name,
             description: input_description ?? null,
             categoryId: input_category?.value ?? null
         })
-    }, [])
+    }
 
     return (
         <>

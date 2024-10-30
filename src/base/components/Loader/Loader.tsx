@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react'
 export const Loader = () => {
     const allSteps = [loader_step1, loader_step2, loader_step3, loader_step4];
 
-    const [currentStep, setCurrentStep] = useState<string | undefined>();
+    const [currentStep, setCurrentStep] = useState<string | null>(null);
     const [currentIndex, setCurrentIndex] = useState(0);
 
     useEffect(() => {

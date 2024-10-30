@@ -1,4 +1,4 @@
-import { FC, useCallback } from "react"
+import { FC } from "react"
 import { ISelectOptions } from "../../../../base/interfaces"
 import { ItemPopupContainer } from "../"
 import { ITask } from "../../../interfaces"
@@ -22,7 +22,7 @@ export const EditItemPopupContainer: FC<IEditItemPopupContainer> = (
 ) => {
     const [fetchUpdateItem, {isLoading}] = fetchTasksApi.useFetchUpdateTaskMutation()
 
-    const handleSubmit = useCallback((input_name: string, input_category: ISelectOptions | null, input_description: string) => {
+    const handleSubmit = (input_name: string, input_category: ISelectOptions | null, input_description: string) => {
         fetchUpdateItem({
             id: task.id,
             name: input_name,
@@ -30,7 +30,7 @@ export const EditItemPopupContainer: FC<IEditItemPopupContainer> = (
             categoryId: input_category?.value ?? null 
         })
         console.log(input_name, input_category, input_description)
-    }, [])
+    }
 
     return (
         <>

@@ -1,4 +1,4 @@
-import { FC, useCallback, useEffect, useState } from "react"
+import { FC, useEffect, useState } from "react"
 import { ISelectOptions } from "../../../base/interfaces"
 import { fetchCategoriesApi } from "../../api"
 import { changeToSelectOptions } from "../../utils"
@@ -50,25 +50,20 @@ export const ItemPopupContainer: FC<ICreateItemPopupContainer> = (
     }, [options])
 
 
-    const handleSubmit = useCallback(() => {
+    const handleSubmit = () => {
         if (!input_name) {
             setErrorName('Поле должно быть обязательным')
         } else {
             handleSubmitForm(input_name, input_category, input_description)
-            handleClosePopup()
+            handleIsPopupOpen(false)
         }
-    }, [input_name, input_category, input_description])
-
-    const handleClosePopup = useCallback(() => {
-        handleIsPopupOpen(false)
-    }, [])
-
+    }
 
     return (
         <Popup
             title={popupTitle}
             isOpen={isPopupOpen}
-            handlerCancel={handleClosePopup}
+            handlerCancel={handleIsPopupOpen}
             buttonCancelName={buttonCancelTitle}
             handlerSubmit={handleSubmit}
             buttonSubmitName={buttonSubmitTitle}
