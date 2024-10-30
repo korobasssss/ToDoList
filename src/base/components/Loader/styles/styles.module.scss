@@ -1,0 +1,24 @@
+@use '../../../../styles/mixins';
+@use '../../../../styles/variables';
+
+.SItem {
+    opacity: 0;
+    position: absolute;
+    @include mixins.animation-loader;
+}
+
+.SItem:nth-child(1) {
+    animation-delay: 0s; /* Задержка для первого элемента */
+}
+
+.SItem:nth-child(2) {
+    animation-delay: 0.25s; /* Задержка для второго элемента */
+}
+
+.SItem:nth-child(3) {
+    animation-delay: 0.5s; /* Задержка для третьего элемента */
+}
+
+.SItem:nth-child(4) {
+    animation-delay: 0.75s; /* Задержка для четвертого элемента */
+}

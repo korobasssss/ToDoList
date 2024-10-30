@@ -23,3 +23,17 @@
     }
   }
 }
+
+@mixin animation-loader($duration: 1s) {
+  animation: opacity-loader $duration;
+  animation-iteration-count: infinite;
+
+  @keyframes opacity-loader {
+    0% { opacity: 1; }
+    24% { opacity: 1; }
+    25% { opacity: 0; }
+    50% { opacity: 0;}
+    75% { opacity: 0; }
+    100% { opacity: 0; }
+  }
+}
