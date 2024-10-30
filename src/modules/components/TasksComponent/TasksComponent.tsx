@@ -4,7 +4,7 @@ import { OneTaskComponent } from "./OneTaskComponent"
 import { NoData } from "../../../base/components"
 
 interface ITaskComponent {
-    tasks: ITask[] | undefined
+    tasks?: ITask[]
 }
 
 export const TasksComponent: FC<ITaskComponent> = (

@@ -4,7 +4,7 @@ import { OneCategoryComponent } from "./OneCategoryComponent"
 import { NoData } from "../../../base/components"
 
 interface ICategoriesComponent {
-    categories: ICategory[] | undefined
+    categories?: ICategory[]
 }
 
 export const CategoriesComponent: FC<ICategoriesComponent> = (

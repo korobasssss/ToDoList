@@ -1,36 +1,36 @@
-import { ChangeEvent, FC, useCallback, useContext } from "react"
+import { ChangeEvent, FC, useCallback } from "react"
 import styles from './styles/styles.module.scss'
-import { ItemPopupContext } from "../../contexts"
 import { ISelectOptions } from "../../../base/interfaces"
 import { MySelect, Textarea, Input } from "../../../base/components"
 import { IsValidTo } from "../../utils"
 
 interface ICreateEditItemPopup {
-    errorNameMessage: string
+    input_name?: string
+    input_description?: string
+    errorName: string
+
+    input_category: ISelectOptions | null
+    options: ISelectOptions[]
+    handleSetInputCategory: (input_category: ISelectOptions) => void
+
+    handleSetInputName: (input_name: string) => void
+    handleSetInputDescription: (input_description: string) => void
+    handleSetErrorName: (errorName: string) => void
 }
 
 export const ItemPopupComponent: FC<ICreateEditItemPopup> = (
     {
-        errorNameMessage,
-    }
-) => {
-    const context = useContext(ItemPopupContext)
-
-    if (!context) {
-        return null;
-    }
-
-    const {
         input_name = '',
         input_category = null,
         input_description = '',
+        errorName,
         options,
-    
         handleSetInputName,
         handleSetInputCategory,
         handleSetInputDescription,
-        handleSetErrorName
-    } = context
+        handleSetErrorName,
+    }
+) => {
     
     const handleChangeInputName = useCallback((event: ChangeEvent<HTMLInputElement>) => {
         if (IsValidTo(event.target.value, 255)) {
@@ -61,7 +61,7 @@ export const ItemPopupComponent: FC<ICreateEditItemPopup> = (
                     placeholder="Введите имя задачи"
                     label="Имя"
                     isRequired
-                    error={errorNameMessage}
+                    error={errorName}
                 />
                 <MySelect
                     value={input_category}

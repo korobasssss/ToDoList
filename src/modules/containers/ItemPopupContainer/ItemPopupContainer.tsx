@@ -1,6 +1,5 @@
 import { FC, useCallback, useEffect, useState } from "react"
 import { ISelectOptions } from "../../../base/interfaces"
-import { ItemPopupContext } from "../../contexts"
 import { fetchCategoriesApi } from "../../api"
 import { changeToSelectOptions } from "../../utils"
 import { Popup } from "../../../base/components"
@@ -36,11 +35,8 @@ export const ItemPopupContainer: FC<ICreateItemPopupContainer> = (
     const [input_name, setInput_name] = useState<string>('')
     const [input_category, setInput_category] = useState<ISelectOptions | null>(null)
     const [input_description, setInput_description] = useState<string>('')
-
     const [errorName, setErrorName] = useState('')
-
     const [selectOptions, setSelectOptions] = useState<ISelectOptions[]>([])
-
     const {data: options} = fetchCategoriesApi.useFetchGetCategoriesQuery()
 
     useEffect(() => {
@@ -78,23 +74,17 @@ export const ItemPopupContainer: FC<ICreateItemPopupContainer> = (
             buttonSubmitName={buttonSubmitTitle}
             size='m'
         >
-            <ItemPopupContext.Provider value={{
-            input_name,
-            input_category,
-            input_description,
-            errorName,
-
-            options: selectOptions,
-
-            handleSetInputName: setInput_name,
-            handleSetInputCategory: setInput_category,
-            handleSetInputDescription: setInput_description,
-            handleSetErrorName: setErrorName
-        }}>
             <ItemPopupComponent
-                errorNameMessage={errorName}
+                input_name={input_name}
+                input_category={input_category}
+                input_description={input_description}
+                errorName={errorName}
+                options={selectOptions}
+                handleSetInputName={setInput_name}
+                handleSetInputCategory={setInput_category}
+                handleSetInputDescription={setInput_description}
+                handleSetErrorName={setErrorName}
             />
-        </ItemPopupContext.Provider>
         </Popup>
     )
 }

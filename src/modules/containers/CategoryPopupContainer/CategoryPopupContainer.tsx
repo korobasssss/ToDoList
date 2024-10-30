@@ -1,6 +1,5 @@
 import { FC, useCallback, useEffect, useState } from "react"
 import { CategoryPopupComponent } from "../../components"
-import { CategoryPopupContext } from "../../contexts"
 import { Popup } from "../../../base/components"
 
 interface ICreateItemPopupContainer {
@@ -60,17 +59,15 @@ export const CategoryPopupContainer: FC<ICreateItemPopupContainer> = (
             buttonSubmitName={buttonSubmitTitle}
             size='m'
         >
-            <CategoryPopupContext.Provider value={{
-                input_name,
-                input_description,
-                errorName: errorName,
+            <CategoryPopupComponent 
+                input_name={input_name}
+                input_description={input_description}
+                errorName={errorName}
 
-                handleSetInputName: setInput_name,
-                handleSetInputDescription: setInput_description,
-                handleSetErrorName: setErrorName
-            }}>
-                <CategoryPopupComponent/>
-            </CategoryPopupContext.Provider>
+                handleSetInputName={setInput_name}
+                handleSetInputDescription={setInput_description}
+                handleSetErrorName={setErrorName}
+            />
         </Popup>
     )
 }

@@ -1,24 +1,28 @@
-import { ChangeEvent, FC, useCallback, useContext } from "react"
+import { ChangeEvent, FC, useCallback } from "react"
 import styles from './styles/styles.module.scss'
 import { Input, Textarea } from "../../../base/components"
-import { CategoryPopupContext } from "../../contexts"
 import { IsValidTo } from "../../utils"
 
-export const CategoryPopupComponent: FC = () => {
-    const context = useContext(CategoryPopupContext)
+interface ICategoryPopupComponent {
+    input_name?: string
+    input_description?: string
+    errorName: string
 
-    if (!context) {
-        return null;
-    }
+    handleSetInputName: (input_name: string) => void
+    handleSetInputDescription: (input_description: string) => void
+    handleSetErrorName: (errorName: string) => void
+}
 
-    const {
+export const CategoryPopupComponent: FC<ICategoryPopupComponent> = (
+    {
         input_name = '',
         input_description = '',
         errorName,
         handleSetInputName,
         handleSetInputDescription,
         handleSetErrorName
-    } = context
+    }
+) => {
     
     const handleChangeInputName = useCallback((event: ChangeEvent<HTMLInputElement>) => {
         if (IsValidTo(event.target.value, 255)) {
