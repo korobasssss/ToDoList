@@ -1,10 +1,10 @@
-import { FC, useEffect, useState } from "react"
+import { FC, useMemo, useState } from "react"
 import { ITask } from "../../../interfaces"
 import { DeleteItemPopupContainer, EditItemPopupContainer } from "../../../containers"
 import { UlItemLayout } from "../../"
 import { fetchCategoriesApi } from "../../../api"
-import { ISelectOptions } from "../../../../base/interfaces"
 import { findCategory } from "../../../utils"
+import { ISelectOptions } from "../../../../base/interfaces"
 
 interface IOneTaskComponent {
     task: ITask
@@ -17,13 +17,9 @@ export const OneTaskComponent: FC<IOneTaskComponent> = (
 ) => {
     const {data: categories} = fetchCategoriesApi.useFetchGetCategoriesQuery()
 
-    const [category, setCategory] = useState<ISelectOptions | null>(null)
-
-    useEffect(() => {
-        if (task.categoryId && categories) {
-            setCategory(findCategory(task.categoryId, categories))
-        }
-    }, [categories])
+    const category: ISelectOptions | null = useMemo(() => {
+        return task.categoryId && categories ? findCategory(task.categoryId, categories) : null
+    }, [task.categoryId, categories])
 
     const [isEditOpenPopup, setIsEditOpenPopup] = useState(false)
     const [isDeleteOpenPopup, setIsDeleteOpenPopup] = useState(false)
