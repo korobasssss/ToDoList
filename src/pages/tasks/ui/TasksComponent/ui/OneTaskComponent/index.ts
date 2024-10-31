@@ -1,0 +1,1 @@
+export { OneTaskComponent } from './ui/OneTaskComponent'

@@ -1,0 +1,41 @@
+@use '../../styles/mixins';
+@use '../../styles/variables';
+
+.STextarea {
+    width: 100%;
+    height: 72px;
+    box-sizing: border-box;
+    padding: 5px;
+    border: none;
+    color: variables.$TEXT_INPUT;
+
+    border: 2px solid variables.$BORDER_INPUT;
+    border-radius: variables.$RADIUS_S;
+    background-color: variables.$BGC_INPUT;
+    resize: none;
+
+    @include mixins.font-roboto-s;
+
+    &:hover,
+    &:focus {
+        outline: none;
+        border-color: variables.$BORDER_HOVER_ACTIVE_INPUT;
+    }
+
+    &::placeholder {
+        color: variables.$TEXT_PLACEHOLDER_INPUT;
+    }
+
+    &_error {
+        border-color: variables.$ERROR_INPUT;
+    
+        &:hover,
+        &:focus {
+            border-color: variables.$ERROR_INPUT;
+        }
+    }
+}
+
+.SLabel {
+    bottom: 65px !important;
+}

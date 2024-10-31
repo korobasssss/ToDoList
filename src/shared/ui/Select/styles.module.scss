@@ -1,0 +1,57 @@
+@use '../../styles/mixins';
+@use '../../styles/variables';
+
+.SSelectWrapper {
+    position: relative;
+    height: 100%;
+}
+
+.SOptionsWrapper {
+    z-index: 100;
+    margin-top: 5px;
+    position: absolute;
+    width: 100%;
+    box-sizing: border-box;
+    max-height: 142px;
+    overflow-y: auto;
+    min-height: 46px;
+    color: variables.$TEXT_INPUT;
+    background-color: variables.$BGC_MAIN;
+
+    border: 2px solid variables.$BORDER_HOVER_ACTIVE_INPUT;
+    border-radius: variables.$RADIUS_S;
+    box-shadow: variables.$SHADOW_SELECT_POPUP;
+
+    @include mixins.font-roboto-s;
+
+    &_error {
+        border-color: variables.$ERROR_INPUT;
+    }
+
+    .SOption {
+        cursor: pointer;
+        box-sizing: border-box;
+        height: 46px;
+
+        display: grid;
+        align-items: center;
+        
+
+        .SOptionTitle {
+            padding: 5px;
+
+            @include mixins.font-roboto-s;
+        }
+
+        &:hover {
+            background-color: variables.$BGC_HOVER_SELECT;
+            color: variables.$TEXT_INPUT;
+        }
+
+        &_selected {
+            background-color: variables.$BGC_SELECT_SELECTED;
+            color: variables.$TEXT_SELECT_SELECTED;
+        }
+    }
+}
+

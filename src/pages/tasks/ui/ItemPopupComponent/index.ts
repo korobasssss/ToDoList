@@ -1,0 +1,1 @@
+export { ItemPopupComponent } from './ItemPopupComponent'

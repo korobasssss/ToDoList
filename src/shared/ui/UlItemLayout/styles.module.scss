@@ -1,0 +1,72 @@
+@use '../../styles/mixins';
+@use '../../styles/variables';
+
+.SItemWrapper {
+    max-width: 1000px;
+    margin: 0 auto;
+
+    .SItem {
+        padding: 10px 20px;
+        
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+    
+        .SDataWrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+    
+            .SDataHeader {
+                display: flex;
+                align-items: center;
+                gap: 20px;
+    
+                .SDataTitle {
+                    color: variables.$TEXT_SIMPLE;
+    
+                    @include mixins.font-roboto-xs-bold;
+                }
+    
+                .SDataCategoryWrapper {
+                    display: flex;
+                    align-items: center;
+                    gap: 5px;
+    
+                    .SDataCategoryTitle {
+                        color: variables.$TEXT_CATEGORY;
+    
+                        @include mixins.font-roboto-xs;
+                    }
+                }
+            }
+    
+            .SDataDescription {
+                color: variables.$TEXT_DESCRIPTION;
+                @include mixins.font-roboto-xs;
+            }
+        }
+    
+        .SDataButtonWrapper {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+    }
+
+    .SDataLine {
+        width: 100%;
+        margin: 0 auto;
+        height: 2px;
+        background-color: variables.$BGC_LINE;
+    }
+
+    &:hover {
+        transition: all 0.15s ease-in-out;
+        background-color: variables.$BGC_HOVER_ITEM;
+    }
+}
+
+
+

@@ -1,0 +1,25 @@
+@use '../../styles/mixins';
+@use '../../styles/variables';
+
+.SMainLayout {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-rows: max-content auto;
+    background-color: variables.$BGC_MAIN;
+
+    .SMainLayoutChildren {
+        margin-top: 88px;
+        height: 100%;
+    }
+
+    @media screen and (max-width: variables.$medium) {
+        .SMainLayoutChildren {
+            margin-top: 170px;
+        }
+    }
+}
+
+
+
