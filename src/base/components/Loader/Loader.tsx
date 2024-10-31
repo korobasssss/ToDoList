@@ -10,11 +10,12 @@ export const Loader = () => {
 
     return (
         <div className={styles.SLoader}>
-            {allSteps.map(icon => {
+            {allSteps.map((icon, index) => {
                 return (
                     <Icon 
                         classNames={styles.SItem}
                         icon={icon}
+                        key={index}
                     />
                 )
             })}
