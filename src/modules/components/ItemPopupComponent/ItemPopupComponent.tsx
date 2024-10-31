@@ -1,7 +1,7 @@
 import { FC } from "react"
 import styles from './styles/styles.module.scss'
 import { ISelectOptions } from "../../../base/interfaces"
-import { MySelect, Textarea, Input } from "../../../base/components"
+import { Textarea, Input, Select } from "../../../base/components"
 import { checkValidation } from "../../utils"
 
 interface ICreateEditItemPopup {
@@ -11,7 +11,7 @@ interface ICreateEditItemPopup {
 
     input_category: ISelectOptions | null
     options: ISelectOptions[]
-    handleSetInputCategory: (input_category: ISelectOptions) => void
+    handleSetInputCategory: (input_category: ISelectOptions | null) => void
 
     handleSetInputName: (input_name: string) => void
     handleSetInputDescription: (input_description: string) => void
@@ -31,11 +31,6 @@ export const ItemPopupComponent: FC<ICreateEditItemPopup> = (
         handleSetErrorName,
     }
 ) => {
-
-    const handleChangeInputCategory = (newValue: ISelectOptions) => {
-        handleSetInputCategory(newValue)
-    }
-
     return (
         <div className={styles.SCreatePopup}>
             <div className={styles.SCreateSection}>
@@ -47,12 +42,12 @@ export const ItemPopupComponent: FC<ICreateEditItemPopup> = (
                     isRequired
                     error={errorName}
                 />
-                <MySelect
-                    value={input_category}
+                <Select
                     options={options}
-                    setSelected={handleChangeInputCategory}
-                    placeholder="Введите категорию"
                     label="Категория"
+                    setSelected={(newValue) => handleSetInputCategory(newValue)}
+                    placeholder="Введите категорию"
+                    value={input_category}
                 />
             </div>
             <Textarea

@@ -19,7 +19,6 @@ export const TasksComponent: FC<ITaskComponent> = (
             />
         )
     }
-
     return (
         <ul>
             {tasks?.map(task => {

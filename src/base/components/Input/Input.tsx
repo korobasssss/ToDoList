@@ -4,12 +4,15 @@ import { IClassName } from "../../interfaces"
 
 import styles from './styles/style.module.scss'
 import { LabelWrapper } from "../LabelWrapper"
+import { Icon } from "../Icon"
 
 interface IInput 
 extends InputHTMLAttributes<HTMLInputElement>, IClassName {
     label?: string
     error?: string
     isRequired?: boolean
+    rightIcon?: string
+    isFocused?: boolean
 }
 
 export const Input: FC<IInput> = ({
@@ -20,6 +23,8 @@ export const Input: FC<IInput> = ({
     error,
     onChange,
     isRequired,
+    rightIcon,
+    isFocused,
     ...restProps
 }) => {
     return (
@@ -28,18 +33,31 @@ export const Input: FC<IInput> = ({
             error={error}
             isRequired={isRequired}
         >
-            <input
-                value={value}
-                className={cx(
-                    styles.SInput,
-                    {
-                        [styles['SInput_error']] : error
-                    }
-                )}
-                placeholder={placeholder}
-                onChange={onChange}
-                {...restProps}
+            <div className={styles.SInputWrapper}>
+                <input
+                    value={value}
+                    className={cx(
+                        styles.SInput,
+                        {
+                            [styles['SInput_error']] : error,
+                            [styles['SInput_rightIcon']] : rightIcon
+                        }
+                    )}
+                    placeholder={placeholder}
+                    onChange={onChange}
+                    {...restProps}
                 />
+                {rightIcon && (
+                    <Icon icon={rightIcon}
+                        classNames={cx(
+                            styles.SRightIcon,
+                            {
+                                [styles[`SRightIcon_rotate`]]: isFocused
+                            }
+                        )}
+                    />
+                )}
+            </div>
         </LabelWrapper>
     )
 }

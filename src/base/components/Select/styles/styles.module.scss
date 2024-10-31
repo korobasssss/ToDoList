@@ -3,33 +3,55 @@
 
 .SSelectWrapper {
     position: relative;
-    display: grid;
-    align-items: center;
+    height: 100%;
+}
 
-    .SSelectLabelWrapper {
-        z-index: 10;
-        position: absolute;
-        height: 25px;
-        bottom: 32px;
-        left: 8px;
-        padding: 0 2px;
-        background-color: variables.$BGC_MAIN;
+.SOptionsWrapper {
+    z-index: 100;
+    margin-top: 5px;
+    position: absolute;
+    width: 100%;
+    box-sizing: border-box;
+    max-height: 142px;
+    overflow-y: auto;
+    min-height: 46px;
+    color: variables.$TEXT_INPUT;
+    background-color: variables.$BGC_MAIN;
 
-        display: flex;
-        align-content: start;
+    border: 2px solid variables.$BORDER_HOVER_ACTIVE_INPUT;
+    border-radius: variables.$RADIUS_S;
+    box-shadow: variables.$SHADOW_SELECT_POPUP;
 
-        .SSelectLabel {
-            height: 100%;
-            color: variables.$TEXT_LABEL_INPUT;
+    @include mixins.font-roboto-s;
 
-            @include mixins.font-roboto-xs;
+    &_error {
+        border-color: variables.$ERROR_INPUT;
+    }
+
+    .SOption {
+        cursor: pointer;
+        box-sizing: border-box;
+        height: 46px;
+
+        display: grid;
+        align-items: center;
+        
+
+        .SOptionTitle {
+            padding: 5px;
+
+            @include mixins.font-roboto-s;
         }
 
-        .SSelectRequired {
-            height: 100%;
-            color: variables.$REQUIRED_INPUT;
+        &:hover {
+            background-color: variables.$BGC_HOVER_SELECT;
+            color: variables.$TEXT_INPUT;
+        }
 
-            @include mixins.font-roboto-m;
+        &_selected {
+            background-color: variables.$BGC_SELECT_SELECTED;
+            color: variables.$TEXT_SELECT_SELECTED;
         }
     }
 }
+
