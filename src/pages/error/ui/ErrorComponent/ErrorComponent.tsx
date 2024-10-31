@@ -1,5 +1,5 @@
 
-import { EPaths } from '#shared/enums/EPaths'
+import { EPaths } from '#shared/enums'
 import { Link } from '#shared/ui/Link'
 import styles from './styles.module.scss'
 

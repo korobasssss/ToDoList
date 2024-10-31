@@ -2,8 +2,8 @@ import { FC } from "react"
 import { OverlayLoader } from "#shared/ui/OverlayLoader"
 import { Popup } from "#shared/ui/Popup"
 import { DialogPopup } from "#shared/ui/DialogPopup"
-import { ITask } from "#shared/interfaces/ITask"
-import { fetchTasksApi } from "#shared/api/fetchTasksApi"
+import { ITask } from "#shared/interfaces"
+import { fetchTasksApi } from "#shared/api"
 
 interface IDeleteItemPopupContainer {
     task: ITask

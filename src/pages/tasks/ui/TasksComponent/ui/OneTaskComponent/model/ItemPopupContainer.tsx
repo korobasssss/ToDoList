@@ -1,6 +1,6 @@
 import { FC, useEffect, useState } from "react"
 import { ISelectOptions } from "#shared/interfaces"
-import { fetchCategoriesApi } from "#shared/api/fetchCategoriesApi"
+import { fetchCategoriesApi } from "#shared/api"
 import { changeToSelectOptions } from '../utils'
 import { Popup } from "#shared/ui/Popup"
 import { ItemPopupComponent } from '../ui/ItemPopupComponent'

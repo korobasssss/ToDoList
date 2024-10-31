@@ -1,5 +1,5 @@
 import { FC } from "react"
-import { ICategory } from "#shared/interfaces/ICategory"
+import { ICategory } from "#shared/interfaces"
 import { OneCategoryComponent } from "./OneCategoryComponent"
 import { NoData } from "#shared/ui/NoData"
 

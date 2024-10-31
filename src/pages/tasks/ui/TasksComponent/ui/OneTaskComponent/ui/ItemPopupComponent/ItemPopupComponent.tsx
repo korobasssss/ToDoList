@@ -1,6 +1,6 @@
 import { FC } from "react"
 import styles from './styles.module.scss'
-import { ISelectOptions } from "#shared/interfaces/ISelectOptions"
+import { ISelectOptions } from "#shared/interfaces"
 import { Textarea } from "#shared/ui/Textarea"
 import { Input } from "#shared/ui/Input"
 import { Select } from "#shared/ui/Select"

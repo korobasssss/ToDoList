@@ -1,5 +1,5 @@
 import { FC } from "react"
-import { ICategory } from "#shared/interfaces/ICategory"
+import { ICategory } from "#shared/interfaces"
 import { fetchCategoriesApi } from "#shared/api/fetchCategoriesApi"
 import { OverlayLoader } from "#shared/ui/OverlayLoader"
 import { CategoryPopupContainer } from "./CategoryPopupContainer"

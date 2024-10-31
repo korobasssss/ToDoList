@@ -2,7 +2,7 @@ import { FC } from "react"
 import styles from './styles.module.scss'
 import { Input } from "#shared/ui/Input"
 import { Textarea } from "#shared/ui/Textarea"
-import { checkValidation } from "#shared/utils/checkValidation"
+import { checkValidation } from "#shared/utils"
 
 interface ICategoryPopupComponent {
     input_name?: string

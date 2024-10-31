@@ -1,5 +1,4 @@
-import { ISelectOptions } from "../../../../../../../shared/interfaces/ISelectOptions";
-import { ICategory } from "../../../../../../../shared/interfaces/ICategory";
+import { ISelectOptions, ICategory } from "#shared/interfaces";
 
 export const changeToSelectOptions = (categories: ICategory[]): ISelectOptions[] => {
     return categories.map(category => {

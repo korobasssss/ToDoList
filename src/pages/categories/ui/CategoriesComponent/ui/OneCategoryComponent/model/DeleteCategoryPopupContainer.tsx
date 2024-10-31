@@ -2,8 +2,8 @@ import { FC } from "react"
 import { OverlayLoader} from "#shared/ui/OverlayLoader"
 import { Popup } from "#shared/ui/Popup"
 import { DialogPopup } from "#shared/ui/DialogPopup"
-import { ICategory } from "#shared/interfaces/ICategory"
-import { fetchCategoriesApi } from "#shared/api/fetchCategoriesApi"
+import { ICategory } from "#shared/interfaces"
+import { fetchCategoriesApi } from "#shared/api"
 
 interface IDeleteCategoryPopupContainer {
     category: ICategory

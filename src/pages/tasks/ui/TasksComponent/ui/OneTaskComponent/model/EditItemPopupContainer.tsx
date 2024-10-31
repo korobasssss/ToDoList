@@ -1,7 +1,6 @@
 import { FC } from "react"
-import { ISelectOptions } from "#shared/interfaces/ISelectOptions"
-import { ITask } from "#shared/interfaces/ITask"
-import { fetchTasksApi } from "#shared/api/fetchTasksApi"
+import { ISelectOptions, ITask } from "#shared/interfaces"
+import { fetchTasksApi } from "#shared/api"
 import { OverlayLoader } from "#shared/ui/OverlayLoader"
 import { ItemPopupContainer } from "./ItemPopupContainer"
 
