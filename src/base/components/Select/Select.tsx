@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from "react"
+import { FC, useEffect, useMemo, useState } from "react"
 import cx from 'classnames'
 import { ISelectOptions } from "../../interfaces"
 import { Input, NoData, ScrollWrapper} from "../"
@@ -28,15 +28,19 @@ export const Select: FC<ISelect> = (
 ) => {
     const [isFocused, setIsFocused] = useState(false);
     const [input_value, setInput_value] = useState('');
-    const [filteredOptions, setFilteredOptions] = useState<ISelectOptions[] | null>(options)
+
+    const filteredOptions: ISelectOptions[] | null = useMemo(() => {
+        return options.filter(option =>
+            option.label.toLowerCase().includes(input_value.toLowerCase())
+        );
+    }, [options, input_value]);
 
     useEffect(() => {
-        setFilteredOptions(options)
-    }, [options])
+        setInput_value(value?.label ?? '')
+    }, [value])
 
     const handleSetInputValue = (value: string) => {
         setInput_value(value)
-        setFilteredOptions(options.filter(option => option.label.toLowerCase().includes(input_value.toLowerCase())))
         setSelected(null)
     }
 
