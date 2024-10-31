@@ -1,9 +1,9 @@
 import { FC } from "react"
-import { ISelectOptions } from "../../../../../../../shared/interfaces/ISelectOptions"
-import { ITask } from "../../../../../../../shared/interfaces/ITask"
-import { fetchTasksApi } from "../../../../../../../shared/api/fetchTasksApi"
-import { OverlayLoader } from "../../../../../../../shared/ui/OverlayLoader"
-import { ItemPopupContainer } from "../../../../../model/ItemPopupContainer"
+import { ISelectOptions } from "#shared/interfaces/ISelectOptions"
+import { ITask } from "#shared/interfaces/ITask"
+import { fetchTasksApi } from "#shared/api/fetchTasksApi"
+import { OverlayLoader } from "#shared/ui/OverlayLoader"
+import { ItemPopupContainer } from "./ItemPopupContainer"
 
 interface IEditItemPopupContainer {
     task: ITask

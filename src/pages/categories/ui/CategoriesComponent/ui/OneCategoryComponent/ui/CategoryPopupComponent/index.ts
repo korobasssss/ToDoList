@@ -1,0 +1,1 @@
+export { CategoryPopupComponent } from './CategoryPopupComponent'

@@ -1,26 +1,31 @@
 import { FC, useEffect, useState } from "react"
-import { CategoryPopupComponent } from "../ui/CategoryPopupComponent"
-import { Popup } from "../../../shared/ui/Popup"
+import { ISelectOptions } from "#shared/interfaces"
+import { fetchCategoriesApi } from "#shared/api/fetchCategoriesApi"
+import { changeToSelectOptions } from '../utils'
+import { Popup } from "#shared/ui/Popup"
+import { ItemPopupComponent } from '../ui/ItemPopupComponent'
 
 interface ICreateItemPopupContainer {
     handleIsPopupOpen: (isPopupOpen: boolean) => void
     isPopupOpen: boolean
 
-    name?: string
-    description?: string
-    handleSubmitForm: (name: string, description: string) => void
+    name: string
+    category: ISelectOptions | null
+    description: string
+    handleSubmitForm: (name: string, category: ISelectOptions | null, description: string) => void
 
     popupTitle: string
     buttonSubmitTitle? : string
     buttonCancelTitle : string
 }
 
-export const CategoryPopupContainer: FC<ICreateItemPopupContainer> = (
+export const ItemPopupContainer: FC<ICreateItemPopupContainer> = (
     {
         handleIsPopupOpen,
         isPopupOpen,
-        name = '',
-        description = '',
+        name,
+        category,
+        description,
         handleSubmitForm,
         popupTitle,
         buttonSubmitTitle,
@@ -28,19 +33,28 @@ export const CategoryPopupContainer: FC<ICreateItemPopupContainer> = (
     }
 ) => {
     const [input_name, setInput_name] = useState<string>('')
+    const [input_category, setInput_category] = useState<ISelectOptions | null>(null)
     const [input_description, setInput_description] = useState<string>('')
     const [errorName, setErrorName] = useState('')
+    const [selectOptions, setSelectOptions] = useState<ISelectOptions[]>([])
+    const {data: options} = fetchCategoriesApi.useFetchGetCategoriesQuery()
 
     useEffect(() => {
         setInput_name(name)
         setInput_description(description)
-    }, [])
+        setInput_category(category)
+    }, [name, description, category])
+
+    useEffect(() => {
+        if (options) setSelectOptions(changeToSelectOptions(options))
+    }, [options])
+
 
     const handleSubmit = () => {
         if (!input_name) {
             setErrorName('Поле должно быть обязательным')
         } else {
-            handleSubmitForm(input_name, input_description)
+            handleSubmitForm(input_name, input_category, input_description)
         }
     }
 
@@ -54,12 +68,14 @@ export const CategoryPopupContainer: FC<ICreateItemPopupContainer> = (
             buttonSubmitName={buttonSubmitTitle}
             size='m'
         >
-            <CategoryPopupComponent 
+            <ItemPopupComponent
                 input_name={input_name}
+                input_category={input_category}
                 input_description={input_description}
                 errorName={errorName}
-
+                options={selectOptions}
                 handleSetInputName={setInput_name}
+                handleSetInputCategory={setInput_category}
                 handleSetInputDescription={setInput_description}
                 handleSetErrorName={setErrorName}
             />

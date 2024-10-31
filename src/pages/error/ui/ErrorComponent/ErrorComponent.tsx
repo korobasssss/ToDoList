@@ -1,6 +1,6 @@
 
-import { EPaths } from '../../../../../shared/enums/EPaths'
-import { Link } from '../../../../../shared/ui/Link'
+import { EPaths } from '#shared/enums/EPaths'
+import { Link } from '#shared/ui/Link'
 import styles from './styles.module.scss'
 
 export const ErrorComponent = () => {

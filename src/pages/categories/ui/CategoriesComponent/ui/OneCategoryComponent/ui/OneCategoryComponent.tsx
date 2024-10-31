@@ -1,8 +1,8 @@
 import { FC, useState } from "react"
-import { ICategory } from "../../../../../../../shared/interfaces/ICategory"
+import { ICategory } from "#shared/interfaces/ICategory"
 import { DeleteCategoryPopupContainer } from "../model/DeleteCategoryPopupContainer"
 import { EditCategoryPopupContainer } from "../model/EditCategoryPopupContainer"
-import { UlItemLayout } from "../../../../../../../shared/ui/UlItemLayout"
+import { UlItemLayout } from "#shared/ui/UlItemLayout"
 
 interface IOneTaskComponent {
     category: ICategory

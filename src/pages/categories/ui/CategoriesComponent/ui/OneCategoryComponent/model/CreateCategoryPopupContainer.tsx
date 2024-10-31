@@ -1,7 +1,7 @@
 import { FC } from "react"
 import { CategoryPopupContainer } from "./CategoryPopupContainer"
-import { fetchCategoriesApi } from "../../../shared/api/fetchCategoriesApi"
-import { OverlayLoader } from "../../../shared/ui/OverlayLoader"
+import { fetchCategoriesApi } from "#shared/api/fetchCategoriesApi"
+import { OverlayLoader } from "#shared/ui/OverlayLoader"
 
 interface ICreateCategoryPopupContainer {
     handleIsPopupOpen: (isPopupOpen: boolean) => void

@@ -1,6 +1,6 @@
 import { FC, InputHTMLAttributes } from "react"
 import cx from 'classnames'
-import { IClassName } from "../../interfaces"
+import { IClassName } from "#shared/interfaces"
 
 import styles from './style.module.scss'
 import { LabelWrapper } from "../LabelWrapper"

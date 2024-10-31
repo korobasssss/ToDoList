@@ -1,8 +1,8 @@
 import { FC } from "react"
-import { CategoryPopupContainer } from "../../../../../model/CategoryPopupContainer" // todo запрещенный импорт
-import { ICategory } from "../../../../../../../shared/interfaces/ICategory"
-import { fetchCategoriesApi } from "../../../../../../../shared/api/fetchCategoriesApi"
-import { OverlayLoader } from "../../../../../../../shared/ui/OverlayLoader"
+import { ICategory } from "#shared/interfaces/ICategory"
+import { fetchCategoriesApi } from "#shared/api/fetchCategoriesApi"
+import { OverlayLoader } from "#shared/ui/OverlayLoader"
+import { CategoryPopupContainer } from "./CategoryPopupContainer"
 
 interface IEditCategoryPopupContainer {
     category: ICategory

@@ -1,8 +1,8 @@
 import { FC } from "react"
-import { ISelectOptions } from "../../../shared/interfaces/ISelectOptions"
+import { ISelectOptions } from "#shared/interfaces/ISelectOptions"
 import { ItemPopupContainer } from './ItemPopupContainer'
-import { fetchTasksApi } from "../../../shared/api/fetchTasksApi"
-import { OverlayLoader } from "../../../shared/ui/OverlayLoader"
+import { fetchTasksApi } from "#shared/api/fetchTasksApi"
+import { OverlayLoader } from "#shared/ui/OverlayLoader"
 
 interface ICreateItemPopupContainer {
     handleIsPopupOpen: (isPopupOpen: boolean) => void

@@ -2,8 +2,8 @@ import { useState } from "react"
 import { MainLayout } from "../../../shared/ui/MainLayout"
 import { OverlayLoader } from "../../../shared/ui/OverlayLoader"
 import { TasksComponent } from "../ui/TasksComponent"
-import { CreateItemPopupContainer } from "./CreateItemPopupContainer"
 import { fetchTasksApi } from "../../../shared/api/fetchTasksApi"
+import { CreateItemPopupContainer } from "../ui/TasksComponent/ui/OneTaskComponent/model/CreateItemPopupContainer"
 
 export const TasksContainer = () => {
     const [isPopupOpen, setIsPopupOpen] = useState(false)

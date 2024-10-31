@@ -1,9 +1,9 @@
 import { useState } from "react"
-import { MainLayout } from "../../../shared/ui/MainLayout"
-import { OverlayLoader } from "../../../shared/ui/OverlayLoader"
+import { MainLayout } from "#shared/ui/MainLayout"
+import { OverlayLoader } from "#shared/ui/OverlayLoader"
 import { CategoriesComponent } from "../ui/CategoriesComponent"
-import { CreateCategoryPopupContainer } from "./CreateCategoryPopupContainer"
-import { fetchCategoriesApi } from "../../../shared/api/fetchCategoriesApi"
+import { CreateCategoryPopupContainer } from "../ui/CategoriesComponent/ui/OneCategoryComponent/model/CreateCategoryPopupContainer"
+import { fetchCategoriesApi } from "#shared/api/fetchCategoriesApi"
 
 export const CategoriesContainer = () => {
     const [isPopupOpen, setIsPopupOpen] = useState(false)

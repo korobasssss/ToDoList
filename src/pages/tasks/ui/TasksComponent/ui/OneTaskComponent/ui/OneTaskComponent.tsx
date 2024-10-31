@@ -1,11 +1,11 @@
 import { FC, useMemo, useState } from "react"
-import { ITask } from "../../../../../../../shared/interfaces/ITask"
+import { ITask } from "#shared/interfaces/ITask"
 import { DeleteItemPopupContainer } from "../model/DeleteItemPopupContainer"
-import { EditItemPopupContainer } from "../model/EditItemPopupContainer" // todo запрещенный импорт
-import { UlItemLayout } from "../../../../../../../shared/ui/UlItemLayout"
-import { fetchCategoriesApi } from "../../../../../../../shared/api/fetchCategoriesApi"
+import { EditItemPopupContainer } from "../model/EditItemPopupContainer"
+import { UlItemLayout } from "#shared/ui/UlItemLayout"
+import { fetchCategoriesApi } from "#shared/api/fetchCategoriesApi"
 import { findCategory } from "../utils/findCategory"
-import { ISelectOptions } from "../../../../../../../shared/interfaces/ISelectOptions"
+import { ISelectOptions } from "#shared/interfaces/ISelectOptions"
 
 interface IOneTaskComponent {
     task: ITask

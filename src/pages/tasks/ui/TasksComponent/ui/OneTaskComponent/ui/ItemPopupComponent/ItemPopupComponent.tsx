@@ -1,10 +1,10 @@
 import { FC } from "react"
 import styles from './styles.module.scss'
-import { ISelectOptions } from "../../../../shared/interfaces/ISelectOptions"
-import { Textarea } from "../../../../shared/ui/Textarea"
-import { Input } from "../../../../shared/ui/Input"
-import { Select } from "../../../../shared/ui/Select"
-import { checkValidation } from "../../../../shared/utils"
+import { ISelectOptions } from "#shared/interfaces/ISelectOptions"
+import { Textarea } from "#shared/ui/Textarea"
+import { Input } from "#shared/ui/Input"
+import { Select } from "#shared/ui/Select"
+import { checkValidation } from "#shared/utils"
 
 interface ICreateEditItemPopup {
     input_name?: string

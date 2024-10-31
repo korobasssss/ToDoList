@@ -1,9 +1,9 @@
 import { FC } from 'react'
 import { useLocation } from 'react-router-dom'
-import { TPaths } from '../../types'
+import { TPaths } from '#shared/types'
 import { Link } from '../Link'
 import { Icon } from '../Icon'
-import {LineIcon} from '../../assets'
+import {LineIcon} from '#shared/assets'
 import styles from './styles.module.scss'
 
 interface INavigation {

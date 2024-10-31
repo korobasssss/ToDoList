@@ -1,7 +1,7 @@
 import { FC } from "react"
-import { ICategory } from "../../../../../shared/interfaces/ICategory"
+import { ICategory } from "#shared/interfaces/ICategory"
 import { OneCategoryComponent } from "./OneCategoryComponent"
-import { NoData } from "../../../../../shared/ui/NoData"
+import { NoData } from "#shared/ui/NoData"
 
 interface ICategoriesComponent {
     categories?: ICategory[]

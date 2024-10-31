@@ -1,7 +1,7 @@
 import { FC } from "react"
-import { ITask } from "../../../../../shared/interfaces/ITask"
+import { ITask } from "#shared/interfaces/ITask"
 import { OneTaskComponent } from "./OneTaskComponent"
-import { NoData } from "../../../../../shared/ui/NoData"
+import { NoData } from "#shared/ui/NoData"
 
 interface ITaskComponent {
     tasks?: ITask[]

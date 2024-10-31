@@ -1,9 +1,9 @@
 import { FC } from "react"
-import { OverlayLoader } from "../../../../../../../shared/ui/OverlayLoader"
-import { Popup } from "../../../../../../../shared/ui/Popup"
-import { DialogPopup } from "../../../../../../../shared/ui/DialogPopup"
-import { ITask } from "../../../../../../../shared/interfaces/ITask"
-import { fetchTasksApi } from "../../../../../../../shared/api/fetchTasksApi"
+import { OverlayLoader } from "#shared/ui/OverlayLoader"
+import { Popup } from "#shared/ui/Popup"
+import { DialogPopup } from "#shared/ui/DialogPopup"
+import { ITask } from "#shared/interfaces/ITask"
+import { fetchTasksApi } from "#shared/api/fetchTasksApi"
 
 interface IDeleteItemPopupContainer {
     task: ITask

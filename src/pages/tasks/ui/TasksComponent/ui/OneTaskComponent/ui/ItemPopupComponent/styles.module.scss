@@ -1,5 +1,5 @@
-@use '../../../../shared/styles/mixins';
-@use '../../../../shared/styles/variables';
+@use '#shared/styles/mixins' as mixins;
+@use '#shared/styles/variables' as variables;
 
 .SCreatePopup {
     display: grid;

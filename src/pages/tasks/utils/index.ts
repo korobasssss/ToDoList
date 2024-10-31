@@ -1,1 +1,0 @@
-export { changeToSelectOptions } from './changeToSelectOptions'
