@@ -39,8 +39,10 @@ export const CategoryPopupContainer: FC<ICreateItemPopupContainer> = (
     const handleSubmit = () => {
         if (!input_name) {
             setErrorName('Поле должно быть обязательным')
+            return false
         } else {
             handleSubmitForm(input_name, input_description)
+            return true
         }
     }
 

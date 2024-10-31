@@ -10,7 +10,7 @@ import { Portal } from "../Portal"
 interface IPopup {
     title: string
     isOpen: boolean
-    handlerSubmit?: () => void
+    handlerSubmit?: () => boolean
     buttonSubmitName?: string
     handlerCancel: (isOpen: boolean) => void
     buttonCancelName: string
@@ -42,8 +42,10 @@ export const Popup: FC<IPopup> = (
 
     const submit = () => {
         if (handlerSubmit) {
-            handlerSubmit()
-            setIsOpenCopy(false)
+            if (handlerSubmit()) {
+                setIsOpenCopy(false)
+            }
+            
         }
     }
 
