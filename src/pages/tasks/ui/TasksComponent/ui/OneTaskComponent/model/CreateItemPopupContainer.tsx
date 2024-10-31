@@ -18,11 +18,17 @@ export const CreateItemPopupContainer: FC<ICreateItemPopupContainer> = (
     const [fetchPostItem, {isLoading}] = fetchTasksApi.useFetchPostTaskMutation()
 
     const handleSubmit = (input_name: string, input_category: ISelectOptions | null, input_description: string) => {
-        fetchPostItem({
-            name: input_name,
-            description: input_description ?? null,
-            categoryId: input_category?.value ?? null
-        })
+        try {
+            fetchPostItem({
+                name: input_name,
+                description: input_description ?? null,
+                categoryId: input_category?.value ?? null
+            }).unwrap()
+            return true
+        }
+        catch(error: unknown) {
+            return false
+        }
     }
 
     return (

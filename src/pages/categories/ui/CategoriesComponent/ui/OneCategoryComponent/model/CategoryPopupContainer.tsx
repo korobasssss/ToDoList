@@ -8,7 +8,7 @@ interface ICreateItemPopupContainer {
 
     name?: string
     description?: string
-    handleSubmitForm: (name: string, description: string) => void
+    handleSubmitForm: (name: string, description: string) => boolean
 
     popupTitle: string
     buttonSubmitTitle? : string
@@ -41,8 +41,10 @@ export const CategoryPopupContainer: FC<ICreateItemPopupContainer> = (
             setErrorName('Поле должно быть обязательным')
             return false
         } else {
-            handleSubmitForm(input_name, input_description)
-            return true
+            if (handleSubmitForm(input_name, input_description)) {
+                return true
+            }
+            return false
         }
     }
 

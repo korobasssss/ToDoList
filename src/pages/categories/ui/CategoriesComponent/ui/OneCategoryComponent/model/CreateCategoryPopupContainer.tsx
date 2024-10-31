@@ -17,11 +17,16 @@ export const CreateCategoryPopupContainer: FC<ICreateCategoryPopupContainer> = (
     const [fetchCreateCategory, {isLoading}] = fetchCategoriesApi.useFetchPostCategoryMutation()
 
     const handleSubmit = (input_name: string, input_description: string) => {
-        fetchCreateCategory({
-            name: input_name,
-            description: input_description === '' ? null : input_description
-        })
-        console.log(input_name, input_description)
+        try {
+            fetchCreateCategory({
+                name: input_name,
+                description: input_description === '' ? null : input_description
+            }).unwrap()
+            return true
+        }
+        catch(error: unknown) {
+            return false
+        }
     }
 
     return (

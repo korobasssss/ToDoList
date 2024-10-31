@@ -22,10 +22,15 @@ export const DeleteCategoryPopupContainer: FC<IDeleteCategoryPopupContainer> = (
 
 
     const handleSubmit = () => {
-        fetchDeleteTask({
-            id: category.id
-        })
-        return true
+        try {
+            fetchDeleteTask({
+                id: category.id
+            }).unwrap()
+            return true
+        }
+        catch(error: unknown) {
+            return false
+        }   
     }
 
     return (

@@ -21,10 +21,15 @@ export const DeleteItemPopupContainer: FC<IDeleteItemPopupContainer> = (
     const [fetchDeleteTask, { isLoading }] = fetchTasksApi.useFetchDeleteTaskMutation();
 
     const handleSubmit = () => {
-        fetchDeleteTask({
-            id: task.id
-        })
-        return true
+        try {
+            fetchDeleteTask({
+                id: task.id
+            }).unwrap()
+            return true
+        }
+        catch(error: unknown) {
+            return false
+        }
     }
 
     return (

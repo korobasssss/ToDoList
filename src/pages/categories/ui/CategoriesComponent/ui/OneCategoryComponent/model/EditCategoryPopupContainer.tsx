@@ -20,12 +20,17 @@ export const EditCategoryPopupContainer: FC<IEditCategoryPopupContainer> = (
     const [fetchUpdateCategory, { isLoading }] = fetchCategoriesApi.useFetchUpdateCategoryMutation();
 
     const handleSubmit = (input_name: string, input_description: string) => {
-        fetchUpdateCategory({
-            id: category.id,
-            name: input_name,
-            description: input_description === '' ? null : input_description
-        })
-        console.log(input_name, input_description)
+        try {
+            fetchUpdateCategory({
+                id: category.id,
+                name: input_name,
+                description: input_description === '' ? null : input_description
+            }).unwrap()
+            return true
+        }
+        catch(error: unknown) {
+            return false
+        }
     }
 
     return (
