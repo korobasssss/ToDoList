@@ -2,6 +2,7 @@
 @use '#shared/styles/variables' as variables;
 
 .SPopup {
+    transition: opacity 0.4s, visibility 0.4s, transform 0.4s;
     position: fixed;
     padding: 25px;
 

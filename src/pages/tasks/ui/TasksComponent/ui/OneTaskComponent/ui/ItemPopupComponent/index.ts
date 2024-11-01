@@ -1,1 +1,0 @@
-export { ItemPopupComponent } from './ItemPopupComponent'

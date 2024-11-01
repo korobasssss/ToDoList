@@ -1,1 +1,1 @@
-export { TasksPage } from './ui/TasksPage'
+export { TasksContainer } from './model/TasksContainer'

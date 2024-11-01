@@ -2,8 +2,10 @@ import { FC, ReactNode } from "react"
 import { Header } from "../Header"
 import { ScrollWrapper } from "../ScrollWrapper"
 import styles from './styles.module.scss'
+import { OverlayLoader } from "../OverlayLoader"
 
 interface IMainLayout {
+    isLoading?: boolean
     title: string
     children: ReactNode
     buttonName: string
@@ -15,6 +17,7 @@ export const MainLayout: FC<IMainLayout> = (
         title,
         children,
         buttonName,
+        isLoading,
         handleButtonClick
     }
 ) => {
@@ -35,6 +38,9 @@ export const MainLayout: FC<IMainLayout> = (
                     {children}
                 </main>
             </section> 
+            {isLoading && (
+                <OverlayLoader/>
+            )}
         </ScrollWrapper>
     )
 }

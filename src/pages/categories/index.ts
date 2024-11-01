@@ -1,1 +1,1 @@
-export { CategoriesPage } from './ui/CategoriesPage'
+export { CategoriesContainer } from './model/CategoriesContainer'

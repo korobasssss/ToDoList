@@ -42,11 +42,3 @@
         }
     }
 }
-
-.SError {
-    position: absolute;
-    padding: 0 5px;
-    color: variables.$ERROR_INPUT;
-
-    @include mixins.font-roboto-xxs;
-}

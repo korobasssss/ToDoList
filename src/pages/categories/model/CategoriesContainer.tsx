@@ -1,9 +1,8 @@
 import { useState } from "react"
 import { MainLayout } from "#shared/ui/MainLayout"
-import { OverlayLoader } from "#shared/ui/OverlayLoader"
 import { CategoriesComponent } from "../ui/CategoriesComponent"
-import { CreateCategoryPopupContainer } from "../ui/CategoriesComponent/ui/OneCategoryComponent"
 import { fetchCategoriesApi } from "#shared/api/fetchCategoriesApi"
+import { CreateCategoryPopupContainer } from "#widgets/CategoryPopup"
 
 export const CategoriesContainer = () => {
     const [isPopupOpen, setIsPopupOpen] = useState(false)
@@ -14,6 +13,7 @@ export const CategoriesContainer = () => {
             <MainLayout
                 title='ToDo List'
                 buttonName='Добавить категорию'
+                isLoading={isLoading}
                 handleButtonClick={setIsPopupOpen}
             > 
                 <CategoriesComponent
@@ -26,9 +26,6 @@ export const CategoriesContainer = () => {
                     />
                 )}
             </MainLayout>
-            {isLoading && (
-                <OverlayLoader/>
-            )}
         </>
     )
 }

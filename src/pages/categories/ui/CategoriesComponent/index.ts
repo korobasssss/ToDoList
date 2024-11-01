@@ -1,1 +1,0 @@
-export { CategoriesComponent } from './ui/CategoriesComponent'

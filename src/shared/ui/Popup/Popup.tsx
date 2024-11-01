@@ -6,15 +6,17 @@ import { ButtonIcon } from "../ButtonIcon"
 import { Button } from "../Button"
 import { OverlayPopup } from "../OverlayPopup"
 import { Portal } from "../Portal"
+import { OverlayLoader } from "../OverlayLoader"
 
 interface IPopup {
     title: string
     isOpen: boolean
-    handlerSubmit?: () => boolean
+    handlerSubmit?: () => Promise<boolean>
     buttonSubmitName?: string
     handlerCancel: (isOpen: boolean) => void
     buttonCancelName: string
     children: ReactNode
+    isLoading?: boolean
     size: 's' | 'm'
 }
 
@@ -27,6 +29,7 @@ export const Popup: FC<IPopup> = (
         handlerCancel,
         buttonCancelName,
         children,
+        isLoading,
         size
     }
 ) => {
@@ -40,12 +43,11 @@ export const Popup: FC<IPopup> = (
         }
     }, [isOpenCopy]);
 
-    const submit = () => {
+    const submit = async () => {
         if (handlerSubmit) {
-            if (handlerSubmit()) {
+            if ( await handlerSubmit()) {
                 setIsOpenCopy(false)
             }
-            
         }
     }
 
@@ -90,6 +92,9 @@ export const Popup: FC<IPopup> = (
                     </footer>
                 </section>
             </OverlayPopup>
+            {isLoading && (
+                <OverlayLoader/>
+            )}
         </Portal>
     )
 }
