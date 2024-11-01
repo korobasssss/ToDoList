@@ -6,8 +6,8 @@ import { checkValidation } from "#shared/utils"
 import { ErrorText } from "#shared/ui/ErrorText/ErrorText.tsx"
 
 interface ICategoryPopupComponent {
-    input_name?: string
-    input_description?: string
+    inputName?: string
+    inputDescription?: string
     errorName: string
     errorCommon: string
 
@@ -18,8 +18,8 @@ interface ICategoryPopupComponent {
 
 export const CategoryPopupComponent: FC<ICategoryPopupComponent> = (
     {
-        input_name = '',
-        input_description = '',
+        inputName = '',
+        inputDescription = '',
         errorName,
         errorCommon,
         handleSetInputName,
@@ -31,7 +31,7 @@ export const CategoryPopupComponent: FC<ICategoryPopupComponent> = (
     return (
         <div className={styles.SCreatePopup}>
             <Input
-                value={input_name}
+                value={inputName}
                 onChange={(event) => checkValidation(event.target.value, handleSetInputName, 255, handleSetErrorName)}
                 placeholder="Введите имя категории"
                 label="Имя"
@@ -39,7 +39,7 @@ export const CategoryPopupComponent: FC<ICategoryPopupComponent> = (
                 error={errorName}
             />
             <Textarea
-                value={input_description}
+                value={inputDescription}
                 onChange={(event) => checkValidation(event.target.value, handleSetInputDescription, 512, handleSetErrorName)}
                 placeholder="Введите описание категории"
                 label="Описание"

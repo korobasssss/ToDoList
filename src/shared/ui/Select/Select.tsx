@@ -29,26 +29,26 @@ export const Select: FC<ISelect> = (
     }
 ) => {
     const [isFocused, setIsFocused] = useState(false);
-    const [input_value, setInput_value] = useState('');
+    const [inputValue, setInputValue] = useState('');
 
     const filteredOptions: ISelectOptions[] | null = useMemo(() => {
         return options.filter(option =>
-            option.label.toLowerCase().includes(input_value.toLowerCase())
+            option.label.toLowerCase().includes(inputValue.toLowerCase())
         );
-    }, [options, input_value]);
+    }, [options, inputValue]);
 
     useEffect(() => {
-        setInput_value(value?.label ?? '')
+        setInputValue(value?.label ?? '')
     }, [value])
 
     const handleSetInputValue = (value: string) => {
-        setInput_value(value)
+        setInputValue(value)
         setSelected(null)
     }
 
     const handleSetSelected = (option: ISelectOptions) => {
         setSelected(option)
-        setInput_value(option.label)
+        setInputValue(option.label)
         setIsFocused(false)
     }
 
@@ -59,7 +59,7 @@ export const Select: FC<ISelect> = (
         >
             <Input
                 label={label}
-                value={input_value}
+                value={inputValue}
                 onChange={(event) => handleSetInputValue(event.target.value)}
                 error={error}
                 isRequired={isRequired}

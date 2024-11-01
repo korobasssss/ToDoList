@@ -8,12 +8,12 @@ import { checkValidation } from "#shared/utils"
 import { ErrorText } from "#shared/ui/ErrorText/ErrorText.tsx"
 
 interface ICreateEditItemPopup {
-    input_name?: string
-    input_description?: string
+    inputName?: string
+    inputDescription?: string
     errorName: string
     errorCommon: string
 
-    input_category: ISelectOptions | null
+    inputCategory: ISelectOptions | null
     options: ISelectOptions[]
     handleSetInputCategory: React.Dispatch<SetStateAction<ISelectOptions | null>>
 
@@ -24,9 +24,9 @@ interface ICreateEditItemPopup {
 
 export const TaskPopupComponent: FC<ICreateEditItemPopup> = (
     {
-        input_name = '',
-        input_category = null,
-        input_description = '',
+        inputName = '',
+        inputCategory = null,
+        inputDescription = '',
         errorName,
         errorCommon,
         options,
@@ -40,7 +40,7 @@ export const TaskPopupComponent: FC<ICreateEditItemPopup> = (
         <div className={styles.SCreatePopup}>
             <div className={styles.SCreateSection}>
                 <Input
-                    value={input_name}
+                    value={inputName}
                     onChange={(event) => checkValidation(event.target.value, handleSetInputName, 255, handleSetErrorName)}
                     placeholder="Введите имя задачи"
                     label="Имя"
@@ -52,11 +52,11 @@ export const TaskPopupComponent: FC<ICreateEditItemPopup> = (
                     label="Категория"
                     setSelected={(newValue) => handleSetInputCategory(newValue)}
                     placeholder="Введите категорию"
-                    value={input_category}
+                    value={inputCategory}
                 />
             </div>
             <Textarea
-                value={input_description}
+                value={inputDescription}
                 onChange={(event) => checkValidation(event.target.value, handleSetInputDescription, 1536, handleSetErrorName)}
                 placeholder="Введите описание задачи"
                 label="Описание"

@@ -27,21 +27,22 @@ export const CategoryPopupContainer: FC<ICreateItemPopupContainer> = (
         buttonCancelTitle,
     }
 ) => {
-    const [input_name, setInput_name] = useState<string>('')
-    const [input_description, setInput_description] = useState<string>('')
+    const [inputName, setInputName
+    ] = useState<string>('')
+    const [inputDescription , setInputDescription] = useState<string>('')
     const [errorName, setErrorName] = useState('')
     const [errorCommon, setErrorCommon] = useState('')
 
     useEffect(() => {
-        setInput_name(name)
-        setInput_description(description)
+        setInputName(name)
+        setInputDescription(description)
     }, [])
 
     const handleSubmit = async () => {
-        if (!input_name) {
+        if (!inputName) {
             setErrorName('Поле должно быть обязательным')
         } else {
-            if (await handleSubmitForm(input_name, input_description)) {
+            if (await handleSubmitForm(inputName, inputDescription )) {
                 return true
             } else {
                 setErrorCommon('Возникла ошибка, попробуйте позже')
@@ -61,13 +62,13 @@ export const CategoryPopupContainer: FC<ICreateItemPopupContainer> = (
             size='m'
         >
             <CategoryPopupComponent
-                input_name={input_name}
-                input_description={input_description}
+                inputName={inputName}
+                inputDescription ={inputDescription }
                 errorName={errorName}
                 errorCommon={errorCommon}
 
-                handleSetInputName={setInput_name}
-                handleSetInputDescription={setInput_description}
+                handleSetInputName={setInputName}
+                handleSetInputDescription={setInputDescription}
                 handleSetErrorName={setErrorName}
             />
         </Popup>

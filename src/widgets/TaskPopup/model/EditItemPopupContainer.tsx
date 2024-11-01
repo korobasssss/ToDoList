@@ -21,13 +21,13 @@ export const EditItemPopupContainer: FC<IEditItemPopupContainer> = (
 ) => {
     const [fetchUpdateItem, {isLoading}] = fetchTasksApi.useFetchUpdateTaskMutation()
 
-    const handleSubmit = async (input_name: string, input_category: ISelectOptions | null, input_description: string) => {
+    const handleSubmit = async (inputName: string, inputCategory: ISelectOptions | null, inputDescription: string) => {
         try {
             const res: unknown = await fetchUpdateItem({
                 id: task.id,
-                name: input_name,
-                description: input_description ?? null,
-                categoryId: input_category?.value ?? null 
+                name: inputName,
+                description: inputDescription ?? null,
+                categoryId: inputCategory?.value ?? null 
             })
             if (res && typeof res === 'object' && 'error' in res) {
                 return false;

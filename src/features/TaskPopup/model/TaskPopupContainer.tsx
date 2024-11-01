@@ -32,18 +32,18 @@ export const TaskPopupContainer: FC<ICreateItemPopupContainer> = (
         buttonCancelTitle,
     }
 ) => {
-    const [input_name, setInput_name] = useState<string>('')
-    const [input_category, setInput_category] = useState<ISelectOptions | null>(null)
-    const [input_description, setInput_description] = useState<string>('')
+    const [inputName, setInputName] = useState<string>('')
+    const [inputCategory, setInputCategory] = useState<ISelectOptions | null>(null)
+    const [inputDescription, setInputDescription] = useState<string>('')
     const [errorName, setErrorName] = useState('')
     const [errorCommon, setErrorCommon] = useState('')
     const [selectOptions, setSelectOptions] = useState<ISelectOptions[]>([])
     const {data: options} = fetchCategoriesApi.useFetchGetCategoriesQuery()
 
     useEffect(() => {
-        setInput_name(name)
-        setInput_description(description)
-        setInput_category(category)
+        setInputName(name)
+        setInputDescription(description)
+        setInputCategory(category)
     }, [name, description, category])
 
     useEffect(() => {
@@ -51,10 +51,10 @@ export const TaskPopupContainer: FC<ICreateItemPopupContainer> = (
     }, [options])
 
     const handleSubmit = async () => {
-        if (!input_name) {
+        if (!inputName) {
             setErrorName('Поле должно быть обязательным')
         } else {
-            if (await handleSubmitForm(input_name, input_category, input_description)) {
+            if (await handleSubmitForm(inputName, inputCategory, inputDescription)) {
                 return true
             } else {
                 setErrorCommon('Возникла ошибка, попробуйте позже')
@@ -74,15 +74,15 @@ export const TaskPopupContainer: FC<ICreateItemPopupContainer> = (
             size='m'
         >
             <TaskPopupComponent
-                input_name={input_name}
-                input_category={input_category}
-                input_description={input_description}
+                inputName={inputName}
+                inputCategory={inputCategory}
+                inputDescription={inputDescription}
                 errorName={errorName}
                 errorCommon={errorCommon}
                 options={selectOptions}
-                handleSetInputName={setInput_name}
-                handleSetInputCategory={setInput_category}
-                handleSetInputDescription={setInput_description}
+                handleSetInputName={setInputName}
+                handleSetInputCategory={setInputCategory}
+                handleSetInputDescription={setInputDescription}
                 handleSetErrorName={setErrorName}
             />
         </Popup>

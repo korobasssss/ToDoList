@@ -16,11 +16,11 @@ export const CreateCategoryPopupContainer: FC<ICreateCategoryPopupContainer> = (
 ) => {
     const [fetchCreateCategory, {isLoading}] = fetchCategoriesApi.useFetchPostCategoryMutation()
 
-    const handleSubmit = async (input_name: string, input_description: string) => {
+    const handleSubmit = async (inputName: string, inputDescription: string) => {
         try {
             const res: unknown = await fetchCreateCategory({
-                name: input_name,
-                description: input_description === '' ? null : input_description
+                name: inputName,
+                description: inputDescription === '' ? null : inputDescription
             })
             if (res && typeof res === 'object' && 'error' in res) {
                 return false;
