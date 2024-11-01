@@ -50,7 +50,6 @@ export const TaskPopupContainer: FC<ICreateItemPopupContainer> = (
         if (options) setSelectOptions(changeToSelectOptions(options))
     }, [options])
 
-
     const handleSubmit = async () => {
         if (!input_name) {
             setErrorName('Поле должно быть обязательным')
