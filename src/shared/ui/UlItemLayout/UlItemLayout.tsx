@@ -1,4 +1,4 @@
-import { FC } from "react"
+import { FC, SetStateAction } from "react"
 import styles from './styles.module.scss'
 import {CategoryIcon, EditIcon, DeleteIcon} from '#shared/assets'
 import { ButtonIcon } from '../ButtonIcon'
@@ -9,8 +9,8 @@ interface IUlItemLayout {
     category: string | null
     description: string | null
     
-    handleSetIsEditOpenPopup: (isEditPopup: boolean) => void
-    handleSetIsDeleteOpenPopup: (isDeletePopup: boolean) => void
+    handleSetIsEditOpenPopup: React.Dispatch<SetStateAction<boolean>>
+    handleSetIsDeleteOpenPopup: React.Dispatch<SetStateAction<boolean>>
 }
 
 export const UlItemLayout: FC<IUlItemLayout> = (

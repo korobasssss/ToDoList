@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from "react"
+import { FC, SetStateAction, useEffect, useState } from "react"
 import { ISelectOptions } from "#shared/interfaces"
 import { fetchCategoriesApi } from "#shared/api"
 import { changeToSelectOptions } from '../utils'
@@ -6,7 +6,7 @@ import { Popup } from "#shared/ui/Popup"
 import { TaskPopupComponent } from '../ui/TaskPopupComponent'
 
 interface ICreateItemPopupContainer {
-    handleIsPopupOpen: (isPopupOpen: boolean) => void
+    handleIsPopupOpen: React.Dispatch<SetStateAction<boolean>>
     isPopupOpen: boolean
 
     name: string

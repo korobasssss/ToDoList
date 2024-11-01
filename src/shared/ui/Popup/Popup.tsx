@@ -1,4 +1,4 @@
-import { FC, ReactNode, useEffect, useState } from "react"
+import { FC, ReactNode, SetStateAction, useEffect, useState } from "react"
 import cx from 'classnames'
 import styles from './style.module.scss'
 import { CloseIcon } from '#shared/assets'
@@ -13,7 +13,7 @@ interface IPopup {
     isOpen: boolean
     handlerSubmit?: () => Promise<boolean>
     buttonSubmitName?: string
-    handlerCancel: (isOpen: boolean) => void
+    handlerCancel: React.Dispatch<SetStateAction<boolean>>
     buttonCancelName: string
     children: ReactNode
     isLoading?: boolean

@@ -1,4 +1,4 @@
-import { FC } from "react"
+import { FC, SetStateAction } from "react"
 import styles from './styles.module.scss'
 import { ISelectOptions } from "#shared/interfaces"
 import { Textarea } from "#shared/ui/Textarea"
@@ -15,11 +15,11 @@ interface ICreateEditItemPopup {
 
     input_category: ISelectOptions | null
     options: ISelectOptions[]
-    handleSetInputCategory: (input_category: ISelectOptions | null) => void
+    handleSetInputCategory: React.Dispatch<SetStateAction<ISelectOptions | null>>
 
-    handleSetInputName: (input_name: string) => void
-    handleSetInputDescription: (input_description: string) => void
-    handleSetErrorName: (errorName: string) => void
+    handleSetInputName: React.Dispatch<SetStateAction<string>>
+    handleSetInputDescription: React.Dispatch<SetStateAction<string>>
+    handleSetErrorName: React.Dispatch<SetStateAction<string>>
 }
 
 export const TaskPopupComponent: FC<ICreateEditItemPopup> = (

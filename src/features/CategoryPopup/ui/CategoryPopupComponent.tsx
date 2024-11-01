@@ -1,4 +1,4 @@
-import { FC } from "react"
+import { FC, SetStateAction } from "react"
 import styles from './styles.module.scss'
 import { Input } from "#shared/ui/Input"
 import { Textarea } from "#shared/ui/Textarea"
@@ -11,9 +11,9 @@ interface ICategoryPopupComponent {
     errorName: string
     errorCommon: string
 
-    handleSetInputName: (input_name: string) => void
-    handleSetInputDescription: (input_description: string) => void
-    handleSetErrorName: (errorName: string) => void
+    handleSetInputName: React.Dispatch<SetStateAction<string>>
+    handleSetInputDescription: React.Dispatch<SetStateAction<string>>
+    handleSetErrorName: React.Dispatch<SetStateAction<string>>
 }
 
 export const CategoryPopupComponent: FC<ICategoryPopupComponent> = (

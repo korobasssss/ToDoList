@@ -1,4 +1,4 @@
-import { FC, ReactNode } from "react"
+import { FC, ReactNode, SetStateAction } from "react"
 import { UlItemLayout } from "#shared/ui/UlItemLayout"
 
 interface IItemComponent {
@@ -10,8 +10,8 @@ interface IItemComponent {
 
     isEditOpenPopup: boolean
     isDeleteOpenPopup: boolean
-    setIsEditOpenPopup: (isEditOpenPopup: boolean) => void
-    setIsDeleteOpenPopup: (isDeleteOpenPopup: boolean) => void
+    setIsEditOpenPopup: React.Dispatch<SetStateAction<boolean>>
+    setIsDeleteOpenPopup: React.Dispatch<SetStateAction<boolean>>
 }
 
 export const ItemComponent: FC<IItemComponent> = (

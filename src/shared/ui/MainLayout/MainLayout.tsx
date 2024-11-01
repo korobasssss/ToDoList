@@ -1,4 +1,4 @@
-import { FC, ReactNode } from "react"
+import { FC, ReactNode, SetStateAction } from "react"
 import { Header } from "../Header"
 import { ScrollWrapper } from "../ScrollWrapper"
 import styles from './styles.module.scss'
@@ -9,7 +9,7 @@ interface IMainLayout {
     title: string
     children: ReactNode
     buttonName: string
-    handleButtonClick: (isOpen: boolean) => void
+    handleButtonClick: React.Dispatch<SetStateAction<boolean>>
 }
 
 export const MainLayout: FC<IMainLayout> = (

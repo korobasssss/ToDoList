@@ -1,4 +1,4 @@
-import { FC, useEffect, useMemo, useState } from "react"
+import { FC, SetStateAction, useEffect, useMemo, useState } from "react"
 import cx from 'classnames'
 import { ISelectOptions } from "#shared/interfaces"
 import { Input} from "../Input"
@@ -12,7 +12,7 @@ interface ISelect {
     value: ISelectOptions | null
     placeholder?: string
     options: ISelectOptions[],
-    setSelected(newValue: ISelectOptions | null) : void
+    setSelected: React.Dispatch<SetStateAction<ISelectOptions | null>>
     error?: string
     isRequired?: boolean
 }

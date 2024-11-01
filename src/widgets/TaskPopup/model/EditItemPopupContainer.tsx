@@ -1,4 +1,4 @@
-import { FC } from "react"
+import { FC, SetStateAction } from "react"
 import { ISelectOptions, ITask } from "#shared/interfaces"
 import { fetchTasksApi } from "#shared/api"
 import { OverlayLoader } from "#shared/ui/OverlayLoader"
@@ -7,7 +7,7 @@ import { TaskPopupContainer } from "#features/TaskPopup"
 interface IEditItemPopupContainer {
     task: ITask
     category: ISelectOptions | null
-    handleIsPopupOpen: (isPopupOpen: boolean) => void
+    handleIsPopupOpen: React.Dispatch<SetStateAction<boolean>>
     isPopupOpen: boolean
 }
 

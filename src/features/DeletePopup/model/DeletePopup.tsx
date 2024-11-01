@@ -1,9 +1,9 @@
 import { DialogPopup } from "#shared/ui/DialogPopup"
 import { Popup } from "#shared/ui/Popup"
-import { FC } from "react"
+import { FC, SetStateAction } from "react"
 
 interface IDeletePopup {
-    handleCancel: (isPopupOpen: boolean) => void
+    handleCancel: React.Dispatch<SetStateAction<boolean>>
     isPopupOpen: boolean
     handleSubmit: () => Promise<boolean>
     name: string
