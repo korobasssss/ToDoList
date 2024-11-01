@@ -5,7 +5,7 @@ import { backendBaseUrl } from "../config";
 export interface ITaskCreate {
     name: string
     description: string | null
-    categoryId: number | null
+    categoryId: string | number | null
 }
 
 export const fetchTasksApi = createApi({

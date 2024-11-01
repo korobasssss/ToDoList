@@ -1,4 +1,4 @@
-import { FC, SetStateAction } from "react"
+import { SetStateAction } from "react"
 import styles from './styles.module.scss'
 import { ISelectOptions } from "#shared/interfaces"
 import { Textarea } from "#shared/ui/Textarea"
@@ -7,22 +7,22 @@ import { Select } from "#shared/ui/Select"
 import { checkValidation } from "#shared/utils"
 import { ErrorText } from "#shared/ui/ErrorText/ErrorText.tsx"
 
-interface ICreateEditItemPopup {
+interface ICreateEditItemPopup<V extends string | number, K extends string> {
     inputName?: string
     inputDescription?: string
     errorName: string
     errorCommon: string
 
-    inputCategory: ISelectOptions | null
-    options: ISelectOptions[]
-    handleSetInputCategory: React.Dispatch<SetStateAction<ISelectOptions | null>>
+    inputCategory: ISelectOptions<V, K> | null
+    options: ISelectOptions<V, K>[]
+    handleSetInputCategory: React.Dispatch<SetStateAction<ISelectOptions<V, K> | null>>
 
     handleSetInputName: React.Dispatch<SetStateAction<string>>
     handleSetInputDescription: React.Dispatch<SetStateAction<string>>
     handleSetErrorName: React.Dispatch<SetStateAction<string>>
 }
 
-export const TaskPopupComponent: FC<ICreateEditItemPopup> = (
+export const TaskPopupComponent = <V extends string | number, K extends string> (
     {
         inputName = '',
         inputCategory = null,
@@ -34,8 +34,8 @@ export const TaskPopupComponent: FC<ICreateEditItemPopup> = (
         handleSetInputCategory,
         handleSetInputDescription,
         handleSetErrorName,
-    }
-) => {
+    } : ICreateEditItemPopup<V, K>
+): JSX.Element => {
     return (
         <div className={styles.SCreatePopup}>
             <div className={styles.SCreateSection}>

@@ -7,7 +7,7 @@ interface IItemComponent {
     description: string | null
     EditPopupComponent: ReactNode
     DeletePopupComponent: ReactNode
-
+    
     setIsEditOpenPopup: React.Dispatch<SetStateAction<boolean>>
     setIsDeleteOpenPopup: React.Dispatch<SetStateAction<boolean>>
 }

@@ -1,4 +1,4 @@
-import { FC, SetStateAction, useEffect, useMemo, useState } from "react"
+import { SetStateAction, useEffect, useMemo, useState } from "react"
 import cx from 'classnames'
 import { ISelectOptions } from "#shared/interfaces"
 import { Input} from "../Input"
@@ -7,17 +7,17 @@ import { ScrollWrapper} from "../ScrollWrapper"
 import styles from './styles.module.scss'
 import {SelectArrowIcon} from '#shared/assets'
 
-interface ISelect {
+interface ISelect<V extends string | number, K extends string> {
     label?: string
-    value: ISelectOptions | null
+    value: ISelectOptions<V, K> | null
     placeholder?: string
-    options: ISelectOptions[],
-    setSelected: React.Dispatch<SetStateAction<ISelectOptions | null>>
+    options: ISelectOptions<V, K>[],
+    setSelected: React.Dispatch<SetStateAction<ISelectOptions<V, K> | null>>
     error?: string
     isRequired?: boolean
 }
 
-export const Select: FC<ISelect> = (
+export const Select = <V extends string | number, K extends string> (
     {
         label,
         error,
@@ -26,12 +26,12 @@ export const Select: FC<ISelect> = (
         options,
         setSelected,
         value
-    }
-) => {
+    } : ISelect<V, K>
+): JSX.Element => {
     const [isFocused, setIsFocused] = useState(false);
     const [inputValue, setInputValue] = useState('');
 
-    const filteredOptions: ISelectOptions[] | null = useMemo(() => {
+    const filteredOptions: ISelectOptions<V, K>[] | null = useMemo(() => {
         return options.filter(option =>
             option.label.toLowerCase().includes(inputValue.toLowerCase())
         );
@@ -46,7 +46,7 @@ export const Select: FC<ISelect> = (
         setSelected(null)
     }
 
-    const handleSetSelected = (option: ISelectOptions) => {
+    const handleSetSelected = (option: ISelectOptions<V, K>) => {
         setSelected(option)
         setInputValue(option.label)
         setIsFocused(false)

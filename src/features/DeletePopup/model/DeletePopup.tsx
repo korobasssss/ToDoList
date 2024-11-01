@@ -6,23 +6,23 @@ interface IDeletePopup {
     handleCancel: React.Dispatch<SetStateAction<boolean>>
     isPopupOpen: boolean
     handleSubmit: () => Promise<boolean>
-    name: string
     popupTitle: string
     buttonSubmitTitle? : string
     buttonCancelTitle : string
-    isLoading: boolean
+    isLoading: boolean,
+    message: string
 }
 
 export const DeletePopup: FC<IDeletePopup> = (
     {
         handleCancel,
         isPopupOpen,
-        name,
         handleSubmit,
         popupTitle,
         buttonSubmitTitle,
         buttonCancelTitle,
-        isLoading
+        isLoading,
+        message
     }
 ) => {
     return (
@@ -37,7 +37,7 @@ export const DeletePopup: FC<IDeletePopup> = (
             size='s'
         >
             <DialogPopup
-                message={`Вы уверены, что хотите удалить задачу “${name}”?`}
+                message={message}
             />
         </Popup>
     )

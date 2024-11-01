@@ -38,11 +38,11 @@ export const DeleteItemPopupContainer: FC<IDeleteItemPopupContainer> = (
             handleCancel={handleIsPopupOpen}
             isPopupOpen={isPopupOpen}
             handleSubmit={handleSubmit}
-            name={task.name}
             popupTitle={"Удаление категории"}
             buttonSubmitTitle={'Да'}
             buttonCancelTitle={'Нет'}
             isLoading={isLoading}
+            message={`Вы уверены, что хотите удалить задачу “${task.name}”?`}
         />
     )
 }

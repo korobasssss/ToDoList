@@ -16,9 +16,11 @@ export const TaskContainer: FC<ITaskContainer> = (
 ) => {
     const {data: categories} = fetchCategoriesApi.useFetchGetCategoriesQuery()
 
-    const category: ISelectOptions | null = useMemo(() => {
-        return task.categoryId && categories ? findCategory(task.categoryId, categories) : null
-    }, [task.categoryId, categories])
+    const category: ISelectOptions<number, string> | null = useMemo(() => {
+        return categories && (typeof task.categoryId === 'number' || !isNaN(Number(task.categoryId))) 
+            ? findCategory<number, string>(Number(task.categoryId), categories) 
+            : null;
+    }, [task.categoryId, categories]);
 
     const [isEditOpenPopup, setIsEditOpenPopup] = useState(false)
     const [isDeleteOpenPopup, setIsDeleteOpenPopup] = useState(false)

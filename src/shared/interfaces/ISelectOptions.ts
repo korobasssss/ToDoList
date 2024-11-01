@@ -1,4 +1,4 @@
-export interface ISelectOptions {
-    value: number
-    label: string
+export interface ISelectOptions<V extends string | number, K extends string> {
+    value: V
+    label: K
 }

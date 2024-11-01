@@ -1,4 +1,4 @@
-import { FC, SetStateAction } from "react"
+import { SetStateAction } from "react"
 import { ISelectOptions } from "#shared/interfaces"
 import { fetchTasksApi } from "#shared/api"
 import { OverlayLoader } from "#shared/ui/OverlayLoader"
@@ -9,15 +9,15 @@ interface ICreateItemPopupContainer {
     isPopupOpen: boolean
 }
 
-export const CreateItemPopupContainer: FC<ICreateItemPopupContainer> = (
+export const CreateItemPopupContainer = <V extends string | number, K extends string> (
     {
         handleIsPopupOpen,
         isPopupOpen,
-    }
-) => {
+    }: ICreateItemPopupContainer
+): JSX.Element => {
     const [fetchPostItem, {isLoading}] = fetchTasksApi.useFetchPostTaskMutation()
 
-    const handleSubmit = async (inputName: string, inputCategory: ISelectOptions | null, inputDescription: string) => {
+    const handleSubmit = async (inputName: string, inputCategory: ISelectOptions<V, K> | null, inputDescription: string) => {
         try {
             const res: unknown = await fetchPostItem({
                 name: inputName,

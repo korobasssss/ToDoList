@@ -1,27 +1,27 @@
-import { FC, SetStateAction } from "react"
+import { SetStateAction } from "react"
 import { ISelectOptions, ITask } from "#shared/interfaces"
 import { fetchTasksApi } from "#shared/api"
 import { OverlayLoader } from "#shared/ui/OverlayLoader"
 import { TaskPopupContainer } from "#features/TaskPopup"
 
-interface IEditItemPopupContainer {
+interface IEditItemPopupContainer<V extends string | number, K extends string> {
     task: ITask
-    category: ISelectOptions | null
+    category: ISelectOptions<V, K> | null
     handleIsPopupOpen: React.Dispatch<SetStateAction<boolean>>
     isPopupOpen: boolean
 }
 
-export const EditItemPopupContainer: FC<IEditItemPopupContainer> = (
+export const EditItemPopupContainer = <V extends string | number, K extends string> (
     {
         task,
         category,
         handleIsPopupOpen,
         isPopupOpen
-    }
-) => {
+    }: IEditItemPopupContainer<V, K>
+): JSX.Element => {
     const [fetchUpdateItem, {isLoading}] = fetchTasksApi.useFetchUpdateTaskMutation()
 
-    const handleSubmit = async (inputName: string, inputCategory: ISelectOptions | null, inputDescription: string) => {
+    const handleSubmit = async (inputName: string, inputCategory: ISelectOptions<V, K> | null, inputDescription: string) => {
         try {
             const res: unknown = await fetchUpdateItem({
                 id: task.id,

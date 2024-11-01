@@ -1,25 +1,25 @@
-import { FC, SetStateAction, useEffect, useState } from "react"
+import { SetStateAction, useEffect, useState } from "react"
 import { ISelectOptions } from "#shared/interfaces"
 import { fetchCategoriesApi } from "#shared/api"
 import { changeToSelectOptions } from '../utils'
 import { Popup } from "#shared/ui/Popup"
 import { TaskPopupComponent } from '../ui/TaskPopupComponent'
 
-interface ICreateItemPopupContainer {
+interface ICreateItemPopupContainer<V extends string | number, K extends string> {
     handleIsPopupOpen: React.Dispatch<SetStateAction<boolean>>
     isPopupOpen: boolean
 
     name: string
-    category: ISelectOptions | null
+    category: ISelectOptions<V, K> | null
     description: string
-    handleSubmitForm: (name: string, category: ISelectOptions | null, description: string) => Promise<boolean>
+    handleSubmitForm: (name: string, category: ISelectOptions<V, K> | null, description: string) => Promise<boolean>
 
     popupTitle: string
     buttonSubmitTitle? : string
     buttonCancelTitle : string
 }
 
-export const TaskPopupContainer: FC<ICreateItemPopupContainer> = (
+export const TaskPopupContainer = <V extends string | number, K extends string> (
     {
         handleIsPopupOpen,
         isPopupOpen,
@@ -30,14 +30,14 @@ export const TaskPopupContainer: FC<ICreateItemPopupContainer> = (
         popupTitle,
         buttonSubmitTitle,
         buttonCancelTitle,
-    }
-) => {
+    }: ICreateItemPopupContainer<V, K>
+): JSX.Element => {
     const [inputName, setInputName] = useState<string>('')
-    const [inputCategory, setInputCategory] = useState<ISelectOptions | null>(null)
+    const [inputCategory, setInputCategory] = useState<ISelectOptions<V, K> | null>(null)
     const [inputDescription, setInputDescription] = useState<string>('')
     const [errorName, setErrorName] = useState('')
     const [errorCommon, setErrorCommon] = useState('')
-    const [selectOptions, setSelectOptions] = useState<ISelectOptions[]>([])
+    const [selectOptions, setSelectOptions] = useState<ISelectOptions<V, K>[]>([])
     const {data: options} = fetchCategoriesApi.useFetchGetCategoriesQuery()
 
     useEffect(() => {
@@ -47,7 +47,7 @@ export const TaskPopupContainer: FC<ICreateItemPopupContainer> = (
     }, [name, description, category])
 
     useEffect(() => {
-        if (options) setSelectOptions(changeToSelectOptions(options))
+        if (options) setSelectOptions(changeToSelectOptions<V, K>(options))
     }, [options])
 
     const handleSubmit = async () => {
