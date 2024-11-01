@@ -55,6 +55,11 @@ export const TaskPopupContainer: FC<ICreateItemPopupContainer> = (
             setErrorName('Поле должно быть обязательным')
         } else {
             if (await handleSubmitForm(inputName, inputCategory, inputDescription)) {
+                setInputName('')
+                setInputCategory(null)
+                setInputDescription('')
+                setErrorName('')
+                setErrorCommon('')
                 return true
             } else {
                 setErrorCommon('Возникла ошибка, попробуйте позже')

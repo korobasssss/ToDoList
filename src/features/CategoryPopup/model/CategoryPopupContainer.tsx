@@ -27,8 +27,7 @@ export const CategoryPopupContainer: FC<ICreateItemPopupContainer> = (
         buttonCancelTitle,
     }
 ) => {
-    const [inputName, setInputName
-    ] = useState<string>('')
+    const [inputName, setInputName] = useState<string>('')
     const [inputDescription , setInputDescription] = useState<string>('')
     const [errorName, setErrorName] = useState('')
     const [errorCommon, setErrorCommon] = useState('')
@@ -43,6 +42,10 @@ export const CategoryPopupContainer: FC<ICreateItemPopupContainer> = (
             setErrorName('Поле должно быть обязательным')
         } else {
             if (await handleSubmitForm(inputName, inputDescription )) {
+                setInputName('')
+                setInputDescription('')
+                setErrorName('')
+                setErrorCommon('')
                 return true
             } else {
                 setErrorCommon('Возникла ошибка, попробуйте позже')
