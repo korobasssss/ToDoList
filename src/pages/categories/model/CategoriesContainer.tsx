@@ -19,12 +19,10 @@ export const CategoriesContainer = () => {
                 <CategoriesComponent
                     categories={categories}
                 />
-                {isPopupOpen && (
-                    <CreateCategoryPopupContainer
+                <CreateCategoryPopupContainer
                         isPopupOpen={isPopupOpen}
                         handleIsPopupOpen={setIsPopupOpen}
-                    />
-                )}
+                />
             </MainLayout>
         </>
     )

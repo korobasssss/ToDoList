@@ -1,29 +1,3 @@
-@mixin animation-opacity-exit($duration: 300ms) {
-  animation: opacity-exit $duration;
-
-  @keyframes opacity-exit {
-    0% {
-      opacity: 1;
-    }
-    100% {
-      opacity: 0;
-    }
-  }
-}
-  
-@mixin animation-opacity-enter($duration: 300ms) {
-  animation: opacity-enter $duration;
-
-  @keyframes opacity-enter {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
-}
-
 @mixin animation-loader($duration: 1s) {
   animation: opacity-loader $duration;
   animation-iteration-count: infinite;

@@ -10,12 +10,16 @@
     width: 100vw;
     height: 100vh;
 
+    transition: opacity 0.4s, visibility 0.4s;
+
     &_closed {
-        @include mixins.animation-opacity-exit;
-      }
+        opacity: 0;
+        visibility: hidden;
+    }
     
     &_opened {
-        @include mixins.animation-opacity-enter;
+        opacity: 1;
+        visibility: visible;
     }
 }
 

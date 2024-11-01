@@ -8,8 +8,6 @@ interface IItemComponent {
     EditPopupComponent: ReactNode
     DeletePopupComponent: ReactNode
 
-    isEditOpenPopup: boolean
-    isDeleteOpenPopup: boolean
     setIsEditOpenPopup: React.Dispatch<SetStateAction<boolean>>
     setIsDeleteOpenPopup: React.Dispatch<SetStateAction<boolean>>
 }
@@ -22,8 +20,6 @@ export const ItemComponent: FC<IItemComponent> = (
         EditPopupComponent,
         DeletePopupComponent,
 
-        isEditOpenPopup,
-        isDeleteOpenPopup,
         setIsEditOpenPopup,
         setIsDeleteOpenPopup
     }
@@ -38,12 +34,8 @@ export const ItemComponent: FC<IItemComponent> = (
                 handleSetIsDeleteOpenPopup={setIsDeleteOpenPopup}
                 handleSetIsEditOpenPopup={setIsEditOpenPopup}
             />
-            {isEditOpenPopup && (
-                EditPopupComponent
-            )}
-            {isDeleteOpenPopup && (
-                DeletePopupComponent
-            )}
+            {EditPopupComponent}
+            {DeletePopupComponent}
         </>
     )
 }

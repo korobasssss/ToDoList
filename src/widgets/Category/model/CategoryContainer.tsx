@@ -34,8 +34,6 @@ export const CategoryContainer: FC<IOneTaskComponent> = (
                     isPopupOpen={isDeleteOpenPopup}
                 />
             }
-            isEditOpenPopup={isEditOpenPopup}
-            isDeleteOpenPopup={isDeleteOpenPopup}
             setIsEditOpenPopup={setIsEditOpenPopup}
             setIsDeleteOpenPopup={setIsDeleteOpenPopup}
         />

@@ -1,4 +1,4 @@
-import { FC, ReactNode, SetStateAction, useEffect, useState } from "react"
+import { FC, ReactNode, SetStateAction } from "react"
 import cx from 'classnames'
 import styles from './style.module.scss'
 import { CloseIcon } from '#shared/assets'
@@ -33,20 +33,11 @@ export const Popup: FC<IPopup> = (
         size
     }
 ) => {
-    const [isOpenCopy, setIsOpenCopy] = useState(isOpen)
-
-    useEffect(() => {
-        if (!isOpenCopy) {
-            setTimeout(() => {
-                handlerCancel(false)
-            }, 200)
-        }
-    }, [isOpenCopy]);
 
     const submit = async () => {
         if (handlerSubmit) {
             if ( await handlerSubmit()) {
-                setIsOpenCopy(false)
+                handlerCancel(false)
             }
         }
     }
@@ -54,8 +45,8 @@ export const Popup: FC<IPopup> = (
     return (
         <Portal>
             <OverlayPopup
-                handlerCLose={() => setIsOpenCopy(false)}
-                isOpen={isOpenCopy}
+                handlerCLose={() => handlerCancel(false)}
+                isOpen={isOpen}
             >
                 <section
                     className={cx(
@@ -70,7 +61,7 @@ export const Popup: FC<IPopup> = (
                         <ButtonIcon 
                             icon={CloseIcon} 
                             alt='close'
-                            onClick={() => setIsOpenCopy(false)}
+                            onClick={() => handlerCancel(false)}
                         />
                     </header>
                     {children}
@@ -85,7 +76,7 @@ export const Popup: FC<IPopup> = (
                         )}
                         <Button
                             theme='secondary'
-                            onClick={() => setIsOpenCopy(false)}
+                            onClick={() => handlerCancel(false)}
                         >
                             {buttonCancelName}
                         </Button>

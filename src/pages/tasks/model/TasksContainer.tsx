@@ -19,12 +19,10 @@ export const TasksContainer = () => {
                 <TasksComponent
                     tasks={tasks}
                 />
-                {isPopupOpen && (
-                    <CreateItemPopupContainer
+                <CreateItemPopupContainer
                         isPopupOpen={isPopupOpen}
                         handleIsPopupOpen={setIsPopupOpen}
-                    />
-                )}
+                />
             </MainLayout>
         </>
     )

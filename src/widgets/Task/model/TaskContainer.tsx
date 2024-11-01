@@ -43,8 +43,6 @@ export const TaskContainer: FC<ITaskContainer> = (
                     isPopupOpen={isDeleteOpenPopup}
                 />
             }
-            isEditOpenPopup={isEditOpenPopup}
-            isDeleteOpenPopup={isDeleteOpenPopup}
             setIsEditOpenPopup={setIsEditOpenPopup}
             setIsDeleteOpenPopup={setIsDeleteOpenPopup}
         />
