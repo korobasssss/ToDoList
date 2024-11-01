@@ -1,0 +1,65 @@
+@use '#shared/styles/mixins' as mixins;
+@use '#shared/styles/variables' as variables;
+
+.SPopup {
+    transition: opacity 0.4s, visibility 0.4s, transform 0.4s;
+    position: fixed;
+    padding: 25px;
+
+    background-color: variables.$BGC_POPUP;
+    border-radius: variables.$RADIUS_S;
+    box-shadow: variables.$SHADOW_POPUP;
+
+    display: grid;
+    row-gap: 25px;
+
+    &_size_s {
+        width: variables.$POPUP_WIDTH_S;
+    }
+
+    &_size_m {
+        width: variables.$POPUP_WIDTH_M;
+    }
+
+    .SPHeader {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+
+        .SPTitle {
+            color: variables.$TEXT_TITLE_POPUP;
+
+            @include mixins.font-roboto-xl;
+        }
+
+        @media screen and (max-width: variables.$small) {
+            .SPTitle {
+                @include mixins.font-roboto-l-bold;
+            }
+        }
+        @media screen and (max-width: variables.$smallest) {
+            .SPTitle {
+                @include mixins.font-roboto-m-bold;
+            }
+        }
+    }
+
+    .SPFooter {
+        display: flex;
+        gap: 25px;
+        justify-content: end;
+    }
+
+    @media screen and (max-width: variables.$small) {
+        .SPFooter {
+            flex-direction: column;
+        }
+    }
+}
+
+@media screen and (max-width: variables.$xx-medium) {
+    .SPopup {
+        width: 85%;
+    }
+}

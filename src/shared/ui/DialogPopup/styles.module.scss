@@ -1,0 +1,6 @@
+@use '#shared/styles/mixins' as mixins;
+@use '#shared/styles/variables' as variables;
+
+.SDeleteMessage {
+    @include mixins.font-roboto-s;
+}

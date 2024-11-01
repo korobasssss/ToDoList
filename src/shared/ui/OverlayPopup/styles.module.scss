@@ -1,0 +1,34 @@
+@use '#shared/styles/mixins' as mixins;
+@use '#shared/styles/variables' as variables;
+
+.SOverlayWrapper {
+    position: absolute;
+    top: 0;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    width: 100vw;
+    height: 100vh;
+
+    transition: opacity 0.4s, visibility 0.4s;
+
+    &_closed {
+        opacity: 0;
+        visibility: hidden;
+    }
+    
+    &_opened {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+.SOverlay {
+    cursor: pointer;
+
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+
+    background-color: variables.$BGC_OVERLAY_POPUP;
+}

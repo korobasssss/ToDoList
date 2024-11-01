@@ -1,0 +1,11 @@
+@use '#shared/styles/mixins' as mixins;
+@use '#shared/styles/variables' as variables;
+
+.SOLoader {
+    position: absolute;
+}
+
+.SOverflow {
+    background-color: variables.$BGC_LOADER_OVERFLOW;
+    cursor: auto;
+}

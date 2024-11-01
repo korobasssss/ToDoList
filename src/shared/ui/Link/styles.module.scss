@@ -1,0 +1,17 @@
+@use '#shared/styles/mixins' as mixins;
+@use '#shared/styles/variables' as variables;
+
+.SLink {
+    color: variables.$TEXT_LINK;
+    text-decoration: underline;
+
+    @include mixins.font-roboto-m;
+
+    &:hover {
+        color: variables.$TEXT_HOVER_LINK;
+    }
+
+    &_selected {
+        color: variables.$TEXT_SELECTED_LINK;
+    }
+}

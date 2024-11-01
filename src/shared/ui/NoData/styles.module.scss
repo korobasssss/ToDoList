@@ -1,0 +1,10 @@
+@use '#shared/styles/mixins' as mixins;
+@use '#shared/styles/variables' as variables;
+
+.SMessage {
+    margin: 10px 0;
+    text-align: center;
+    color: variables.$TEXT_DESCRIPTION;
+
+    @include mixins.font-roboto-s;
+}
