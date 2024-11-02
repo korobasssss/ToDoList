@@ -23,6 +23,21 @@ export default tseslint.config(
         'warn',
         { allowConstantExport: true },
       ],
-    }
+    },
+    'no-restricted-imports': [
+            "error",
+            {
+              patterns: [
+                {
+                  group: [
+                    "@/features/[a-zA-Z]*/[a-zA-Z]*",
+                    "@/widgets/[a-zA-Z]*/[a-zA-Z]*",
+                  
+                ],
+                  message: "You cannot export files which isn't in index.ts"
+                },
+              ]
+            }
+    ]
   },
 )
