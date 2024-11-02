@@ -1,7 +1,7 @@
 import { FC, SetStateAction } from "react"
-import { ICategory } from "#shared/interfaces"
-import { fetchCategoriesApi } from "#shared/api"
-import { DeletePopup } from "#features/DeletePopup"
+import { ICategory } from "@/shared/interfaces"
+import { fetchCategoriesApi } from "@/shared/api"
+import { DeletePopup } from "@/features/DeletePopup"
 
 interface IDeleteCategoryPopupContainer {
     category: ICategory | null

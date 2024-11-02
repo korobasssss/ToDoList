@@ -1,6 +1,6 @@
 import { FC, SetStateAction } from "react"
 import styles from './styles.module.scss'
-import {CategoryIcon, EditIcon, DeleteIcon} from '#shared/assets'
+import {CategoryIcon, EditIcon, DeleteIcon} from '@/shared/assets'
 import { ButtonIcon } from '../ButtonIcon'
 import { Icon } from "../Icon"
 

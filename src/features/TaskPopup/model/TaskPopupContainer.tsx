@@ -1,10 +1,10 @@
 import { SetStateAction, useEffect, useState } from "react"
-import { ISelectOptions } from "#shared/interfaces"
-import { fetchCategoriesApi } from "#shared/api"
+import { ISelectOptions } from "@/shared/interfaces"
+import { fetchCategoriesApi } from "@/shared/api"
 import { changeToSelectOptions } from '../utils'
-import { Popup } from "#shared/ui/Popup"
+import { Popup } from "@/shared/ui/Popup"
 import { TaskPopupComponent } from '../ui/TaskPopupComponent'
-import { ErrorMessages } from "#shared/constants"
+import { ErrorMessages } from "@/shared/constants"
 
 interface ICreateItemPopupContainer<V extends string | number, K extends string> {
     handleIsPopupOpen: React.Dispatch<SetStateAction<boolean>>

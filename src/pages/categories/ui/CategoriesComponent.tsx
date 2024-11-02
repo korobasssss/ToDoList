@@ -1,9 +1,9 @@
 import { FC, useEffect, useState } from "react"
-import { ICategory } from "#shared/interfaces"
-import { NoData } from "#shared/ui/NoData"
-import { CategoryContainer } from "#widgets/Category"
-import { DeleteCategoryPopupContainer, EditCategoryPopupContainer } from "#widgets/CategoryPopup"
-import { ErrorMessages } from "#shared/constants"
+import { ICategory } from "@/shared/interfaces"
+import { NoData } from "@/shared/ui/NoData"
+import { CategoryContainer } from "@/widgets/Category"
+import { DeleteCategoryPopupContainer, EditCategoryPopupContainer } from "@/widgets/CategoryPopup"
+import { ErrorMessages } from "@/shared/constants"
 
 interface ICategoriesComponent {
     categories?: ICategory[]

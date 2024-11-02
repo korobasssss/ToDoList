@@ -1,5 +1,5 @@
 import { FC, SetStateAction } from "react"
-import { UlItemLayout } from "#shared/ui/UlItemLayout"
+import { UlItemLayout } from "@/shared/ui/UlItemLayout"
 
 interface IItemComponent {
     index: number

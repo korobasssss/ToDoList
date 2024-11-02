@@ -1,6 +1,6 @@
 import { ButtonHTMLAttributes, FC, ReactNode } from 'react'
 import cx from 'classnames';
-import { IClassName } from '#shared/interfaces'
+import { IClassName } from '@/shared/interfaces'
 import styles from './styles.module.scss'
 
 interface IButton

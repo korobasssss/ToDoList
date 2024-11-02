@@ -1,8 +1,8 @@
 import { useState } from "react"
-import { MainLayout } from "#shared/ui/MainLayout"
+import { MainLayout } from "@/shared/ui/MainLayout"
 import { CategoriesComponent } from "../ui/CategoriesComponent"
-import { fetchCategoriesApi } from "#shared/api"
-import { CreateCategoryPopupContainer } from "#widgets/CategoryPopup"
+import { fetchCategoriesApi } from "@/shared/api"
+import { CreateCategoryPopupContainer } from "@/widgets/CategoryPopup"
 
 export const CategoriesContainer = () => {
     const [isPopupOpen, setIsPopupOpen] = useState(false)

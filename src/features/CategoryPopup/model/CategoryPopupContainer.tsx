@@ -1,7 +1,7 @@
 import { FC, SetStateAction, useEffect, useState } from "react"
-import { Popup } from "#shared/ui/Popup"
+import { Popup } from "@/shared/ui/Popup"
 import { CategoryPopupComponent } from "../ui/CategoryPopupComponent"
-import { ErrorMessages } from "#shared/constants"
+import { ErrorMessages } from "@/shared/constants"
 
 interface ICreateItemPopupContainer {
     handleIsPopupOpen: React.Dispatch<SetStateAction<boolean>>

@@ -1,7 +1,7 @@
 import { FC, SetStateAction } from "react"
-import { CategoryPopupContainer } from "#features/CategoryPopup"
-import { fetchCategoriesApi } from "#shared/api"
-import { OverlayLoader } from "#shared/ui/OverlayLoader"
+import { CategoryPopupContainer } from "@/features/CategoryPopup"
+import { fetchCategoriesApi } from "@/shared/api"
+import { OverlayLoader } from "@/shared/ui/OverlayLoader"
 
 interface ICreateCategoryPopupContainer {
     handleIsPopupOpen: React.Dispatch<SetStateAction<boolean>>

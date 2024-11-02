@@ -1,8 +1,8 @@
 import { createBrowserRouter, Navigate } from "react-router-dom";
-import { CategoriesContainer } from "#pages/categories";
-import { ErrorComponent } from "#pages/error";
-import { TasksContainer } from "#pages/tasks";
-import { EPaths } from "#shared/enums";
+import { CategoriesContainer } from "@/pages/categories";
+import { ErrorComponent } from "@/pages/error";
+import { TasksContainer } from "@/pages/tasks";
+import { EPaths } from "@/shared/enums";
 
 export const routes = createBrowserRouter([
     {

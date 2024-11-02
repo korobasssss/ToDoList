@@ -1,6 +1,6 @@
 import { FC, SetStateAction } from "react"
-import { ICategory } from "#shared/interfaces"
-import { ItemComponent } from "#features/Item"
+import { ICategory } from "@/shared/interfaces"
+import { ItemComponent } from "@/features/Item"
 
 interface IOneTaskComponent {
     category: ICategory

@@ -1,8 +1,8 @@
 import { useState } from "react"
-import { MainLayout } from "#shared/ui/MainLayout"
+import { MainLayout } from "@/shared/ui/MainLayout"
 import { TasksComponent } from "../ui/TasksComponent"
-import { fetchTasksApi } from "#shared/api"
-import { CreateItemPopupContainer } from "#widgets/TaskPopup"
+import { fetchTasksApi } from "@/shared/api"
+import { CreateItemPopupContainer } from "@/widgets/TaskPopup"
 
 export const TasksContainer = () => {
     const [isPopupOpen, setIsPopupOpen] = useState(false)

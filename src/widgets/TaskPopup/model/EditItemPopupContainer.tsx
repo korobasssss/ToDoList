@@ -1,8 +1,8 @@
 import { SetStateAction } from "react"
-import { ISelectOptions, ITask } from "#shared/interfaces"
-import { fetchTasksApi } from "#shared/api"
-import { OverlayLoader } from "#shared/ui/OverlayLoader"
-import { TaskPopupContainer } from "#features/TaskPopup"
+import { ISelectOptions, ITask } from "@/shared/interfaces"
+import { fetchTasksApi } from "@/shared/api"
+import { OverlayLoader } from "@/shared/ui/OverlayLoader"
+import { TaskPopupContainer } from "@/features/TaskPopup"
 
 interface IEditItemPopupContainer<V extends string | number, K extends string> {
     task: ITask | null

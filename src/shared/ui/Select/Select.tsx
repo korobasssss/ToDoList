@@ -1,11 +1,11 @@
 import { SetStateAction, useEffect, useMemo, useState } from "react"
 import cx from 'classnames'
-import { ISelectOptions } from "#shared/interfaces"
+import { ISelectOptions } from "@/shared/interfaces"
 import { Input} from "../Input"
 import { NoData} from "../NoData"
 import { ScrollWrapper} from "../ScrollWrapper"
 import styles from './styles.module.scss'
-import {SelectArrowIcon} from '#shared/assets'
+import {SelectArrowIcon} from '@/shared/assets'
 
 interface ISelect<V extends string | number, K extends string> {
     label?: string

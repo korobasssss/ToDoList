@@ -1,7 +1,7 @@
 import { FC } from "react"
 import cx from 'classnames'
 import styles from './styles.module.scss'
-import { IClassName } from "#shared/interfaces"
+import { IClassName } from "@/shared/interfaces"
 
 interface IErrorText
 extends IClassName {

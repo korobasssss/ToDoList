@@ -1,6 +1,6 @@
 import { SetStateAction } from "react"
-import { ITask, ISelectOptions } from "#shared/interfaces"
-import { ItemComponent } from "#features/Item"
+import { ITask, ISelectOptions } from "@/shared/interfaces"
+import { ItemComponent } from "@/features/Item"
 
 interface ITaskContainer<V extends string | number, K extends string> {
     index: number

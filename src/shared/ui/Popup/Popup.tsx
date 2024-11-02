@@ -1,7 +1,7 @@
 import { FC, ReactNode } from "react"
 import cx from 'classnames'
 import styles from './style.module.scss'
-import { CloseIcon } from '#shared/assets'
+import { CloseIcon } from '@/shared/assets'
 import { ButtonIcon } from "../ButtonIcon"
 import { Button } from "../Button"
 import { OverlayPopup } from "../OverlayPopup"

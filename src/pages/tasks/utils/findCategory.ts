@@ -1,4 +1,4 @@
-import { ISelectOptions, ICategory } from "#shared/interfaces";
+import { ISelectOptions, ICategory } from "@/shared/interfaces";
 
 export const findCategory = <V extends string | number, K extends string>( 
     categoryId: V, categories: ICategory[]

@@ -1,7 +1,7 @@
 import { FC, ReactNode } from "react"
 import cx from 'classnames'
 import styles from './styles.module.scss'
-import { IClassName } from "#shared/interfaces"
+import { IClassName } from "@/shared/interfaces"
 import { ErrorText } from "../ErrorText"
 
 interface ILabelWrapper

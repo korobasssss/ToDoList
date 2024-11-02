@@ -1,11 +1,11 @@
 import { SetStateAction } from "react"
 import styles from './styles.module.scss'
-import { ISelectOptions } from "#shared/interfaces"
-import { Textarea } from "#shared/ui/Textarea"
-import { Input } from "#shared/ui/Input"
-import { Select } from "#shared/ui/Select"
-import { checkValidation } from "#shared/utils"
-import { ErrorText } from "#shared/ui/ErrorText"
+import { ISelectOptions } from "@/shared/interfaces"
+import { Textarea } from "@/shared/ui/Textarea"
+import { Input } from "@/shared/ui/Input"
+import { Select } from "@/shared/ui/Select"
+import { checkValidation } from "@/shared/utils"
+import { ErrorText } from "@/shared/ui/ErrorText"
 
 interface ICreateEditItemPopup<V extends string | number, K extends string> {
     inputName?: string

@@ -1,5 +1,5 @@
-@use '#shared/styles/mixins' as mixins;
-@use '#shared/styles/variables' as variables;
+@use '@/shared/styles/mixins' as mixins;
+@use '@/shared/styles/variables' as variables;
 
 .SElementWrapper {
     transition: all 0.25s ease-in-out;

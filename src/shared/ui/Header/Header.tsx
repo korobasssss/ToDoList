@@ -2,7 +2,7 @@ import { FC } from 'react'
 import styles from './styles.module.scss'
 import { Button } from '../Button'
 import { Navigation } from '../Navigation'
-import { PATHS } from '#shared/constants'
+import { PATHS } from '@/shared/constants'
 
 interface IHeader {
     title: string,

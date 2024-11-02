@@ -1,11 +1,11 @@
 import { FC, useEffect, useState } from "react"
-import { ITask } from "#shared/interfaces"
-import { NoData } from "#shared/ui/NoData"
-import { TaskContainer } from "#widgets/Task"
-import { fetchCategoriesApi } from "#shared/api"
-import { DeleteItemPopupContainer, EditItemPopupContainer } from "#widgets/TaskPopup"
+import { ITask } from "@/shared/interfaces"
+import { NoData } from "@/shared/ui/NoData"
+import { TaskContainer } from "@/widgets/Task"
+import { fetchCategoriesApi } from "@/shared/api"
+import { DeleteItemPopupContainer, EditItemPopupContainer } from "@/widgets/TaskPopup"
 import { FCategory } from "../utils"
-import { ErrorMessages } from "#shared/constants"
+import { ErrorMessages } from "@/shared/constants"
 
 interface ITaskComponent {
     tasks?: ITask[]

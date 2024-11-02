@@ -1,7 +1,7 @@
 import { FC, SetStateAction } from "react"
-import { ITask } from "#shared/interfaces"
-import { fetchTasksApi } from "#shared/api"
-import { DeletePopup } from "#features/DeletePopup"
+import { ITask } from "@/shared/interfaces"
+import { fetchTasksApi } from "@/shared/api"
+import { DeletePopup } from "@/features/DeletePopup"
 
 interface IDeleteItemPopupContainer {
     task: ITask | null
