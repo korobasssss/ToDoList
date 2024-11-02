@@ -16,30 +16,23 @@ export const CategoriesComponent: FC<ICategoriesComponent> = (
 ) => {
     const [isEditOpenPopup, setIsEditOpenPopup] = useState(false)
     const [isDeleteOpenPopup, setIsDeleteOpenPopup] = useState(false)
-    const [currIdex, setCurrIndex] = useState(-1)
+    const [currCategory, setCurrCategory] = useState<ICategory | null>(null)
 
     useEffect(() => {
-        if (!isEditOpenPopup) {
-            setCurrIndex(-1)
+        if (!isEditOpenPopup && !isDeleteOpenPopup) {
+            setCurrCategory(null)
         }
-    }, [isEditOpenPopup])
-
-    useEffect(() => {
-        if (!isDeleteOpenPopup) {
-            setCurrIndex(-1)
-        }
-    }, [isDeleteOpenPopup])
+    }, [isEditOpenPopup, isDeleteOpenPopup])
 
     return (
         <>
             {categories && categories.length > 0 ? (
-                categories?.map((category, index) => {
+                categories?.map((category) => {
                     return (
                         <CategoryContainer
-                            index={index}
                             key={category.id}
                             category={category}
-                            setCurrIndex={setCurrIndex}
+                            setCurrCategory={setCurrCategory}
                             setIsDeleteOpenPopup={setIsDeleteOpenPopup}
                             setIsEditOpenPopup={setIsEditOpenPopup}
                     />
@@ -51,12 +44,12 @@ export const CategoriesComponent: FC<ICategoriesComponent> = (
                 />
             }
             <EditCategoryPopupContainer
-                category={currIdex === -1 || !categories || categories.length === 0 ? null : categories[currIdex]}
+                category={currCategory ?? null}
                 handleIsPopupOpen={setIsEditOpenPopup}
                 isPopupOpen={isEditOpenPopup}
             />
             <DeleteCategoryPopupContainer
-                category={currIdex === -1 || !categories || categories.length === 0 ? null : categories[currIdex]}
+                category={currCategory ?? null}
                 handleIsPopupOpen={setIsDeleteOpenPopup}
                 isPopupOpen={isDeleteOpenPopup}
             />

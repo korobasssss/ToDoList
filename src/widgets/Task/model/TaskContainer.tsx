@@ -1,35 +1,46 @@
 import { SetStateAction } from "react"
 import { ITask, ISelectOptions } from "@/shared/interfaces"
-import { ItemComponent } from "@/features/Item"
+import { ItemComponent } from "@/entity/Item"
 
 interface ITaskContainer<V extends string | number, K extends string> {
-    index: number
     task: ITask
     category: ISelectOptions<V, K> | null
     setIsEditOpenPopup: React.Dispatch<SetStateAction<boolean>>
     setIsDeleteOpenPopup: React.Dispatch<SetStateAction<boolean>>
-    setCurrIndex: React.Dispatch<SetStateAction<number>>
+    setCurrTask: React.Dispatch<SetStateAction<ITask | null>>
 }
 
 export const TaskContainer = <V extends string | number, K extends string>(
     {
         task,
-        index,
         category,
         setIsEditOpenPopup,
         setIsDeleteOpenPopup,
-        setCurrIndex
+        setCurrTask
     }: ITaskContainer<V, K>
 ): JSX.Element => {
+
+    const setCurrentCategory = () => {
+        setCurrTask(task)
+    }
+
+    const handleOpenPopupEdit = () => {
+        setIsEditOpenPopup(true)
+        setCurrentCategory()
+    }
+
+    const handleOpenPopupDelete = () => {
+        setIsDeleteOpenPopup(true)
+        setCurrentCategory()
+    }
+
     return (
         <ItemComponent
-            index={index}
             name={task.name}
             category={category?.label ?? null}
             description={task.description}
-            setIsEditOpenPopup={setIsEditOpenPopup}
-            setIsDeleteOpenPopup={setIsDeleteOpenPopup}
-            setCurrIndex={setCurrIndex}
+            setIsEditOpenPopup={handleOpenPopupEdit}
+            setIsDeleteOpenPopup={handleOpenPopupDelete}
         />
     )
 }

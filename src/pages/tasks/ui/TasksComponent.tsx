@@ -20,31 +20,24 @@ export const TasksComponent: FC<ITaskComponent> = (
 
     const [isEditOpenPopup, setIsEditOpenPopup] = useState(false)
     const [isDeleteOpenPopup, setIsDeleteOpenPopup] = useState(false)
-    const [currIdex, setCurrIndex] = useState(-1)
+    const [currTask, setCurrTask] = useState<ITask | null>(null)
 
     useEffect(() => {
-        if (!isEditOpenPopup) {
-            setCurrIndex(-1)
+        if (!isEditOpenPopup && !isDeleteOpenPopup) {
+            setCurrTask(null)
         }
-    }, [isEditOpenPopup])
-
-    useEffect(() => {
-        if (!isDeleteOpenPopup) {
-            setCurrIndex(-1)
-        }
-    }, [isDeleteOpenPopup])
+    }, [isEditOpenPopup, isDeleteOpenPopup])
 
     return (
         <>
             {tasks && tasks.length > 0 ? (
-                tasks?.map((task, index) => {
+                tasks?.map((task) => {
                     return (
                         <TaskContainer
-                            index={index}
                             key={task.id}
-                            category={task.categoryId ? FCategory(task.categoryId, categories) : null}
+                            category={task.categoryId ? FCategory(task, categories) : null}
                             task={task}
-                            setCurrIndex={setCurrIndex}
+                            setCurrTask={setCurrTask}
                             setIsDeleteOpenPopup={setIsDeleteOpenPopup}
                             setIsEditOpenPopup={setIsEditOpenPopup}
                         />
@@ -56,13 +49,13 @@ export const TasksComponent: FC<ITaskComponent> = (
                 />
             }
             <EditItemPopupContainer
-                task={currIdex === -1 || !tasks || tasks.length === 0 ? null : tasks[currIdex]}
-                category={!tasks || currIdex === -1 ? null : FCategory(tasks[currIdex].categoryId, categories)}
+                task={currTask ?? null}
+                category={FCategory(currTask, categories)}
                 handleIsPopupOpen={setIsEditOpenPopup}
                 isPopupOpen={isEditOpenPopup}
             />
             <DeleteItemPopupContainer
-                task={currIdex === -1 || !tasks || tasks.length === 0 ? null : tasks[currIdex]}
+                task={currTask ?? null}
                 handleIsPopupOpen={setIsDeleteOpenPopup}
                 isPopupOpen={isDeleteOpenPopup}
             />
