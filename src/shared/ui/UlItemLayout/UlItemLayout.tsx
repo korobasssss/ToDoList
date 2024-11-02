@@ -5,23 +5,37 @@ import { ButtonIcon } from '../ButtonIcon'
 import { Icon } from "../Icon"
 
 interface IUlItemLayout {
+    index: number
     name: string
     category: string | null
     description: string | null
     
     handleSetIsEditOpenPopup: React.Dispatch<SetStateAction<boolean>>
     handleSetIsDeleteOpenPopup: React.Dispatch<SetStateAction<boolean>>
+    setCurrIndex: React.Dispatch<SetStateAction<number>>
 }
 
 export const UlItemLayout: FC<IUlItemLayout> = (
     {
         name,
+        index,
         category,
         description,
         handleSetIsEditOpenPopup,
-        handleSetIsDeleteOpenPopup
+        handleSetIsDeleteOpenPopup,
+        setCurrIndex
     }
 ) => {
+    const handleEdit = () => {
+        setCurrIndex(index)
+        handleSetIsEditOpenPopup(true)
+    }
+
+    const handleDelete = () => {
+        setCurrIndex(index)
+        handleSetIsDeleteOpenPopup(true)
+    }
+
     return (
         <div className={styles.SItemWrapper}>
                 <div className={styles.SItem}>
@@ -50,12 +64,12 @@ export const UlItemLayout: FC<IUlItemLayout> = (
                         <ButtonIcon
                             icon={EditIcon}
                             alt='edit'
-                            onClick={() => handleSetIsEditOpenPopup(true)}
+                            onClick={handleEdit}
                         />
                         <ButtonIcon
                             icon={DeleteIcon}
                             alt='delete'
-                            onClick={() => handleSetIsDeleteOpenPopup(true)}
+                            onClick={handleDelete}
                         />
                     </div>
                 </div>

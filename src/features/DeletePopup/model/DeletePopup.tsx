@@ -1,6 +1,8 @@
+import { ErrorMessages } from "#shared/constants"
 import { DialogPopup } from "#shared/ui/DialogPopup"
+import { ErrorText } from "#shared/ui/ErrorText"
 import { Popup } from "#shared/ui/Popup"
-import { FC, SetStateAction } from "react"
+import { FC, SetStateAction, useState } from "react"
 
 interface IDeletePopup {
     handleCancel: React.Dispatch<SetStateAction<boolean>>
@@ -25,13 +27,28 @@ export const DeletePopup: FC<IDeletePopup> = (
         message
     }
 ) => {
+    const [error, setError] = useState('')
+
+    const handleSubmitAction = async () => {
+        if (await handleSubmit()) {
+            return true
+        }
+        setError(ErrorMessages.POST_ERROR)
+        return false
+    }
+
+    const handleCancelAction = () => {
+        setError('')
+        handleCancel(false)
+    }
+
     return (
         <Popup
             title={popupTitle}
             isOpen={isPopupOpen}
-            handlerCancel={handleCancel}
+            handlerCancel={handleCancelAction}
             buttonCancelName={buttonCancelTitle}
-            handlerSubmit={handleSubmit}
+            handlerSubmit={handleSubmitAction}
             buttonSubmitName={buttonSubmitTitle}
             isLoading={isLoading}
             size='s'
@@ -39,6 +56,9 @@ export const DeletePopup: FC<IDeletePopup> = (
             <DialogPopup
                 message={message}
             />
+            {error && (
+                <ErrorText message={error}/>
+            )}
         </Popup>
     )
 }

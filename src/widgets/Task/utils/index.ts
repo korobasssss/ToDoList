@@ -1,1 +1,0 @@
-export { findCategory } from './findCategory'

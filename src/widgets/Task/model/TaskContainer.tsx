@@ -1,52 +1,35 @@
-import { FC, useMemo, useState } from "react"
+import { SetStateAction } from "react"
 import { ITask, ISelectOptions } from "#shared/interfaces"
-import { DeleteItemPopupContainer, EditItemPopupContainer } from "../../TaskPopup"
-import { fetchCategoriesApi } from "#shared/api"
 import { ItemComponent } from "#features/Item"
-import { findCategory } from "../utils"
 
-interface ITaskContainer {
+interface ITaskContainer<V extends string | number, K extends string> {
+    index: number
     task: ITask
+    category: ISelectOptions<V, K> | null
+    setIsEditOpenPopup: React.Dispatch<SetStateAction<boolean>>
+    setIsDeleteOpenPopup: React.Dispatch<SetStateAction<boolean>>
+    setCurrIndex: React.Dispatch<SetStateAction<number>>
 }
 
-export const TaskContainer: FC<ITaskContainer> = (
+export const TaskContainer = <V extends string | number, K extends string>(
     {
-        task
-    }
-) => {
-    const {data: categories} = fetchCategoriesApi.useFetchGetCategoriesQuery()
-
-    const category: ISelectOptions<number, string> | null = useMemo(() => {
-        return categories && (typeof task.categoryId === 'number' || !isNaN(Number(task.categoryId))) 
-            ? findCategory<number, string>(Number(task.categoryId), categories) 
-            : null;
-    }, [task.categoryId, categories]);
-
-    const [isEditOpenPopup, setIsEditOpenPopup] = useState(false)
-    const [isDeleteOpenPopup, setIsDeleteOpenPopup] = useState(false)
-
+        task,
+        index,
+        category,
+        setIsEditOpenPopup,
+        setIsDeleteOpenPopup,
+        setCurrIndex
+    }: ITaskContainer<V, K>
+): JSX.Element => {
     return (
         <ItemComponent
+            index={index}
             name={task.name}
             category={category?.label ?? null}
             description={task.description}
-            EditPopupComponent={
-                <EditItemPopupContainer
-                    task={task}
-                    category={category}
-                    handleIsPopupOpen={setIsEditOpenPopup}
-                    isPopupOpen={isEditOpenPopup}
-                />
-            }
-            DeletePopupComponent={
-                <DeleteItemPopupContainer
-                    task={task}
-                    handleIsPopupOpen={setIsDeleteOpenPopup}
-                    isPopupOpen={isDeleteOpenPopup}
-                />
-            }
             setIsEditOpenPopup={setIsEditOpenPopup}
             setIsDeleteOpenPopup={setIsDeleteOpenPopup}
+            setCurrIndex={setCurrIndex}
         />
     )
 }

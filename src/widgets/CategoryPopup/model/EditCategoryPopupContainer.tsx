@@ -5,7 +5,7 @@ import { OverlayLoader } from "#shared/ui/OverlayLoader"
 import { CategoryPopupContainer } from "../../../features/CategoryPopup"
 
 interface IEditCategoryPopupContainer {
-    category: ICategory
+    category: ICategory | null
     handleIsPopupOpen: React.Dispatch<SetStateAction<boolean>>
     isPopupOpen: boolean
 }
@@ -20,6 +20,7 @@ export const EditCategoryPopupContainer: FC<IEditCategoryPopupContainer> = (
     const [fetchUpdateCategory, { isLoading }] = fetchCategoriesApi.useFetchUpdateCategoryMutation();
 
     const handleSubmit = async (inputName: string, inputDescription: string) => {
+        if (!category) return false
         try {
             const res: unknown = await fetchUpdateCategory({
                 id: category.id,
@@ -42,8 +43,8 @@ export const EditCategoryPopupContainer: FC<IEditCategoryPopupContainer> = (
                 popupTitle='Редактирование категории'
                 buttonSubmitTitle='Сохранить'
                 buttonCancelTitle='Закрыть'
-                name={category.name}
-                description={category.description ?? ''}
+                name={category ? category.name : ''}
+                description={category ? category.description ?? '' : ''}
                 isPopupOpen={isPopupOpen}
                 handleIsPopupOpen={handleIsPopupOpen}
                 handleSubmitForm={handleSubmit}

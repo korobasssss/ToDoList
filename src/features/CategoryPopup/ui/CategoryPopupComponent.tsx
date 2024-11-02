@@ -3,7 +3,7 @@ import styles from './styles.module.scss'
 import { Input } from "#shared/ui/Input"
 import { Textarea } from "#shared/ui/Textarea"
 import { checkValidation } from "#shared/utils"
-import { ErrorText } from "#shared/ui/ErrorText/ErrorText.tsx"
+import { ErrorText } from "#shared/ui/ErrorText"
 
 interface ICategoryPopupComponent {
     inputName?: string

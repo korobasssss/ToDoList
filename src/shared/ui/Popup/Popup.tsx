@@ -1,4 +1,4 @@
-import { FC, ReactNode, SetStateAction } from "react"
+import { FC, ReactNode } from "react"
 import cx from 'classnames'
 import styles from './style.module.scss'
 import { CloseIcon } from '#shared/assets'
@@ -13,7 +13,7 @@ interface IPopup {
     isOpen: boolean
     handlerSubmit?: () => Promise<boolean>
     buttonSubmitName?: string
-    handlerCancel: React.Dispatch<SetStateAction<boolean>>
+    handlerCancel: () => void
     buttonCancelName: string
     children: ReactNode
     isLoading?: boolean
@@ -37,7 +37,7 @@ export const Popup: FC<IPopup> = (
     const submit = async () => {
         if (handlerSubmit) {
             if ( await handlerSubmit()) {
-                handlerCancel(false)
+                handlerCancel()
             }
         }
     }
@@ -45,7 +45,7 @@ export const Popup: FC<IPopup> = (
     return (
         <Portal>
             <OverlayPopup
-                handlerCLose={() => handlerCancel(false)}
+                handlerCLose={handlerCancel}
                 isOpen={isOpen}
             >
                 <section
@@ -61,7 +61,7 @@ export const Popup: FC<IPopup> = (
                         <ButtonIcon 
                             icon={CloseIcon} 
                             alt='close'
-                            onClick={() => handlerCancel(false)}
+                            onClick={handlerCancel}
                         />
                     </header>
                     {children}
@@ -76,7 +76,7 @@ export const Popup: FC<IPopup> = (
                         )}
                         <Button
                             theme='secondary'
-                            onClick={() => handlerCancel(false)}
+                            onClick={handlerCancel}
                         >
                             {buttonCancelName}
                         </Button>

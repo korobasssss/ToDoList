@@ -1,6 +1,7 @@
 import { FC, SetStateAction, useEffect, useState } from "react"
 import { Popup } from "#shared/ui/Popup"
 import { CategoryPopupComponent } from "../ui/CategoryPopupComponent"
+import { ErrorMessages } from "#shared/constants"
 
 interface ICreateItemPopupContainer {
     handleIsPopupOpen: React.Dispatch<SetStateAction<boolean>>
@@ -35,30 +36,39 @@ export const CategoryPopupContainer: FC<ICreateItemPopupContainer> = (
     useEffect(() => {
         setInputName(name)
         setInputDescription(description)
-    }, [])
+    }, [name, description])
+
+    const resetData = () => {
+        setInputName('')
+        setInputDescription('')
+        setErrorName('')
+        setErrorCommon('')
+    }
 
     const handleSubmit = async () => {
         if (!inputName) {
-            setErrorName('Поле должно быть обязательным')
+            setErrorName(ErrorMessages.INPUT_REQUIRED)
         } else {
             if (await handleSubmitForm(inputName, inputDescription )) {
-                setInputName('')
-                setInputDescription('')
-                setErrorName('')
-                setErrorCommon('')
+                resetData()
                 return true
             } else {
-                setErrorCommon('Возникла ошибка, попробуйте позже')
+                setErrorCommon(ErrorMessages.POST_ERROR)
             }
         }
         return false
+    }
+
+    const handleCancel = () => {
+        handleIsPopupOpen(false)
+        resetData()
     }
 
     return (
         <Popup
             title={popupTitle}
             isOpen={isPopupOpen}
-            handlerCancel={handleIsPopupOpen}
+            handlerCancel={handleCancel}
             buttonCancelName={buttonCancelTitle}
             handlerSubmit={handleSubmit}
             buttonSubmitName={buttonSubmitTitle}

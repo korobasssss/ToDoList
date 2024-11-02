@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { MainLayout } from "#shared/ui/MainLayout"
 import { CategoriesComponent } from "../ui/CategoriesComponent"
-import { fetchCategoriesApi } from "#shared/api/fetchCategoriesApi"
+import { fetchCategoriesApi } from "#shared/api"
 import { CreateCategoryPopupContainer } from "#widgets/CategoryPopup"
 
 export const CategoriesContainer = () => {

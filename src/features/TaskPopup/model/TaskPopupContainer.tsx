@@ -4,6 +4,7 @@ import { fetchCategoriesApi } from "#shared/api"
 import { changeToSelectOptions } from '../utils'
 import { Popup } from "#shared/ui/Popup"
 import { TaskPopupComponent } from '../ui/TaskPopupComponent'
+import { ErrorMessages } from "#shared/constants"
 
 interface ICreateItemPopupContainer<V extends string | number, K extends string> {
     handleIsPopupOpen: React.Dispatch<SetStateAction<boolean>>
@@ -50,29 +51,38 @@ export const TaskPopupContainer = <V extends string | number, K extends string> 
         if (options) setSelectOptions(changeToSelectOptions<V, K>(options))
     }, [options])
 
+    const resetData = () => {
+        setInputName('')
+        setInputCategory(null)
+        setInputDescription('')
+        setErrorName('')
+        setErrorCommon('')
+    }
+
     const handleSubmit = async () => {
         if (!inputName) {
-            setErrorName('Поле должно быть обязательным')
+            setErrorName(ErrorMessages.INPUT_REQUIRED)
         } else {
             if (await handleSubmitForm(inputName, inputCategory, inputDescription)) {
-                setInputName('')
-                setInputCategory(null)
-                setInputDescription('')
-                setErrorName('')
-                setErrorCommon('')
+                resetData()
                 return true
             } else {
-                setErrorCommon('Возникла ошибка, попробуйте позже')
+                setErrorCommon(ErrorMessages.POST_ERROR)
             }
         }
         return false
+    }
+
+    const handlerCancel = () => {
+        resetData()
+        handleIsPopupOpen(false)
     }
 
     return (
         <Popup
             title={popupTitle}
             isOpen={isPopupOpen}
-            handlerCancel={handleIsPopupOpen}
+            handlerCancel={handlerCancel}
             buttonCancelName={buttonCancelTitle}
             handlerSubmit={handleSubmit}
             buttonSubmitName={buttonSubmitTitle}

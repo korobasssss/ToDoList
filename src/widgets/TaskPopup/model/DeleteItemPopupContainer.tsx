@@ -4,7 +4,7 @@ import { fetchTasksApi } from "#shared/api"
 import { DeletePopup } from "#features/DeletePopup"
 
 interface IDeleteItemPopupContainer {
-    task: ITask
+    task: ITask | null
     handleIsPopupOpen: React.Dispatch<SetStateAction<boolean>>
     isPopupOpen: boolean
 }
@@ -16,9 +16,11 @@ export const DeleteItemPopupContainer: FC<IDeleteItemPopupContainer> = (
         isPopupOpen
     }
 ) => {
+
     const [fetchDeleteTask, { isLoading }] = fetchTasksApi.useFetchDeleteTaskMutation();
 
     const handleSubmit = async () => {
+        if (!task) return false
         try {
             const res: unknown = await fetchDeleteTask({
                 id: task.id
@@ -42,7 +44,7 @@ export const DeleteItemPopupContainer: FC<IDeleteItemPopupContainer> = (
             buttonSubmitTitle={'Да'}
             buttonCancelTitle={'Нет'}
             isLoading={isLoading}
-            message={`Вы уверены, что хотите удалить задачу “${task.name}”?`}
+            message={`Вы уверены, что хотите удалить задачу “${task ? task.name : ''}”?`}
         />
     )
 }

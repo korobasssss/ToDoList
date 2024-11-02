@@ -4,7 +4,7 @@ import { fetchCategoriesApi } from "#shared/api"
 import { DeletePopup } from "#features/DeletePopup"
 
 interface IDeleteCategoryPopupContainer {
-    category: ICategory
+    category: ICategory | null
     handleIsPopupOpen: React.Dispatch<SetStateAction<boolean>>
     isPopupOpen: boolean
 }
@@ -19,6 +19,7 @@ export const DeleteCategoryPopupContainer: FC<IDeleteCategoryPopupContainer> = (
     const [fetchDeleteTask, { isLoading }] = fetchCategoriesApi.useFetchDeleteCategoryMutation();
 
     const handleSubmit = async () => {
+        if (!category) return false
         try {
             const res: unknown = await fetchDeleteTask({
                 id: category.id
@@ -42,7 +43,7 @@ export const DeleteCategoryPopupContainer: FC<IDeleteCategoryPopupContainer> = (
             buttonSubmitTitle={'Да'}
             buttonCancelTitle={'Нет'}
             isLoading={isLoading}
-            message={`Вы уверены, что хотите удалить категорию “${category.name}”?`}
+            message={`Вы уверены, что хотите удалить категорию “${category ? category.name: ''}”?`}
         />
     )
 }

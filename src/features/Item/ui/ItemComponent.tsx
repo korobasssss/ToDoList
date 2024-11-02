@@ -1,32 +1,33 @@
-import { FC, ReactNode, SetStateAction } from "react"
+import { FC, SetStateAction } from "react"
 import { UlItemLayout } from "#shared/ui/UlItemLayout"
 
 interface IItemComponent {
+    index: number
     name: string
     category : string | null
     description: string | null
-    EditPopupComponent: ReactNode
-    DeletePopupComponent: ReactNode
     
     setIsEditOpenPopup: React.Dispatch<SetStateAction<boolean>>
     setIsDeleteOpenPopup: React.Dispatch<SetStateAction<boolean>>
+    setCurrIndex: React.Dispatch<SetStateAction<number>>
 }
 
 export const ItemComponent: FC<IItemComponent> = (
     {
         name,
+        index,
         category,
         description,
-        EditPopupComponent,
-        DeletePopupComponent,
-
         setIsEditOpenPopup,
-        setIsDeleteOpenPopup
+        setIsDeleteOpenPopup,
+        setCurrIndex
     }
 ) => {
     return (
         <>
             <UlItemLayout
+                index={index}
+                setCurrIndex={setCurrIndex}
                 name={name}
                 category={category}
                 description={description}
@@ -34,8 +35,6 @@ export const ItemComponent: FC<IItemComponent> = (
                 handleSetIsDeleteOpenPopup={setIsDeleteOpenPopup}
                 handleSetIsEditOpenPopup={setIsEditOpenPopup}
             />
-            {EditPopupComponent}
-            {DeletePopupComponent}
         </>
     )
 }

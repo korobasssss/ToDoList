@@ -5,7 +5,7 @@ import { OverlayLoader } from "#shared/ui/OverlayLoader"
 import { TaskPopupContainer } from "#features/TaskPopup"
 
 interface IEditItemPopupContainer<V extends string | number, K extends string> {
-    task: ITask
+    task: ITask | null
     category: ISelectOptions<V, K> | null
     handleIsPopupOpen: React.Dispatch<SetStateAction<boolean>>
     isPopupOpen: boolean
@@ -22,6 +22,7 @@ export const EditItemPopupContainer = <V extends string | number, K extends stri
     const [fetchUpdateItem, {isLoading}] = fetchTasksApi.useFetchUpdateTaskMutation()
 
     const handleSubmit = async (inputName: string, inputCategory: ISelectOptions<V, K> | null, inputDescription: string) => {
+        if (!task) return false
         try {
             const res: unknown = await fetchUpdateItem({
                 id: task.id,
@@ -46,9 +47,9 @@ export const EditItemPopupContainer = <V extends string | number, K extends stri
                 buttonSubmitTitle='Сохранить'
                 buttonCancelTitle='Закрыть'
 
-                name={task.name}
+                name={task ? task.name : ''}
                 category={category}
-                description={task.description ?? ''}
+                description={task ? task.description ?? '' : ''}
 
                 handleIsPopupOpen={handleIsPopupOpen}
                 isPopupOpen={isPopupOpen}

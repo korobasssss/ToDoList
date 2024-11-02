@@ -1,39 +1,33 @@
-import { FC, useState } from "react"
+import { FC, SetStateAction } from "react"
 import { ICategory } from "#shared/interfaces"
-import { DeleteCategoryPopupContainer, EditCategoryPopupContainer } from "../../CategoryPopup"
 import { ItemComponent } from "#features/Item"
 
 interface IOneTaskComponent {
     category: ICategory
+    index: number
+    setIsEditOpenPopup: React.Dispatch<SetStateAction<boolean>>
+    setIsDeleteOpenPopup: React.Dispatch<SetStateAction<boolean>>
+    setCurrIndex: React.Dispatch<SetStateAction<number>>
 }
 
 export const CategoryContainer: FC<IOneTaskComponent> = (
     {
-        category
+        category,
+        index,
+        setIsEditOpenPopup,
+        setIsDeleteOpenPopup,
+        setCurrIndex
     }
 ) => {
-    const [isEditOpenPopup, setIsEditOpenPopup] = useState(false)
-    const [isDeleteOpenPopup, setIsDeleteOpenPopup] = useState(false)
+
 
     return (
         <ItemComponent
+            index={index}
+            setCurrIndex={setCurrIndex}
             name={category.name}
             category={null}
             description={category.description}
-            EditPopupComponent={
-                <EditCategoryPopupContainer
-                    category={category}
-                    handleIsPopupOpen={setIsEditOpenPopup}
-                    isPopupOpen={isEditOpenPopup}
-                />
-            }
-            DeletePopupComponent={
-                <DeleteCategoryPopupContainer
-                    category={category}
-                    handleIsPopupOpen={setIsDeleteOpenPopup}
-                    isPopupOpen={isDeleteOpenPopup}
-                />
-            }
             setIsEditOpenPopup={setIsEditOpenPopup}
             setIsDeleteOpenPopup={setIsDeleteOpenPopup}
         />
