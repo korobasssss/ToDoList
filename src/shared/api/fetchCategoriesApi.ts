@@ -40,7 +40,22 @@ export const fetchCategoriesApi = createApi({
                 url: `RemoveCategory/${id}`,
                 method: 'GET'
             }),
-            invalidatesTags: ['Category']
+            async onQueryStarted(arg: { id: number }, { dispatch, queryFulfilled }) {
+                const { id } = arg;
+                const patchResult = dispatch(
+                    fetchCategoriesApi.util.updateQueryData('fetchGetCategories', undefined, (draft) => {
+                        const index = draft.findIndex(category => category.id === id);
+                        if (index !== -1) {
+                            draft.splice(index, 1);
+                        }
+                    })
+                );
+                try {
+                    await queryFulfilled;
+                } catch {
+                    patchResult.undo();
+                }
+            }
         })
     })
 })

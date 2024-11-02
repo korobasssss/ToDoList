@@ -16,7 +16,6 @@ export const DeleteItemPopupContainer: FC<IDeleteItemPopupContainer> = (
         isPopupOpen
     }
 ) => {
-
     const [fetchDeleteTask, { isLoading }] = fetchTasksApi.useFetchDeleteTaskMutation();
 
     const handleSubmit = async () => {

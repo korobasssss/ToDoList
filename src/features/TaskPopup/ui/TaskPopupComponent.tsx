@@ -41,7 +41,7 @@ export const TaskPopupComponent = <V extends string | number, K extends string> 
             <div className={styles.SCreateSection}>
                 <Input
                     value={inputName}
-                    onChange={(event) => checkValidation(event.target.value, handleSetInputName, 255, handleSetErrorName)}
+                    onChange={(event) => checkValidation(event.target.value, handleSetInputName, 255, handleSetErrorName)} 
                     placeholder="Введите имя задачи"
                     label="Имя"
                     isRequired

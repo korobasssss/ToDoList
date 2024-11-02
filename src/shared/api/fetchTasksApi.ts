@@ -36,12 +36,27 @@ export const fetchTasksApi = createApi({
             }),
             invalidatesTags: ['Task']
         }),
-        fetchDeleteTask: built.mutation<void, {id: number}>({
+        fetchDeleteTask: built.mutation<void, { id: number }>({
             query: ({ id }) => ({
                 url: `RemoveTask/${id}`,
                 method: 'GET'
             }),
-            invalidatesTags: ['Task']
+            async onQueryStarted(arg: { id: number }, { dispatch, queryFulfilled }) {
+                const { id } = arg;
+                const patchResult = dispatch(
+                    fetchTasksApi.util.updateQueryData('fetchGetTasks', undefined, (draft) => {
+                        const index = draft.findIndex(task => task.id === id);
+                        if (index !== -1) {
+                            draft.splice(index, 1);
+                        }
+                    })
+                );
+                try {
+                    await queryFulfilled;
+                } catch {
+                    patchResult.undo();
+                }
+            }
         })
     })
 })
