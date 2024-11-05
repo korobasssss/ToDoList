@@ -1,21 +1,29 @@
 @use '@/shared/styles/mixins' as mixins;
 @use '@/shared/styles/variables' as variables;
 
-.SCreatePopup {
+.SForm {
     display: grid;
     row-gap: 30px;
+}
 
-    .SCreateSection {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
-        align-items: start;
-    }
+.SCreateSection {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    align-items: start;
 
     @media screen and (max-width: variables.$small) {
-        .SCreateSection {
-            grid-template-columns: 1fr;
-        }
+        grid-template-columns: 1fr;
+    }
+}
+
+.SPFooter {
+    display: flex;
+    gap: 25px;
+    justify-content: end;
+
+    @media screen and (max-width: variables.$small) {
+        flex-direction: column;
     }
 }
 

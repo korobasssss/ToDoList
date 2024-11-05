@@ -14,7 +14,7 @@ interface IPopup {
     handlerSubmit?: () => Promise<boolean>
     buttonSubmitName?: string
     handlerCancel: () => void
-    buttonCancelName: string
+    buttonCancelName?: string
     children: ReactNode
     isLoading?: boolean
     size: 's' | 'm'
@@ -66,20 +66,23 @@ export const Popup: FC<IPopup> = (
                     </header>
                     {children}
                     <footer className={styles.SPFooter}>
-                        {handlerSubmit && (
+                        {buttonSubmitName && (
                             <Button
                                 theme='primary'
+                                type='submit'
                                 onClick={submit}
                             >
                                 {buttonSubmitName}
                             </Button>
                         )}
-                        <Button
-                            theme='secondary'
-                            onClick={handlerCancel}
-                        >
-                            {buttonCancelName}
-                        </Button>
+                        {buttonCancelName && (
+                            <Button
+                                theme='secondary'
+                                onClick={handlerCancel}
+                            >
+                                {buttonCancelName}
+                            </Button>
+                        )}
                     </footer>
                 </section>
             </OverlayPopup>

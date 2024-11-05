@@ -24,41 +24,41 @@ export const UlItemLayout: FC<IUlItemLayout> = (
 ) => {
     return (
         <div className={styles.SItemWrapper}>
-                <div className={styles.SItem}>
-                    <div className={styles.SDataWrapper}>
-                        <header className={styles.SDataHeader}>
-                            <h2 className={styles.SDataTitle}>
-                                {name}
-                            </h2>
-                            {category && (
-                                <div className={styles.SDataCategoryWrapper}>
-                                <Icon
-                                    icon={CategoryIcon} 
-                                    alt='category'
-                                />
-                                <span className={styles.SDataCategoryTitle}>
-                                    {category}
-                                </span>
-                            </div>
-                            )}
-                        </header>
-                        <p className={styles.SDataDescription}>
-                            {description}
-                        </p>
-                    </div>
-                    <div className={styles.SDataButtonWrapper}>
-                        <ButtonIcon
-                            icon={EditIcon}
-                            alt='edit'
-                            onClick={handleSetIsEditOpenPopup}
-                        />
-                        <ButtonIcon
-                            icon={DeleteIcon}
-                            alt='delete'
-                            onClick={handleSetIsDeleteOpenPopup}
-                        />
-                    </div>
+            <div className={styles.SItem}>
+                <div className={styles.SDataWrapper}>
+                    <header className={styles.SDataHeader}>
+                        <h2 className={styles.SDataTitle}>
+                            {name}
+                        </h2>
+                        {category && (
+                            <div className={styles.SDataCategoryWrapper}>
+                            <Icon
+                                icon={CategoryIcon} 
+                                alt='category'
+                            />
+                            <span className={styles.SDataCategoryTitle}>
+                                {category}
+                            </span>
+                        </div>
+                        )}
+                    </header>
+                    <p className={styles.SDataDescription}>
+                        {description}
+                    </p>
                 </div>
+                <div className={styles.SDataButtonWrapper}>
+                    <ButtonIcon
+                        icon={EditIcon}
+                        alt='edit'
+                        onClick={handleSetIsEditOpenPopup}
+                    />
+                    <ButtonIcon
+                        icon={DeleteIcon}
+                        alt='delete'
+                        onClick={handleSetIsDeleteOpenPopup}
+                    />
+                </div>
+            </div>
             <div className={styles.SDataLine}/>
         </div>
     )

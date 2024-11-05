@@ -3,4 +3,6 @@ export const ErrorMessages = {
     NO_TASKS: 'Нет задач...',
     NO_CATEGORIES: 'Нет категорий...',
     INPUT_REQUIRED: 'Поле должно быть обязательным',
+    VALIDATION: 'Ошибка валидации',
+    MAX_LENGTH: 'Превышен лимит символов'
 }

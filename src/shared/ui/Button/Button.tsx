@@ -13,6 +13,7 @@ export const Button: FC<IButton> = (
     {
         classNames,
         theme,
+        type,
         children,
         disabled,
         onClick,
@@ -21,6 +22,7 @@ export const Button: FC<IButton> = (
 ) => {
     return (
         <button
+            type={type}
             className={cx(
                 classNames,
                 styles.SButton,

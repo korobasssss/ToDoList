@@ -1,4 +1,17 @@
+@use '@/shared/styles/mixins' as mixins;
+@use '@/shared/styles/variables' as variables;
+
 .SCreatePopup {
     display: grid;
     row-gap: 30px;
+}
+
+.SPFooter {
+    display: flex;
+    gap: 25px;
+    justify-content: end;
+
+    @media screen and (max-width: variables.$small) {
+        flex-direction: column;
+    }
 }

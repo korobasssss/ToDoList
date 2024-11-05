@@ -50,4 +50,8 @@
         background-color: variables.$NONE_BGC_BUTTON;
         color: variables.$NONE_TEXT_BUTTON;
     }
+
+    &:disabled {
+        cursor: not-allowed;
+    }
 }

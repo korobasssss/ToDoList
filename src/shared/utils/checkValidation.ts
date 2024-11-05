@@ -1,4 +1,8 @@
-export const checkValidation = (data: string, handleSetTo: (data: string) => void, validLimit: number, 
-                                handleSetErrorName: (error: string) => void) => {
-    data.length <= validLimit ? handleSetTo(data) : handleSetErrorName('Превышен лимит символов')
+import { TCheckValidation } from "../types"
+
+export const checkValidation = (data: string, validLimit: number) : TCheckValidation => {
+    if (data.length <= validLimit) {
+        return {type: 'ok' , value: data}
+    }
+    return {type: 'error' , value: 'Превышен лимит символов'}
 }

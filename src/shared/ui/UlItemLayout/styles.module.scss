@@ -25,6 +25,7 @@
     
                 .SDataTitle {
                     color: variables.$TEXT_SIMPLE;
+                    word-break: break-all;
     
                     @include mixins.font-roboto-xs-bold;
                 }

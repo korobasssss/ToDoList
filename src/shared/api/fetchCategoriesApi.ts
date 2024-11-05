@@ -1,11 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { ICategory } from "../interfaces";
+import { ICategory, IFormValue } from "../interfaces";
 import { backendBaseUrl } from "../config";
-
-export interface ICategoryCreate {
-    name: string
-    description: string | null
-}
 
 export const fetchCategoriesApi = createApi({
     reducerPath: 'fetchCategoriesApi',
@@ -19,7 +14,7 @@ export const fetchCategoriesApi = createApi({
                     ['Category'],
             query: () => '/GetCategories'
         }),
-        fetchPostCategory: built.mutation<ICategory, ICategoryCreate>({
+        fetchPostCategory: built.mutation<ICategory, IFormValue>({
             query: ({ ...patch }) => ({
                 url: '/AddCategory',
                 method: 'POST',
