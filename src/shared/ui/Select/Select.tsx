@@ -1,13 +1,14 @@
 import { SetStateAction, useEffect, useMemo, useState } from "react"
 import cx from 'classnames'
-import { ISelectOptions } from "@/shared/interfaces"
+import { IClassName, ISelectOptions } from "@/shared/interfaces"
 import { Input} from "../Input"
 import { NoData} from "../NoData"
 import { ScrollWrapper} from "../ScrollWrapper"
 import styles from './styles.module.scss'
 import {SelectArrowIcon} from '@/shared/assets'
 
-interface ISelect<V extends string | number, K extends string> {
+interface ISelect<V extends string | number, K extends string>
+extends IClassName {
     label?: string
     value: ISelectOptions<V, K> | null
     placeholder?: string
@@ -19,6 +20,7 @@ interface ISelect<V extends string | number, K extends string> {
 
 export const Select = <V extends string | number, K extends string> (
     {
+        classNames,
         label,
         error,
         isRequired,
@@ -54,7 +56,10 @@ export const Select = <V extends string | number, K extends string> (
 
     return (
         <div   
-            className={styles.SSelectWrapper}
+            className={cx(
+                styles.SSelectWrapper,
+                classNames
+            )}
             onClick={() => setIsFocused(!isFocused)}
         >
             <Input

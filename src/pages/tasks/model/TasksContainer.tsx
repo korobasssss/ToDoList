@@ -4,25 +4,27 @@ import { TasksComponent } from "../ui/TasksComponent"
 import { fetchTasksApi } from "@/shared/api"
 import { CreateItemPopupContainer } from "@/widgets/TaskPopup"
 import { ITask } from "@/shared/interfaces"
-import { useSearchContext } from "@/app/hooks"
+import { useFilterContext, useSearchContext } from "@/app/hooks"
+import { FilterComponent } from "@/entity/Filter"
+import { filterOptions, filterTasks } from "../utils"
+import { search } from "@/shared/utils"
 
 export const TasksContainer = () => {
     const [isPopupOpen, setIsPopupOpen] = useState(false)
     const { data: tasks, isLoading } = fetchTasksApi.useFetchGetTasksQuery();
-    const [searchTasks, setSearchTasks] = useState<ITask[] | null>(null);
+
+    const [filteredTasks, setFilteredTasks] = useState<ITask[] | null>(null);
     const { searchValue } = useSearchContext();
+    const { filterValue } = useFilterContext();
 
     useEffect(() => {
         if (tasks) {
-            if (searchValue === '') {
-                setSearchTasks(tasks);
-            } else {
-                setSearchTasks(
-                    tasks.filter(task => task.name.includes(searchValue) || task.description?.includes(searchValue)
-                ));
-            }
+            const searchArr = searchValue ? search(tasks, searchValue) : tasks
+            const filterArr = filterValue ? filterTasks(tasks, filterValue?.value) : tasks
+
+            setFilteredTasks(searchArr && filterArr ? filterArr.filter(item => searchArr.includes(item)) : [])
         }
-    }, [tasks, searchValue]);
+    }, [tasks, searchValue, filterValue])
 
     return (
         <>
@@ -32,8 +34,11 @@ export const TasksContainer = () => {
                 isLoading={isLoading}
                 handleButtonClick={setIsPopupOpen}
             > 
+                <FilterComponent
+                    options={filterOptions}
+                />
                 <TasksComponent
-                    tasks={searchTasks}
+                    tasks={filteredTasks}
                 />
                 <CreateItemPopupContainer
                         isPopupOpen={isPopupOpen}

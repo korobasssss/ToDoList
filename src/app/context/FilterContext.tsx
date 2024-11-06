@@ -1,28 +1,29 @@
+import { ISelectOptions } from "@/shared/interfaces"
 import { createContext, FC, ReactNode, SetStateAction, useState } from "react"
 
-interface IFilterContext {
-    filterValue: string
-    setFilterValue: React.Dispatch<SetStateAction<string>>
+interface IFilterContext<V extends string | number, K extends string> {
+    filterValue: ISelectOptions<V, K> | null
+    setFilterValue: React.Dispatch<SetStateAction<ISelectOptions<V, K> | null>>
 }
 
 interface IFilterProvider {
     children: ReactNode
 }
 
-export const FilterContext = createContext<IFilterContext | undefined>(undefined)
+export const FilterContext = createContext<IFilterContext<string, string> | undefined>(undefined)
 
 export const FilterProvider: FC<IFilterProvider> = (
     { 
        children 
     }
 ) => {
-    const [filterValue, setFilterValue] = useState('');
+    const [filterValue, setFilterValue] = useState<ISelectOptions<string, string> | null>(null);
   
     return (
       <FilterContext.Provider 
         value={
                 { 
-                    filterValue, 
+                    filterValue,
                     setFilterValue 
                 }
             }>

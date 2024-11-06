@@ -4,10 +4,7 @@ import styles from './styles.module.scss'
 import { FC } from "react"
 import { useSearchContext } from "@/app/hooks"
 
-export const SearchComponent: FC = (
-    {
-    }
-) => {
+export const SearchComponent: FC = () => {
     const {searchValue, setSearchValue} = useSearchContext()
 
     return (

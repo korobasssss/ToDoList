@@ -1,0 +1,8 @@
+@use '@/shared/styles/variables' as variables;
+@use '@/shared/styles/mixins' as mixins;
+
+.SFilterWrapper {
+    height: min-content;
+    max-width: 1000px;
+    margin: 20px auto;
+}
