@@ -1,15 +1,15 @@
 import { ICategory } from "@/shared/interfaces";
-import { EOptionCategory } from "../enums";
+import { TEOptionType } from "../types/TEOptionType";
 
-export const filterCategories = ( tasks: ICategory[], selectedOption: string): ICategory[] | null => {
+export const filterCategories = ( tasks: ICategory[], selectedOption: TEOptionType): ICategory[] | null => {
     switch (selectedOption) {
-        case EOptionCategory.ALL : {
+        case 'all' : {
             return tasks
         }
-        case EOptionCategory.HAS_DESCRIPTION : {
+        case 'hasDescription' : {
             return tasks.filter(task => task.description)
         }
-        case EOptionCategory.HAS_NO_DESCRIPTION : {
+        case 'hasNoDescription': {
             return tasks.filter(task => !task.description)
         }
         default : {
