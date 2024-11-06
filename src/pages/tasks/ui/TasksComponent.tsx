@@ -8,7 +8,7 @@ import { FCategory } from "../utils"
 import { ErrorMessages } from "@/shared/constants"
 
 interface ITaskComponent {
-    tasks?: ITask[]
+    tasks: ITask[] | null
 }
 
 export const TasksComponent: FC<ITaskComponent> = (

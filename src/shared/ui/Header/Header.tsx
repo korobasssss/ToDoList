@@ -3,6 +3,7 @@ import styles from './styles.module.scss'
 import { Button } from '../Button'
 import { Navigation } from '../Navigation'
 import { PATHS } from '@/shared/constants'
+import { SearchComponent } from '@/entity/Search'
 
 interface IHeader {
     title: string,
@@ -29,6 +30,7 @@ export const Header: FC<IHeader> = (
             <Navigation 
                 links={PATHS}
             />
+            <SearchComponent/>
             <Button
                 theme='none'
                 onClick={handleButtonClick}

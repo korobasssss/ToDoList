@@ -11,10 +11,12 @@ extends InputHTMLAttributes<HTMLInputElement>, IClassName {
     error?: string
     isRequired?: boolean
     rightIcon?: string
+    leftIcon?: string
     isFocused?: boolean
 }
 
 export const Input: FC<IInput> = ({
+    classNames,
     type,
     placeholder,
     value,
@@ -23,6 +25,7 @@ export const Input: FC<IInput> = ({
     onChange,
     isRequired,
     rightIcon,
+    leftIcon,
     isFocused,
     ...restProps
 }) => {
@@ -33,21 +36,30 @@ export const Input: FC<IInput> = ({
             isRequired={isRequired}
         >
             <div className={styles.SInputWrapper}>
+                {leftIcon && (
+                        <Icon 
+                            icon={leftIcon}
+                            classNames={styles.SLeftIcon}
+                        />
+                )}
                 <input
                     value={value}
                     className={cx(
                         styles.SInput,
                         {
                             [styles['SInput_error']] : error,
-                            [styles['SInput_rightIcon']] : rightIcon
-                        }
+                            [styles['SInput_rightIcon']] : rightIcon,
+                            [styles['SInput_leftIcon']] : leftIcon,
+                        },
+                        classNames
                     )}
                     placeholder={placeholder}
                     onChange={onChange}
                     {...restProps}
                 />
                 {rightIcon && (
-                    <Icon icon={rightIcon}
+                    <Icon 
+                        icon={rightIcon}
                         classNames={cx(
                             styles.SRightIcon,
                             {

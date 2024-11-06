@@ -1,0 +1,5 @@
+@use '@/shared/styles/variables' as variables;
+
+.SInputColor {
+    background-color: variables.$SEARCH_INPUT_BGC !important; // todo
+}

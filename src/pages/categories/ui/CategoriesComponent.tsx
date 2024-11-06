@@ -6,7 +6,7 @@ import { DeleteCategoryPopupContainer, EditCategoryPopupContainer } from "@/widg
 import { ErrorMessages } from "@/shared/constants"
 
 interface ICategoriesComponent {
-    categories?: ICategory[]
+    categories?: ICategory[] | null
 }
 
 export const CategoriesComponent: FC<ICategoriesComponent> = (

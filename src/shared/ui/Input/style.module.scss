@@ -41,6 +41,10 @@
         &_rightIcon {
             padding: 0 40px 0 5px;
         }
+
+        &_leftIcon {
+            padding: 0 5px 0 45px;
+        }
     }
     
     .SRightIcon {
@@ -53,5 +57,11 @@
             transform: rotate(180deg);
             transition: transform 0.3s;
         }
+    }
+
+    .SLeftIcon {
+        position: absolute;
+        left: 15px;
+        top: 13px;
     }
 }
