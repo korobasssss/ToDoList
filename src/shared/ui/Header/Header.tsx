@@ -18,6 +18,7 @@ export const Header: FC<IHeader> = (
         buttonName
     }
 ) => {
+    console.log('header')
     return (
         <header
             className={styles.SHeader}

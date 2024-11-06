@@ -1,4 +1,4 @@
-import { SetStateAction, useEffect, useMemo, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 import cx from 'classnames'
 import { IClassName, ISelectOptions } from "@/shared/interfaces"
 import { Input} from "../Input"
@@ -13,7 +13,7 @@ extends IClassName {
     value: ISelectOptions<V, K> | null
     placeholder?: string
     options: ISelectOptions<V, K>[],
-    setSelected: React.Dispatch<SetStateAction<ISelectOptions<V, K> | null>>
+    setSelected: (value: ISelectOptions<V, K> | null) => void
     error?: string
     isRequired?: boolean
 }

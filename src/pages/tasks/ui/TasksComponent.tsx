@@ -4,11 +4,13 @@ import { NoData } from "@/shared/ui/NoData"
 import { TaskContainer } from "@/widgets/Task"
 import { fetchCategoriesApi } from "@/shared/api"
 import { DeleteItemPopupContainer, EditItemPopupContainer } from "@/widgets/TaskPopup"
-import { FCategory } from "../utils"
+import { FCategory, filterTasks } from "../utils"
 import { ErrorMessages } from "@/shared/constants"
+import { useAppSelector } from "@/shared/store"
+import { search } from "@/shared/utils"
 
 interface ITaskComponent {
-    tasks: ITask[] | null
+    tasks?: ITask[] | null
 }
 
 export const TasksComponent: FC<ITaskComponent> = (
@@ -22,6 +24,18 @@ export const TasksComponent: FC<ITaskComponent> = (
     const [isDeleteOpenPopup, setIsDeleteOpenPopup] = useState(false)
     const [currTask, setCurrTask] = useState<ITask | null>(null)
 
+    const [filteredTasks, setFilteredTasks] = useState<ITask[] | null>(null);
+    const {searchValue, filterValue} = useAppSelector(state => state.filter)
+
+    useEffect(() => {
+        if (tasks) {
+            const searchArr = searchValue ? search(tasks, searchValue) : tasks
+            const filterArr = filterValue ? filterTasks(tasks, filterValue?.value) : tasks
+
+            setFilteredTasks(searchArr && filterArr ? filterArr.filter(item => searchArr.includes(item)) : [])
+        }
+    }, [tasks, searchValue, filterValue])
+
     useEffect(() => {
         if (!isEditOpenPopup && !isDeleteOpenPopup) {
             setCurrTask(null)
@@ -30,8 +44,8 @@ export const TasksComponent: FC<ITaskComponent> = (
 
     return (
         <>
-            {tasks && tasks.length > 0 ? (
-                tasks?.map((task) => {
+            {filteredTasks && filteredTasks.length > 0 ? (
+                filteredTasks.map((task) => {
                     return (
                         <TaskContainer
                             key={task.id}

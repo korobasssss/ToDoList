@@ -1,20 +1,21 @@
 import { SearchIcon } from "@/shared/assets"
 import { Input } from "@/shared/ui/Input"
 import styles from './styles.module.scss'
-import { FC } from "react"
-import { useSearchContext } from "@/app/hooks"
+import { FC, memo } from "react"
+import { useAppSelector, setSearchValue, useAppDispatch } from "@/shared/store"
 
-export const SearchComponent: FC = () => {
-    const {searchValue, setSearchValue} = useSearchContext()
+export const SearchComponent: FC = memo(() => {
+    const { searchValue } = useAppSelector(state => state.filter)
+    const dispatch = useAppDispatch();
 
     return (
         <div>
             <Input
                 value={searchValue}
-                onChange={(event) => setSearchValue(event.target.value)}
+                onChange={(event) => dispatch(setSearchValue(event.target.value))}
                 leftIcon={SearchIcon}
                 classNames={styles.SInputColor}
             />
         </div>
     )
-}
+})
