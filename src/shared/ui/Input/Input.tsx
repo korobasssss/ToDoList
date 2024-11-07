@@ -5,7 +5,7 @@ import styles from './style.module.scss'
 import { LabelWrapper } from "../LabelWrapper"
 import { Icon } from "../Icon"
 
-interface IInput 
+export interface IInput 
 extends InputHTMLAttributes<HTMLInputElement>, IClassName {
     label?: string
     error?: string

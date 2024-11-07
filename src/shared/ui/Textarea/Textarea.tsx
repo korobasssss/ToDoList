@@ -5,7 +5,7 @@ import styles from './styles.module.scss'
 import { ScrollWrapper } from "../ScrollWrapper"
 import { LabelWrapper } from "../LabelWrapper"
 
-interface ITextarea
+export interface ITextarea
 extends TextareaHTMLAttributes<HTMLTextAreaElement>, IClassName {
     label?: string
     error?: string

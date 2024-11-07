@@ -29,9 +29,10 @@
     }
 
     .SOption {
+        word-break: break-all;
         cursor: pointer;
         box-sizing: border-box;
-        height: 46px;
+        min-height: 46px;
 
         display: grid;
         align-items: center;

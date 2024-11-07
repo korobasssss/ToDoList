@@ -5,7 +5,7 @@ import cx from 'classnames'
 import styles from './styles.module.scss'
 import { Icon } from "../Icon"
 
-interface IButtonIcon 
+export interface IButtonIcon 
 extends ButtonHTMLAttributes<HTMLButtonElement>, IClassName {
     icon: string
     alt: string

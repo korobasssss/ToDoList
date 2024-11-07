@@ -11,6 +11,7 @@
     box-shadow: variables.$SHADOW_POPUP;
 
     display: grid;
+    grid-template-rows: min-content auto max-content;
     row-gap: 25px;
 
     &_size_s {
@@ -23,11 +24,13 @@
 
     .SPHeader {
         display: flex;
+        height: min-content;
         justify-content: space-between;
-        align-items: center;
+        align-items: start;
         gap: 20px;
 
         .SPTitle {
+            margin: 0;
             color: variables.$TEXT_TITLE_POPUP;
 
             @include mixins.font-roboto-xl;

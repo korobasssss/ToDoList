@@ -1,7 +1,7 @@
 import { FC } from "react"
 import styles from './styles.module.scss'
 
-interface INoData {
+export interface INoData {
     message: string
 }
 

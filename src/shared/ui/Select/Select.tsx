@@ -7,7 +7,7 @@ import { ScrollWrapper} from "../ScrollWrapper"
 import styles from './styles.module.scss'
 import {SelectArrowIcon} from '@/shared/assets'
 
-interface ISelect<V extends string | number, K extends string>
+export interface ISelect<V extends string | number, K extends string>
 extends IClassName {
     label?: string
     value: ISelectOptions<V, K> | null

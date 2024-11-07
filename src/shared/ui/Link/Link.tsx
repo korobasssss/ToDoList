@@ -4,7 +4,7 @@ import { IClassName } from "@/shared/interfaces"
 
 import styles from './styles.module.scss'
 
-interface ILink
+export interface ILink
 extends LinkHTMLAttributes<HTMLLinkElement>, IClassName {
     url: string
     isSelected: boolean

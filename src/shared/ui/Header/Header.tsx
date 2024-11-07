@@ -5,7 +5,7 @@ import { Navigation } from '../Navigation'
 import { PATHS } from '@/shared/constants'
 import { SearchComponent } from '@/entity/Search'
 
-interface IHeader {
+export interface IHeader {
     title: string,
     buttonName: string
     handleButtonClick: () => void

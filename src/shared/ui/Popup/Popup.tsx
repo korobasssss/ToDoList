@@ -8,7 +8,7 @@ import { OverlayPopup } from "../OverlayPopup"
 import { Portal } from "../Portal"
 import { OverlayLoader } from "../OverlayLoader"
 
-interface IPopup {
+export interface IPopup {
     title: string
     isOpen: boolean
     handlerSubmit?: () => Promise<boolean>

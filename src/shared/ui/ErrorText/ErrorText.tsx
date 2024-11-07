@@ -3,7 +3,7 @@ import cx from 'classnames'
 import styles from './styles.module.scss'
 import { IClassName } from "@/shared/interfaces"
 
-interface IErrorText
+export interface IErrorText
 extends IClassName {
     message: string
 }

@@ -3,7 +3,7 @@ import cx from 'classnames';
 import { IClassName } from '@/shared/interfaces'
 import styles from './styles.module.scss'
 
-interface IButton
+export interface IButton
     extends ButtonHTMLAttributes<HTMLButtonElement>, IClassName {
     children: ReactNode
     theme: 'primary' | 'secondary' | 'none'

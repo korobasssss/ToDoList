@@ -4,7 +4,7 @@ import {CategoryIcon, EditIcon, DeleteIcon} from '@/shared/assets'
 import { ButtonIcon } from '../ButtonIcon'
 import { Icon } from "../Icon"
 
-interface IUlItemLayout {
+export interface IUlItemLayout {
     name: string
     category: string | null
     description: string | null
