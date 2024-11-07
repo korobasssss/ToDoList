@@ -27,3 +27,11 @@ DefaultSizeM.args = {
     children: 'Я дите попапа',
     size: 'm'
 };
+
+export const DefaultWithoutButtons = Template.bind({});
+DefaultWithoutButtons.args = {
+    title: 'Это заголовок попапа размера M',
+    isOpen: true,
+    children: 'Я дите попапа',
+    size: 'm'
+};
