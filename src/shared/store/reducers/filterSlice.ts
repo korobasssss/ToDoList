@@ -1,9 +1,10 @@
+import { EOptionCategory, EOptionTask } from "@/shared/enums";
 import { ISelectOptions } from "@/shared/interfaces";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface IFilterState {
     searchValue: string;
-    filterValue: ISelectOptions<string, string> | null
+    filterValue: ISelectOptions<EOptionTask | EOptionCategory, string> | null
   }
 
   const initialState: IFilterState = {
@@ -18,7 +19,7 @@ export const filterSlice = createSlice({
       setSearchValue: (state, action: PayloadAction<string>) => {
         state.searchValue = action.payload;
       },
-      setFilterValue: (state, action: PayloadAction<ISelectOptions<string, string> | null>) => {
+      setFilterValue: (state, action: PayloadAction<ISelectOptions<EOptionTask, string> | null>) => {
         state.filterValue = action.payload;
       }
     },

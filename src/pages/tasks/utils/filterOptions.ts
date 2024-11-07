@@ -1,5 +1,5 @@
+import { EOptionTask } from "@/shared/enums"
 import { ISelectOptions } from "@/shared/interfaces"
-import { EOptionTask } from "../enum"
 
 export const filterOptions: ISelectOptions<string, string>[] = [
     {

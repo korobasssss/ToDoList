@@ -1,5 +1,5 @@
+import { EOptionCategory } from "@/shared/enums"
 import { ISelectOptions } from "@/shared/interfaces"
-import { EOptionCategory } from "../enums"
 
 export const filterOptions: ISelectOptions<string, string>[] = [
     {

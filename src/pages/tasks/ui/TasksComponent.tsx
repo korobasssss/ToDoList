@@ -30,7 +30,7 @@ export const TasksComponent: FC<ITaskComponent> = (
     useEffect(() => {
         if (tasks) {
             const searchArr = searchValue ? search(tasks, searchValue) : tasks
-            const filterArr = filterValue ? filterTasks(tasks, filterValue?.value) : tasks
+            const filterArr = filterValue ? filterTasks(tasks, filterValue.value) : tasks
 
             setFilteredTasks(searchArr && filterArr ? filterArr.filter(item => searchArr.includes(item)) : [])
         }
