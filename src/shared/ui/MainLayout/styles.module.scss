@@ -7,18 +7,17 @@
     width: 100%;
     display: grid;
     grid-template-rows: max-content auto;
-    background-color: variables.$BGC_MAIN;
 
     .SMainLayoutChildren {
-        margin-top: 88px;
         height: 100%;
+        background-color: variables.$BGC_MAIN;
     }
 
-    @media screen and (max-width: variables.$x-medium) {
-        .SMainLayoutChildren {
-            margin-top: 226px;
-        }
-    }
+    // @media screen and (max-width: variables.$x-medium) {
+    //     .SMainLayoutChildren {
+    //         margin-top: 226px;
+    //     }
+    // }
 }
 
 

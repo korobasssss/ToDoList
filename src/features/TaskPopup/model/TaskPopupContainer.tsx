@@ -12,7 +12,7 @@ interface ICreateItemPopupContainer<V extends string | number, K extends string>
     name: string
     category: ISelectOptions<V, K> | null
     description: string
-    handleSubmitForm: (name: string, category: ISelectOptions<V, K> | null, description: string) => Promise<boolean>
+    handleSubmitForm: (name: string, category: ISelectOptions<V, K> | null, description: string | null) => Promise<boolean>
 
     popupTitle: string
     buttonSubmitTitle? : string
@@ -45,10 +45,10 @@ export const TaskPopupContainer = <V extends string | number, K extends string> 
 
     return (
         <Popup
-                title={popupTitle}
-                isOpen={isPopupOpen}
-                handlerCancel={handlerCancel}
-                size='m'
+            title={popupTitle}
+            isOpen={isPopupOpen}
+            handlerCancel={handlerCancel}
+            size='m'
         >
             <TaskPopupComponent
                 initialValues={{name: name, description: description}}

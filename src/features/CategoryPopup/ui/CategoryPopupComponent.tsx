@@ -11,7 +11,7 @@ import { Button } from "@/shared/ui/Button"
 import { IFormValue } from "@/shared/interfaces"
 
 interface ICategoryPopupComponent {
-    handleSubmitForm: (name: string, description: string) => Promise<boolean>
+    handleSubmitForm: (name: string, description: string | null) => Promise<boolean>
     handleCancel: () => void
     initialValues: IFormValue
     buttonSubmitTitle? : string
@@ -29,11 +29,12 @@ export const CategoryPopupComponent: FC<ICategoryPopupComponent> = (
 ) => {
     const [errorCommon, setErrorCommon] = useState('')
 
-    const handleSubmit = async (values: IFormValue, { resetForm }: FormikHelpers<IFormValue>) => {
+    const handleSubmit = async (values: IFormValue, { resetForm, setErrors }: FormikHelpers<IFormValue>) => {
         try {
             await validationCategory.validate(values);
             if (await handleSubmitForm(values.name, values.description )) {
                 setErrorCommon('')
+                setErrors({})
                 resetForm()
                 handleCancel()
             } else {
@@ -51,9 +52,11 @@ export const CategoryPopupComponent: FC<ICategoryPopupComponent> = (
             initialValues={initialValues}
             validationSchema={validationCategory}
             onSubmit={handleSubmit}
+            validateOnChange={false}
+            validateOnBlur={false}
             enableReinitialize
         >
-            {({ isValid, dirty }) => (
+            {({ isValid, dirty, resetForm }) => (
                 <Form>
                     <div className={styles.SCreatePopup}>
                         <Field
@@ -106,8 +109,12 @@ export const CategoryPopupComponent: FC<ICategoryPopupComponent> = (
                             )}
                             {buttonCancelTitle && (
                                 <Button
+                                    type="button"
                                     theme='secondary'
-                                    onClick={handleCancel}
+                                    onClick={() => {
+                                        resetForm()
+                                        handleCancel()
+                                    }}
                                 >
                                     {buttonCancelTitle}
                                 </Button>

@@ -17,7 +17,7 @@ export const CreateItemPopupContainer = <V extends string | number, K extends st
 ): JSX.Element => {
     const [fetchPostItem, {isLoading}] = fetchTasksApi.useFetchPostTaskMutation()
 
-    const handleSubmit = async (inputName: string, inputCategory: ISelectOptions<V, K> | null, inputDescription: string) => {
+    const handleSubmit = async (inputName: string, inputCategory: ISelectOptions<V, K> | null, inputDescription: string | null) => {
         try {
             const res: unknown = await fetchPostItem({
                 name: inputName,

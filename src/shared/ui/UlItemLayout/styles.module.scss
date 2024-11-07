@@ -4,6 +4,7 @@
 .SItemWrapper {
     max-width: 1000px;
     margin: 0 auto;
+    border-bottom: 2px solid variables.$BGC_LINE;
 
     .SItem {
         padding: 10px 20px;
@@ -45,6 +46,7 @@
     
             .SDataDescription {
                 color: variables.$TEXT_DESCRIPTION;
+                word-break: break-all;
                 @include mixins.font-roboto-xs;
             }
         }
@@ -54,13 +56,6 @@
             align-items: center;
             gap: 15px;
         }
-    }
-
-    .SDataLine {
-        width: 100%;
-        margin: 0 auto;
-        height: 2px;
-        background-color: variables.$BGC_LINE;
     }
 
     &:hover {

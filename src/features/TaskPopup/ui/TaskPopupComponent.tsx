@@ -15,7 +15,7 @@ interface ICreateEditItemPopup<V extends string | number, K extends string> {
     initialValues: IFormValue
     options: ISelectOptions<V, K>[]
     category: ISelectOptions<V, K> | null
-    handleSubmitForm: (name: string, category: ISelectOptions<V, K> | null, description: string) => Promise<boolean>
+    handleSubmitForm: (name: string, category: ISelectOptions<V, K> | null, description: string | null) => Promise<boolean>
     handleCancel: () => void
     buttonSubmitTitle? : string
     buttonCancelTitle? : string
@@ -46,6 +46,7 @@ export const TaskPopupComponent = <V extends string | number, K extends string> 
             if (await handleSubmitForm(value.name, inputCategory, value.description)) {
                 setErrorCommon('')
                 resetForm()
+                setInputCategory(null)
                 handleCancel()
             } else {
                 setErrorCommon(ErrorMessages.POST_ERROR)
@@ -64,7 +65,7 @@ export const TaskPopupComponent = <V extends string | number, K extends string> 
             onSubmit={handleSubmit}
             enableReinitialize
         >
-            {({ isValid, dirty }) => (
+            {({ isValid, dirty, resetForm }) => (
                 <Form
                     className={styles.SForm}
                 >
@@ -127,8 +128,13 @@ export const TaskPopupComponent = <V extends string | number, K extends string> 
                         )}
                         {buttonCancelTitle && (
                             <Button
+                                type="button"
                                 theme='secondary'
-                                onClick={handleCancel}
+                                onClick={() => {
+                                    resetForm()
+                                    setInputCategory(null)
+                                    handleCancel()
+                                }}
                             >
                                 {buttonCancelTitle}
                             </Button>

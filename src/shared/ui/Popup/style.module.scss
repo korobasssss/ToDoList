@@ -10,9 +10,9 @@
     border-radius: variables.$RADIUS_S;
     box-shadow: variables.$SHADOW_POPUP;
 
-    display: grid;
-    grid-template-rows: min-content auto max-content;
-    row-gap: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
 
     &_size_s {
         width: variables.$POPUP_WIDTH_S;

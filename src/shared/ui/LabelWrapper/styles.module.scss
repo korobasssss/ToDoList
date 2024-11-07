@@ -14,16 +14,27 @@
         left: 8px;
         padding: 0 2px;
         background-color: variables.$BGC_MAIN;
-        z-index: 10;
+        z-index: variables.$Z-INDEX_LABEL;
 
         display: flex;
         align-content: start;
 
         .SLabel {
+            display: flex;
             height: 100%;
             color: variables.$TEXT_LABEL_INPUT;
 
             @include mixins.font-roboto-xs;
+
+            &_required {
+                &::after {
+                    content: '*';
+                    position: relative;
+                    margin-left: 3px;
+                    color: variables.$REQUIRED_INPUT;
+                    @include mixins.font-roboto-m;
+                }
+            }
         }
 
         .SRequired {

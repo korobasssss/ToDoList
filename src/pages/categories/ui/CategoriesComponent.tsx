@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from "react"
+import { FC, useEffect, useMemo, useState } from "react"
 import { ICategory } from "@/shared/interfaces"
 import { NoData } from "@/shared/ui/NoData"
 import { CategoryContainer } from "@/widgets/Category"
@@ -7,6 +7,7 @@ import { ErrorMessages } from "@/shared/constants"
 import { useAppSelector } from "@/shared/store"
 import { search } from "@/shared/utils"
 import { filterCategories } from "../utils"
+import { EOptionCategory } from "@/shared/enums"
 
 interface ICategoriesComponent {
     categories?: ICategory[] | null
@@ -21,18 +22,15 @@ export const CategoriesComponent: FC<ICategoriesComponent> = (
     const [isDeleteOpenPopup, setIsDeleteOpenPopup] = useState(false)
     const [currCategory, setCurrCategory] = useState<ICategory | null>(null)
 
-    const [filteredCategories, setFilteredCategories] = useState<ICategory[] | null>(null);
-
     const {searchValue, filterValue} = useAppSelector(state => state.filter)
 
-    useEffect(() => {
-        if (categories) {
-            const searchArr = searchValue ? search(categories, searchValue) : categories
-            const filterArr = filterValue ? filterCategories(categories, filterValue?.value) : categories
+    const filteredCategories = useMemo(() => {
+        if (!categories) return [];
 
-            setFilteredCategories(searchArr && filterArr ? filterArr.filter(item => searchArr.includes(item)) : [])
-        }
-    }, [categories, searchValue, filterValue])
+        const searchArr = searchValue ? search(categories, searchValue) : categories;
+
+        return filterValue ? filterCategories(searchArr, filterValue.value as EOptionCategory) : searchArr;
+    }, [categories, searchValue, filterValue]);
 
     useEffect(() => {
         if (!isEditOpenPopup && !isDeleteOpenPopup) {

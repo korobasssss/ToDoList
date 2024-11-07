@@ -33,12 +33,6 @@ export const Select = <V extends string | number, K extends string> (
     const [isFocused, setIsFocused] = useState(false);
     const [inputValue, setInputValue] = useState('');
 
-    const filteredOptions: ISelectOptions<V, K>[] | null = useMemo(() => {
-        return options.filter(option =>
-            option.label.toLowerCase().includes(inputValue.toLowerCase())
-        );
-    }, [options, inputValue]);
-
     useEffect(() => {
         setInputValue(value?.label ?? '')
     }, [value])
@@ -53,6 +47,17 @@ export const Select = <V extends string | number, K extends string> (
         setInputValue(option.label)
         setIsFocused(false)
     }
+
+    const stylesOptionsWrapper = useMemo(() => {
+        return (
+            cx(
+                styles.SOptionsWrapper,
+                {
+                    [styles['SOptionsWrapper_error']] : error
+                }
+            )
+        )
+    }, [error])
 
     return (
         <div   
@@ -74,22 +79,17 @@ export const Select = <V extends string | number, K extends string> (
             />
            {isFocused && (
             <ScrollWrapper>
-                <ul className={cx(
-                        styles.SOptionsWrapper,
-                        {
-                            [styles['SOptionsWrapper_error']] : error
-                        }
-                    )}
+                <ul className={stylesOptionsWrapper}
                 >
-                    {filteredOptions && filteredOptions.length > 0 ?
-                        filteredOptions.map(option => {
+                    {options && options.length > 0 ?
+                        options.map(option => {
                             return (
                                 <li
                                     key={option.value}
                                     className={cx(
                                         styles.SOption,
                                         {
-                                            [styles['SOption_selected']] : option.value === value?.value
+                                            [styles.SOption_selected]: option.value === value?.value,
                                         }
                                     )}
                                     onClick={() => handleSetSelected(option)}

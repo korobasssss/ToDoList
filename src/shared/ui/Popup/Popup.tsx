@@ -1,4 +1,4 @@
-import { FC, ReactNode } from "react"
+import { FC, ReactNode, useMemo } from "react"
 import cx from 'classnames'
 import styles from './style.module.scss'
 import { CloseIcon } from '@/shared/assets'
@@ -42,17 +42,22 @@ export const Popup: FC<IPopup> = (
         }
     }
 
+    const stylesPopup = useMemo(() => {
+        return (
+            cx(
+                styles.SPopup,
+                styles[`SPopup_size_${size}`]
+            )
+        )
+    }, [size])
+
     return (
         <Portal>
             <OverlayPopup
-                handlerCLose={handlerCancel}
                 isOpen={isOpen}
             >
                 <section
-                    className={cx(
-                        styles.SPopup,
-                        styles[`SPopup_size_${size}`]
-                    )}
+                    className={stylesPopup}
                 >
                     <header className={styles.SPHeader}>
                         <h1 className={styles.SPTitle}>
@@ -65,7 +70,8 @@ export const Popup: FC<IPopup> = (
                         />
                     </header>
                     {children}
-                    <footer className={styles.SPFooter}>
+                    {(buttonSubmitName || buttonCancelName) && (
+                        <footer className={styles.SPFooter}>
                         {buttonSubmitName && (
                             <Button
                                 theme='primary'
@@ -84,6 +90,7 @@ export const Popup: FC<IPopup> = (
                             </Button>
                         )}
                     </footer>
+                    )}
                 </section>
             </OverlayPopup>
             {isLoading && (

@@ -8,7 +8,7 @@ interface ICreateItemPopupContainer {
 
     name?: string
     description?: string
-    handleSubmitForm: (name: string, description: string) => Promise<boolean>
+    handleSubmitForm: (name: string, description: string | null) => Promise<boolean>
 
     popupTitle: string
     buttonSubmitTitle? : string

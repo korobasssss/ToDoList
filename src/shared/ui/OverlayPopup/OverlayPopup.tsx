@@ -1,4 +1,4 @@
-import { FC, ReactNode } from "react"
+import { FC, ReactNode, useMemo } from "react"
 import styles from './styles.module.scss'
 import cx from 'classnames'
 import { IClassName } from "@/shared/interfaces"
@@ -18,16 +18,23 @@ export const OverlayPopup: FC<IOverlayPopup> = (
         isOpen
     }
 ) => {
-    return (
-        <div
-            className={cx(
+
+    const styleOverlayWrapper = useMemo(() => {
+        return (
+            cx (
                 styles.SOverlayWrapper,
                 {
                     [styles[`SOverlayWrapper_opened`]]: isOpen,
                     [styles[`SOverlayWrapper_closed`]]: !isOpen
                 }
             
-            )}
+            )
+        )
+    }, [isOpen])
+
+    return (
+        <div
+            className={styleOverlayWrapper}
         >
             <div
                 className={cx(

@@ -1,7 +1,7 @@
 import { EOptionTask } from "@/shared/enums"
 import { ISelectOptions } from "@/shared/interfaces"
 
-export const filterOptions: ISelectOptions<string, string>[] = [
+export const filterOptions: ISelectOptions<EOptionTask, string>[] = [
     {
         value: EOptionTask.ALL,
         label: 'Все значения'

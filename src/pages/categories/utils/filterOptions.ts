@@ -1,7 +1,7 @@
 import { EOptionCategory } from "@/shared/enums"
 import { ISelectOptions } from "@/shared/interfaces"
 
-export const filterOptions: ISelectOptions<string, string>[] = [
+export const filterOptions: ISelectOptions<EOptionCategory, string>[] = [
     {
         value: EOptionCategory.ALL,
         label: 'Все значения'

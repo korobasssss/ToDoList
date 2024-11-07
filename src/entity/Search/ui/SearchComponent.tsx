@@ -15,6 +15,7 @@ export const SearchComponent: FC = memo(() => {
                 onChange={(event) => dispatch(setSearchValue(event.target.value))}
                 leftIcon={SearchIcon}
                 classNames={styles.SInputColor}
+                placeholder="Поиск..."
             />
         </div>
     )

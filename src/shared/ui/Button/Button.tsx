@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes, FC, ReactNode } from 'react'
+import { ButtonHTMLAttributes, FC, ReactNode, useMemo } from 'react'
 import cx from 'classnames';
 import { IClassName } from '@/shared/interfaces'
 import styles from './styles.module.scss'
@@ -20,14 +20,21 @@ export const Button: FC<IButton> = (
         ...restProps
     }
 ) => {
-    return (
-        <button
-            type={type}
-            className={cx(
+
+    const stylesButton = useMemo(() => {
+        return (
+            cx(
                 classNames,
                 styles.SButton,
                 styles[`SButton_${theme}`],
-            )}
+            )
+        )
+    }, [theme])
+
+    return (
+        <button
+            type={type}
+            className={stylesButton}
             disabled={disabled}
             onClick={onClick}
             {...restProps}

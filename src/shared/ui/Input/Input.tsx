@@ -1,4 +1,4 @@
-import { FC, InputHTMLAttributes } from "react"
+import { FC, InputHTMLAttributes, useMemo } from "react"
 import cx from 'classnames'
 import { IClassName } from "@/shared/interfaces"
 import styles from './style.module.scss'
@@ -29,6 +29,32 @@ export const Input: FC<IInput> = ({
     isFocused,
     ...restProps
 }) => {
+
+    const stylesInput = useMemo(() => {
+        return (
+            cx(
+                styles.SInput,
+                {
+                    [styles['SInput_error']] : error,
+                    [styles['SInput_rightIcon']] : rightIcon,
+                    [styles['SInput_leftIcon']] : leftIcon,
+                },
+                classNames
+            )
+        )
+    }, [error, rightIcon, leftIcon])
+
+    const stylesRightIcon = useMemo(() => {
+        return (
+            cx(
+                styles.SRightIcon,
+                {
+                    [styles[`SRightIcon_rotate`]]: isFocused
+                }
+            )
+        )
+    }, [isFocused])
+
     return (
         <LabelWrapper
             label={label}
@@ -44,15 +70,7 @@ export const Input: FC<IInput> = ({
                 )}
                 <input
                     value={value}
-                    className={cx(
-                        styles.SInput,
-                        {
-                            [styles['SInput_error']] : error,
-                            [styles['SInput_rightIcon']] : rightIcon,
-                            [styles['SInput_leftIcon']] : leftIcon,
-                        },
-                        classNames
-                    )}
+                    className={stylesInput}
                     placeholder={placeholder}
                     onChange={onChange}
                     {...restProps}
@@ -60,12 +78,7 @@ export const Input: FC<IInput> = ({
                 {rightIcon && (
                     <Icon 
                         icon={rightIcon}
-                        classNames={cx(
-                            styles.SRightIcon,
-                            {
-                                [styles[`SRightIcon_rotate`]]: isFocused
-                            }
-                        )}
+                        classNames={stylesRightIcon}
                     />
                 )}
             </div>

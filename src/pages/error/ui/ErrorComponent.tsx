@@ -8,7 +8,7 @@ export const ErrorComponent = () => {
         <section className={styles.SErrorWrapper}>
             <main className={styles.SError}>
                 <header className={styles.SErrorHeader}>
-                    Упс.... Такой страницы не существует :(
+                    Упс.... Произошла ошибка :(
                 </header>
                 <div className={styles.SErrorMessage}>
                     <p>
@@ -19,7 +19,7 @@ export const ErrorComponent = () => {
                         isSelected={false}
                         classNames={styles.SErrorLink}
                     >
-                        главную
+                        главную страницу
                     </Link>
                 </div>
             </main>

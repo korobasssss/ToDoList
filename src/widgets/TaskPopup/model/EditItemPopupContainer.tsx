@@ -21,7 +21,7 @@ export const EditItemPopupContainer = <V extends string | number, K extends stri
 ): JSX.Element => {
     const [fetchUpdateItem, {isLoading}] = fetchTasksApi.useFetchUpdateTaskMutation()
 
-    const handleSubmit = async (inputName: string, inputCategory: ISelectOptions<V, K> | null, inputDescription: string) => {
+    const handleSubmit = async (inputName: string, inputCategory: ISelectOptions<V, K> | null, inputDescription: string | null) => {
         if (!task) return false
         try {
             const res: unknown = await fetchUpdateItem({

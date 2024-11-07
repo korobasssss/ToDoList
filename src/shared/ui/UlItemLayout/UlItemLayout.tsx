@@ -59,7 +59,6 @@ export const UlItemLayout: FC<IUlItemLayout> = (
                     />
                 </div>
             </div>
-            <div className={styles.SDataLine}/>
         </div>
     )
 }

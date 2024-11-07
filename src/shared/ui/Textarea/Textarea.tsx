@@ -1,4 +1,4 @@
-import { FC, TextareaHTMLAttributes } from "react"
+import { FC, TextareaHTMLAttributes, useMemo } from "react"
 import cx from 'classnames'
 import { IClassName } from "@/shared/interfaces"
 import styles from './styles.module.scss'
@@ -21,22 +21,29 @@ export const Textarea: FC<ITextarea> = ({
     isRequired,
     ...restProps
 }) => {
+
+    const stylesTextarea = useMemo(() => {
+        return (
+            cx(
+                styles.STextarea,
+                {
+                    [styles['STextarea_error']]: error
+                }
+            )
+        )
+    }, [])
+
     return (
         <LabelWrapper
             label={label}
             error={error}
             isRequired={isRequired}
-            classNames={styles.SLabel}
+            bottom='65px'
         >
             <ScrollWrapper>
                 <textarea
                     value={value}
-                    className={cx(
-                        styles.STextarea,
-                        {
-                            [styles['STextarea_error']]: error
-                        }
-                    )}
+                    className={stylesTextarea}
                     placeholder={placeholder}
                     onChange={onChange}
                     {...restProps}

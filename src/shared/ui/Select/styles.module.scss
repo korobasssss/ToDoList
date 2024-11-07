@@ -7,7 +7,7 @@
 }
 
 .SOptionsWrapper {
-    z-index: 100;
+    z-index: variables.$Z-INDEX_SELECT_POPUP;
     margin-top: 5px;
     position: absolute;
     width: 100%;

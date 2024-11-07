@@ -22,8 +22,7 @@ export const MainLayout: FC<IMainLayout> = (
     }
 ) => {
     return (
-        <ScrollWrapper
-        >
+        <>
             <section
                 className={styles.SMainLayout}
             >
@@ -32,15 +31,15 @@ export const MainLayout: FC<IMainLayout> = (
                     buttonName={buttonName}
                     handleButtonClick={() => handleButtonClick(true)}
                 />
-                <main
-                    className={styles.SMainLayoutChildren}
+                <ScrollWrapper
+                    classNames={styles.SMainLayoutChildren}
                 >
                     {children}
-                </main>
+                </ScrollWrapper>
             </section> 
             {isLoading && (
                 <OverlayLoader/>
             )}
-        </ScrollWrapper>
+        </>
     )
 }

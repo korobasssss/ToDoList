@@ -1,54 +1,63 @@
-import { FC, ReactNode } from "react"
+import { FC, ReactNode, useMemo } from "react"
 import cx from 'classnames'
 import styles from './styles.module.scss'
-import { IClassName } from "@/shared/interfaces"
 import { ErrorText } from "../ErrorText"
 
-interface ILabelWrapper
-extends IClassName {
+interface ILabelWrapper {
     label?: string
     error?: string
     isRequired?: boolean
     children: ReactNode
+    bottom?: string
 }
 
 export const LabelWrapper: FC<ILabelWrapper> = (
     {
-        classNames, // только для изменения положения описания
+        bottom,
         label,
         error,
         isRequired,
         children
     }
 ) => {
+
+    const stylesLabelWrapper = useMemo(() => {
+        return (
+            cx(
+                styles.SElementWrapper,
+                {
+                    [styles['SElementWrapper_error']]: error
+                }
+            )
+        )
+    }, [error])
+
+
+    const stylesLabel = useMemo(() => {
+        return (
+            cx(
+                styles.SLabel,
+                {
+                    [styles['SLabel_required']] : isRequired
+                }
+            )
+        )
+    }, [error])
+    
     return (
         <div>
-            <div className={cx(
-                    styles.SElementWrapper,
-                    {
-                        [styles['SElementWrapper_error']]: error
-                    }
-                )}
+            <div className={stylesLabelWrapper}
             >
                 {label && (
                     <span 
-                        className={cx(
-                            styles.ILabelWrapper,
-                            classNames
-                        )}
+                        className={styles.ILabelWrapper}
+                        style={{bottom}}
                     >
                         <label
-                            className={cx(
-                                styles.SLabel
-                            )}
+                            className={stylesLabel}
                         >
                             {label}
                         </label>
-                        {isRequired && (
-                            <span className={styles.SRequired}>
-                                *
-                            </span>
-                        )}
                     </span>
                 )}
                 {children}

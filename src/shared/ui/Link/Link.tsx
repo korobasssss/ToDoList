@@ -1,4 +1,4 @@
-import { FC, LinkHTMLAttributes, ReactNode } from "react"
+import { FC, LinkHTMLAttributes, ReactNode, useMemo } from "react"
 import cx from 'classnames'
 import { IClassName } from "@/shared/interfaces"
 
@@ -19,15 +19,21 @@ export const Link: FC<ILink> = (
         children
     }
 ) => {
-    return (
-        <a
-            className={cx(
+    const stylesLink = useMemo(() => {
+        return (
+            cx(
                 classNames,
                 styles.SLink,
                 {
                     [styles['SLink_selected']]: isSelected
                 }
-            )}
+            )
+        )
+    }, [])
+
+    return (
+        <a
+            className={stylesLink}
             href={url}
         >
             {children}

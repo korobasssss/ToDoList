@@ -5,12 +5,12 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 interface IFilterState {
     searchValue: string;
     filterValue: ISelectOptions<EOptionTask | EOptionCategory, string> | null
-  }
+}
 
-  const initialState: IFilterState = {
-    searchValue: '',
-    filterValue: null
-  }
+const initialState: IFilterState = {
+  searchValue: '',
+  filterValue: null
+}
 
 export const filterSlice = createSlice({
     name: 'filter',
@@ -19,7 +19,7 @@ export const filterSlice = createSlice({
       setSearchValue: (state, action: PayloadAction<string>) => {
         state.searchValue = action.payload;
       },
-      setFilterValue: (state, action: PayloadAction<ISelectOptions<EOptionTask, string> | null>) => {
+      setFilterValue: (state, action: PayloadAction<ISelectOptions<EOptionTask | EOptionCategory, string> | null>) => {
         state.filterValue = action.payload;
       }
     },

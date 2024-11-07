@@ -1,3 +1,3 @@
-import { EOptionTask } from "../enum";
+import { EOptionTask } from "@/shared/enums";
 
 export type TEOptionType = `${EOptionTask}`

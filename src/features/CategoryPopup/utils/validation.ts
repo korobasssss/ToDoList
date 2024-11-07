@@ -6,7 +6,7 @@ export const validationCategory = Yup.object().shape({
       .required('Имя обязательно')
       .max(255, ErrorMessages.MAX_LENGTH)
       .trim(),
-    description: Yup.string()
+    description: Yup.string().nullable()
       .max(512, ErrorMessages.MAX_LENGTH)
       .trim()
   });

@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from "react"
+import { FC, useEffect, useMemo, useState } from "react"
 import { ITask } from "@/shared/interfaces"
 import { NoData } from "@/shared/ui/NoData"
 import { TaskContainer } from "@/widgets/Task"
@@ -24,17 +24,15 @@ export const TasksComponent: FC<ITaskComponent> = (
     const [isDeleteOpenPopup, setIsDeleteOpenPopup] = useState(false)
     const [currTask, setCurrTask] = useState<ITask | null>(null)
 
-    const [filteredTasks, setFilteredTasks] = useState<ITask[] | null>(null);
     const {searchValue, filterValue} = useAppSelector(state => state.filter)
 
-    useEffect(() => {
-        if (tasks) {
-            const searchArr = searchValue ? search(tasks, searchValue) : tasks
-            const filterArr = filterValue ? filterTasks(tasks, filterValue.value) : tasks
+    const filteredTasks = useMemo(() => {
+        if (!tasks) return [];
 
-            setFilteredTasks(searchArr && filterArr ? filterArr.filter(item => searchArr.includes(item)) : [])
-        }
-    }, [tasks, searchValue, filterValue])
+        const searchArr = searchValue ? search(tasks, searchValue) : tasks;
+
+        return filterValue ?  filterTasks(searchArr, filterValue.value): searchArr;
+    }, [tasks, searchValue, filterValue]);
 
     useEffect(() => {
         if (!isEditOpenPopup && !isDeleteOpenPopup) {

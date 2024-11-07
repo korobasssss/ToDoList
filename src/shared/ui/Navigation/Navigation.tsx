@@ -5,6 +5,7 @@ import { Link } from '../Link'
 import { Icon } from '../Icon'
 import {LineIcon} from '@/shared/assets'
 import styles from './styles.module.scss'
+import { EPaths } from '@/shared/enums'
 
 interface INavigation {
     links: TPaths
@@ -21,12 +22,13 @@ export const Navigation: FC<INavigation> = (
         <nav
             className={styles.SNavigation}
         >
-            {Object.values(links).map(({ title, url }, index) => (
-                index !== 0 ? (
-                    <div 
-                        key={index}
-                        className={styles.SLinkWrapper}
-                    >
+            {Object.values(links).map(({ title, url }, index) => {
+                if (url === EPaths.MAIN) return null
+                return (
+                        <div 
+                            key={index}
+                            className={styles.SLinkWrapper}
+                        >
                         <Link 
                             url={url} 
                             isSelected={location.pathname === url}
@@ -37,8 +39,8 @@ export const Navigation: FC<INavigation> = (
                             <Icon icon={LineIcon}/>
                         ) : null}
                     </div>
-                ) : null
-            ))}
+                )
+            })}
         </nav>
     )
 }

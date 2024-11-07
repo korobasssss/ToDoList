@@ -2,7 +2,9 @@ import { ITask } from "@/shared/interfaces";
 import { TEOptionType } from "../types";
 
 
-export const filterTasks = ( tasks: ITask[], selectedOption: TEOptionType): ITask[] | null => {
+export const filterTasks = ( tasks: ITask[] | null, selectedOption: TEOptionType): ITask[] | null => {
+    if (!tasks) return null
+
     switch (selectedOption) {
         case 'all' : {
             return tasks
