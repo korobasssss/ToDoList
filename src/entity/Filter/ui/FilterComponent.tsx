@@ -1,5 +1,5 @@
 import { ISelectOptions } from "@/shared/interfaces"
-import { Select } from "@/shared/ui/Select"
+import { Select } from 'ui-kit-todo-list/main'
 import styles from './styles.module.scss'
 import { setFilterValue, useAppDispatch, useAppSelector } from "@/shared/store"
 import { EOptionCategory, EOptionTask } from "@/shared/enums"

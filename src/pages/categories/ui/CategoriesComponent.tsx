@@ -1,6 +1,6 @@
 import { FC, useEffect, useMemo, useState } from "react"
 import { ICategory } from "@/shared/interfaces"
-import { NoData } from "@/shared/ui/NoData"
+import { NoData } from 'ui-kit-todo-list/main'
 import { CategoryContainer } from "@/widgets/Category"
 import { DeleteCategoryPopupContainer, EditCategoryPopupContainer } from "@/widgets/CategoryPopup"
 import { ErrorMessages } from "@/shared/constants"

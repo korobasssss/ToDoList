@@ -1,8 +1,7 @@
 import { FC } from "react"
 import styles from './styles.module.scss'
 import {CategoryIcon, EditIcon, DeleteIcon} from '@/shared/assets'
-import { ButtonIcon } from '../ButtonIcon'
-import { Icon } from "../Icon"
+import { ButtonIcon, Icon } from 'ui-kit-todo-list/main'
 
 export interface IUlItemLayout {
     name: string

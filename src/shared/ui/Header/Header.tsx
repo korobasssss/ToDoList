@@ -1,9 +1,9 @@
 import { FC } from 'react'
 import styles from './styles.module.scss'
-import { Button } from '../Button'
 import { Navigation } from '../Navigation'
 import { PATHS } from '@/shared/constants'
 import { SearchComponent } from '@/entity/Search'
+import { Button } from 'ui-kit-todo-list/main'
 
 export interface IHeader {
     title: string,

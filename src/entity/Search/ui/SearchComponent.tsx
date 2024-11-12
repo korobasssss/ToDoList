@@ -1,5 +1,5 @@
 import { SearchIcon } from "@/shared/assets"
-import { Input } from "@/shared/ui/Input"
+import { Input } from 'ui-kit-todo-list/main'
 import styles from './styles.module.scss'
 import { FC, memo } from "react"
 import { useAppSelector, setSearchValue, useAppDispatch } from "@/shared/store"

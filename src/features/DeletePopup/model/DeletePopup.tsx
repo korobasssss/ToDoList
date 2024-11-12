@@ -1,7 +1,6 @@
 import { ErrorMessages } from "@/shared/constants"
 import { DialogPopup } from "@/shared/ui/DialogPopup"
-import { ErrorText } from "@/shared/ui/ErrorText"
-import { Popup } from "@/shared/ui/Popup"
+import { Popup, ErrorText } from 'ui-kit-todo-list/main'
 import { FC, SetStateAction, useState } from "react"
 
 interface IDeletePopup {

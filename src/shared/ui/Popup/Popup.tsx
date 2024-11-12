@@ -3,7 +3,7 @@ import cx from 'classnames'
 import styles from './style.module.scss'
 import { CloseIcon } from '@/shared/assets'
 import { ButtonIcon } from "../ButtonIcon"
-import { Button } from "../Button"
+import { Button } from 'ui-kit-todo-list/main'
 import { OverlayPopup } from "../OverlayPopup"
 import { Portal } from "../Portal"
 import { OverlayLoader } from "../OverlayLoader"

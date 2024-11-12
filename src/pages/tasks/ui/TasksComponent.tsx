@@ -1,6 +1,6 @@
 import { FC, useEffect, useMemo, useState } from "react"
 import { ITask } from "@/shared/interfaces"
-import { NoData } from "@/shared/ui/NoData"
+import { NoData } from 'ui-kit-todo-list/main'
 import { TaskContainer } from "@/widgets/Task"
 import { fetchCategoriesApi } from "@/shared/api"
 import { DeleteItemPopupContainer, EditItemPopupContainer } from "@/widgets/TaskPopup"

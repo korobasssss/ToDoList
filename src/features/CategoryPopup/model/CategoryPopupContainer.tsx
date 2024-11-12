@@ -1,5 +1,5 @@
 import { FC, SetStateAction } from "react"
-import { Popup } from "@/shared/ui/Popup"
+import { Popup } from 'ui-kit-todo-list/main'
 import { CategoryPopupComponent } from "../ui/CategoryPopupComponent"
 
 interface ICreateItemPopupContainer {

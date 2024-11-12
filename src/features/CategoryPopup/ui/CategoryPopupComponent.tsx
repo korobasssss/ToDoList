@@ -1,13 +1,10 @@
 import { FC, useState } from "react"
 import styles from './styles.module.scss'
-import { Input } from "@/shared/ui/Input"
-import { Textarea } from "@/shared/ui/Textarea"
-import { ErrorText } from "@/shared/ui/ErrorText"
+import { Input, Textarea, ErrorText, Button } from 'ui-kit-todo-list/main'
 import { Field, FieldProps, Form, Formik, FormikHelpers } from "formik"
 import { validationCategory } from "../utils/validation"
 import { ErrorMessages } from "@/shared/constants"
 import * as Yup from 'yup'
-import { Button } from "@/shared/ui/Button"
 import { IFormValue } from "@/shared/interfaces"
 
 interface ICategoryPopupComponent {

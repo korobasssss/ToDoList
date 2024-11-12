@@ -1,8 +1,7 @@
 import { FC, ReactNode, SetStateAction } from "react"
 import { Header } from "../Header"
-import { ScrollWrapper } from "../ScrollWrapper"
+import { ScrollWrapper, OverlayLoader } from 'ui-kit-todo-list/main'
 import styles from './styles.module.scss'
-import { OverlayLoader } from "../OverlayLoader"
 
 interface IMainLayout {
     isLoading?: boolean

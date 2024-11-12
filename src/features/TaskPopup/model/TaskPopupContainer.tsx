@@ -2,7 +2,7 @@ import { SetStateAction, useEffect, useState } from "react"
 import { ISelectOptions } from "@/shared/interfaces"
 import { fetchCategoriesApi } from "@/shared/api"
 import { changeToSelectOptions } from '../utils'
-import { Popup } from "@/shared/ui/Popup"
+import { Popup } from 'ui-kit-todo-list/main'
 import { TaskPopupComponent } from '../ui/TaskPopupComponent'
 
 interface ICreateItemPopupContainer<V extends string | number, K extends string> {

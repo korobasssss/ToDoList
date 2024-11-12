@@ -1,7 +1,7 @@
 import { SetStateAction } from "react"
 import { ISelectOptions } from "@/shared/interfaces"
 import { fetchTasksApi } from "@/shared/api"
-import { OverlayLoader } from "@/shared/ui/OverlayLoader"
+import { OverlayLoader } from 'ui-kit-todo-list/main'
 import { TaskPopupContainer } from "@/features/TaskPopup"
 
 interface ICreateItemPopupContainer {

@@ -1,13 +1,10 @@
 import { useEffect, useState } from "react"
 import styles from './styles.module.scss'
 import { IFormValue, ISelectOptions } from "@/shared/interfaces"
-import { Textarea } from "@/shared/ui/Textarea"
-import { Input } from "@/shared/ui/Input"
-import { Select } from "@/shared/ui/Select"
-import { ErrorText } from "@/shared/ui/ErrorText"
+import { Textarea, Input, Select, ErrorText } from 'ui-kit-todo-list/main'
 import { Field, FieldProps, Form, Formik, FormikHelpers } from "formik"
 import { validationItem } from "../utils"
-import { Button } from "@/shared/ui/Button"
+import { Button } from 'ui-kit-todo-list/main'
 import * as Yup from 'yup';
 import { ErrorMessages } from "@/shared/constants"
 
